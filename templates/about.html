@@ -1,0 +1,1334 @@
+{% extends 'base.html' %}
+
+{% block title %}Pastor Prince Obasi-Ike | About{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* About Page Specific Styles */
+    .about-hero {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .about-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+    }
+
+    .about-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(58, 41, 33, 0.9), rgba(58, 41, 33, 0.7));
+        z-index: 2;
+    }
+
+    .about-hero-content {
+        position: relative;
+        z-index: 3;
+    }
+
+    .about-hero-title {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        animation: fadeInDown 1.5s ease-out;
+    }
+
+    .about-hero-subtitle {
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1.5s ease-out;
+    }
+
+    .about-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-section-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        z-index: 0;
+    }
+
+    .about-card {
+        transition: all 0.3s ease;
+    }
+
+    .about-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 2rem;
+        border-left: 2px solid #d4a76a;
+        transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover {
+        transform: translateX(5px);
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #d4a76a;
+    }
+
+    .timeline-year {
+        position: absolute;
+        left: -3.5rem;
+        top: 0;
+        font-weight: bold;
+        color: #3a2921;
+    }
+
+    .quote-card {
+        position: relative;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+    }
+
+    .quote-card::before {
+        content: '"';
+        position: absolute;
+        top: -2rem;
+        left: 1rem;
+        font-size: 8rem;
+        font-family: serif;
+        color: rgba(255, 255, 255, 0.1);
+        line-height: 1;
+    }
+
+    .stat-card {
+        position: relative;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: white;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .stat-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #d4a76a;
+        z-index: -1;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #3a2921;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+        color: #5d534a;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .value-card {
+        position: relative;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: white;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .value-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #d4a76a;
+        z-index: -1;
+    }
+
+    .value-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgba(212, 167, 106, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .value-card:hover .value-icon {
+        background-color: #d4a76a;
+        color: white;
+    }
+
+    .value-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #3a2921;
+        margin-bottom: 1rem;
+    }
+
+    .value-description {
+        color: #5d534a;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    .animate-slide-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 1s ease-out forwards;
+    }
+
+    .animate-slide-in-right {
+        opacity: 0;
+        transform: translateX(20px);
+        animation: slideInRight 1s ease-out forwards;
+    }
+
+    .animate-slide-in-left {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideInLeft 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-delay-100 {
+        animation-delay: 0.1s;
+    }
+
+    .animate-delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .animate-delay-300 {
+        animation-delay: 0.3s;
+    }
+
+    .animate-delay-400 {
+        animation-delay: 0.4s;
+    }
+
+    .animate-delay-500 {
+        animation-delay: 0.5s;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="about-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="about-hero-overlay"></div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="about-hero-content text-center text-white">
+            <div class="inline-block mb-4 animate-fade-in">
+                <span class="bg-mission-tan/20 text-mission-cream px-4 py-1 rounded-full text-sm font-bold tracking-wider">ABOUT</span>
+            </div>
+            <h1 class="about-hero-title">Pastor Prince Obasi-Ike</h1>
+            <p class="about-hero-subtitle mx-auto">A dynamic preacher of the gospel and pioneer missionary transforming lives across Africa and beyond since 1995.</p>
+            <div class="mt-8 animate-fade-in animate-delay-300">
+                <a href="#biography" class="hero-button">Read Biography</a>
+                <a href="{% url 'missionary_work' %}" class="hero-button outline ml-4">Explore Missions</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <a href="#biography" class="text-white">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Biography Section -->
+<section id="biography" class="py-24 bg-white about-section relative overflow-hidden">
+    <!-- Spotlight Effect -->
+    <div class="absolute inset-0 bg-gradient-radial from-mission-tan/5 to-transparent"></div>
+
+    <!-- Background Pattern -->
+    <div class="about-section-bg" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-mission-tan/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-mission-brown/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-20 max-w-4xl mx-auto">
+            <!-- Animated Badge with Glow Effect -->
+            <div class="inline-block mb-6 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-8 py-3 rounded-full text-sm font-bold tracking-wider relative z-10 shadow-lg">BIOGRAPHY</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75"></div>
+                <div class="absolute -inset-1 bg-mission-tan/10 rounded-full blur-md -z-10"></div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="flex justify-center items-center mb-6">
+                <div class="h-px w-16 bg-mission-tan/50"></div>
+                <div class="mx-4 text-mission-tan">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="h-px w-16 bg-mission-tan/50"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-7xl font-bold mb-8 text-mission-brown relative inline-block">
+                <span class="relative">
+                    The Man of God
+                    <div class="absolute -bottom-4 left-0 w-full h-2 bg-gradient-to-r from-mission-tan/30 via-mission-tan to-mission-tan/30 rounded-full"></div>
+                </span>
+            </h2>
+
+            <!-- Decorative Elements -->
+            <div class="flex justify-center items-center my-6">
+                <div class="h-px w-24 bg-mission-tan/50"></div>
+                <div class="mx-4 text-mission-tan/70">
+                    <i class="fas fa-cross"></i>
+                </div>
+                <div class="h-px w-24 bg-mission-tan/50"></div>
+            </div>
+
+            <p class="text-xl md:text-2xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                A distinguished leader, dynamic preacher, and internationally recognized missionary transforming lives across Africa.
+            </p>
+
+            <!-- Decorative Flourish -->
+            <div class="mt-8 text-mission-tan/30 text-3xl">
+                <i class="fas fa-dove"></i>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="relative animate-slide-in-left">
+                <!-- Main Portrait Container -->
+                <div class="relative mx-auto max-w-md">
+                    <!-- Decorative Background Elements -->
+                    <div class="absolute -top-8 -left-8 w-full h-full bg-mission-tan/10 rounded-xl transform rotate-6 -z-10"></div>
+                    <div class="absolute -bottom-8 -right-8 w-full h-full bg-mission-brown/10 rounded-xl transform -rotate-6 -z-10"></div>
+
+                    <!-- Portrait Frame -->
+                    <div class="relative bg-white p-4 rounded-xl shadow-2xl border-8 border-mission-tan/20">
+                        <!-- Placeholder Portrait Image -->
+                        <div class="relative aspect-[3/4] overflow-hidden rounded-lg">
+                            <!-- This is a placeholder image that can be replaced later -->
+                            <div class="absolute inset-0 bg-gradient-to-b from-mission-brown/20 to-mission-brown/40 z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pastor Prince Obasi-Ike" class="w-full h-full object-cover transition-all duration-500 hover:scale-105">
+
+                            <!-- Placeholder Overlay Text -->
+                            <div class="absolute inset-0 flex items-center justify-center z-20">
+                                <div class="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg text-center">
+                                    <p class="text-mission-brown text-sm font-bold">Portrait Photo</p>
+                                    <p class="text-mission-dark/70 text-xs">To be replaced with actual image</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image Caption -->
+                        <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-mission-brown text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                            Pastor Prince Obasi-Ike
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decorative Elements -->
+                <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-mission-tan/10 rounded-full -z-20"></div>
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-mission-brown/10 rounded-full -z-20"></div>
+
+                <!-- Stats Cards - Repositioned for Better Balance -->
+                <div class="absolute top-10 -right-10 md:-right-16 bg-white p-4 rounded-lg shadow-lg animate-fade-in animate-delay-300 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-globe-africa text-mission-brown text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-mission-brown">10+</div>
+                            <div class="text-sm text-mission-dark">Countries</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-10 -left-10 md:-left-16 bg-white p-4 rounded-lg shadow-lg animate-fade-in animate-delay-400 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-church text-mission-brown text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-mission-brown">30+</div>
+                            <div class="text-sm text-mission-dark">Years of Service</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Photo - Repositioned for Better Balance -->
+                <div class="absolute -bottom-20 right-0 md:right-4 w-36 h-36 md:w-48 md:h-48 rounded-lg shadow-lg overflow-hidden border-4 border-white animate-fade-in animate-delay-500 transform transition-all duration-500 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pastor Prince with Family" class="w-full h-full object-cover">
+
+                    <!-- Photo Caption -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-mission-brown/80 text-white py-1 text-xs text-center">
+                        With Family
+                    </div>
+                </div>
+
+                <!-- Ministry Badge -->
+                <div class="absolute top-1/2 -left-12 md:-left-20 bg-white p-3 rounded-full shadow-lg animate-fade-in animate-delay-600 transform transition-all duration-500 hover:rotate-12">
+                    <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-cross text-mission-brown text-2xl"></i>
+                    </div>
+                </div>
+
+                <!-- Animated Highlight Circle -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10">
+                    <div class="w-64 h-64 rounded-full border-4 border-mission-tan/20 animate-ping opacity-30"></div>
+                </div>
+            </div>
+
+            <div class="animate-slide-in-right bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-mission-tan/10 relative overflow-hidden">
+                <!-- Decorative Corner Elements -->
+                <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-mission-tan/30 rounded-tl-xl"></div>
+                <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-mission-tan/30 rounded-br-xl"></div>
+
+                <h2 class="text-3xl font-bold mb-6 text-mission-brown flex items-center">
+                    <i class="fas fa-user-tie text-mission-tan mr-4"></i>
+                    Life & Ministry
+                </h2>
+
+                <div class="space-y-6 text-mission-dark leading-relaxed">
+                    <p>Pastor Prince Okechukwu Obasi-Ike is a distinguished leader, dynamic preacher of the gospel, and an internationally recognized missionary. With a multifaceted career spanning over three decades, he has made significant strides in spreading the gospel and transforming lives across multiple countries.</p>
+
+                    <div class="flex items-start gap-4 bg-mission-tan/5 p-4 rounded-lg border-l-4 border-mission-tan">
+                        <div class="flex-shrink-0 w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-history text-mission-brown"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-mission-brown">Pioneer Missionary</h4>
+                            <p>In 1995, Pastor Prince began his journey as a pioneer missionary for the Redeemed Christian Church of God (RCCG) in Eastern Africa. His ordination as a pastor in 1997 marked the beginning of his impactful leadership at RCCG and globally.</p>
+                        </div>
+                    </div>
+
+                    <p>Under Pastor Prince's stewardship, RCCG has become a beacon of hope and empowerment within communities across Africa. His missionary work has expanded to Kenya, South Sudan, Rwanda, Burundi, and Malaysia, establishing churches and providing community support.</p>
+
+                    <blockquote class="relative p-6 bg-mission-brown/5 rounded-xl my-8">
+                        <div class="absolute top-2 left-2 text-6xl text-mission-tan/20 font-serif">"</div>
+                        <p class="relative z-10 italic text-lg">My life's mission is to bring the transformative power of the gospel to every corner of Africa, empowering communities and raising leaders who will continue the work of Christ.</p>
+                        <footer class="text-mission-brown font-bold mt-4 text-right relative z-10">— Pastor Prince Obasi-Ike</footer>
+                        <div class="absolute bottom-2 right-2 text-6xl text-mission-tan/20 font-serif">"</div>
+                    </blockquote>
+
+                    <div class="flex items-start gap-4 bg-mission-tan/5 p-4 rounded-lg border-l-4 border-mission-tan">
+                        <div class="flex-shrink-0 w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-home text-mission-brown"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-mission-brown">Family Life</h4>
+                            <p>Pastor Prince is married to Pastor Esther Obasi-Ike, and together they work as a team to fulfill their purpose. They have enjoyed over 31 years of marriage and are blessed with two adult sons.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Qualifications -->
+                <div class="mt-10">
+                    <h3 class="text-xl font-bold mb-6 text-mission-brown flex items-center">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-graduation-cap text-mission-brown"></i>
+                        </div>
+                        Education & Qualifications
+                    </h3>
+                    <ul class="space-y-4 text-mission-dark">
+                        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-mission-tan/10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                            <span>Bachelor's Degree in Theology, RCCG Bible College</span>
+                        </li>
+                        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-mission-tan/10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                            <span>Master's Degree in Divinity, Covenant University</span>
+                        </li>
+                        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-mission-tan/10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                            <span>Certified Leadership Coach, John Maxwell Team</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Awards & Recognition -->
+                <div class="mt-10">
+                    <h3 class="text-xl font-bold mb-6 text-mission-brown flex items-center">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-award text-mission-brown"></i>
+                        </div>
+                        Awards & Recognition
+                    </h3>
+                    <ul class="space-y-4 text-mission-dark">
+                        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-mission-tan/10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                            <div class="flex-shrink-0 w-8 h-8 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-trophy text-mission-tan"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-mission-brown">Nigeria High Commissioner's Award (2010)</span>
+                                <p class="text-sm">For exemplary community service and social development in Kenya</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-mission-tan/10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                            <div class="flex-shrink-0 w-8 h-8 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-trophy text-mission-tan"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-mission-brown">RCCG Global Missionary Excellence Award (2015)</span>
+                                <p class="text-sm">For outstanding contributions to global missionary work</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-mission-tan/10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                            <div class="flex-shrink-0 w-8 h-8 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-trophy text-mission-tan"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-mission-brown">Kenya Christian Leadership Recognition (2018)</span>
+                                <p class="text-sm">For exceptional leadership and spiritual guidance in Kenya</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+    <div class="absolute bottom-0 right-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(100% 100%, 0 100%, 100% 0);"></div>
+
+    <!-- Floating Shapes -->
+    <div class="absolute top-1/4 left-10 w-24 h-24 bg-mission-tan/10 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/4 right-10 w-16 h-16 bg-mission-brown/10 rounded-full animate-float-delay"></div>
+    <div class="absolute top-1/2 right-1/4 w-12 h-12 bg-mission-tan/10 rounded-full animate-float-slow"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">PRINCIPLES</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    Core Values
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl md:text-2xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                The guiding principles that shape Pastor Prince's ministry and missionary work across the globe.
+            </p>
+        </div>
+
+        <!-- 3D Card Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
+            <!-- Value Card 1 -->
+            <div class="group h-full">
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl animate-fade-in animate-delay-100 relative overflow-hidden group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-mission-tan/10">
+                    <!-- Decorative Corner -->
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-mission-tan/10 transform -translate-y-8 translate-x-8 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-balance-scale text-mission-brown text-2xl group-hover:text-mission-brown/80 transition-colors duration-500"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-brown group-hover:text-mission-brown/90 transition-colors duration-500">Integrity & Justice</h3>
+
+                        <p class="text-mission-dark group-hover:text-mission-dark/90 transition-colors duration-500">
+                            Upholding the highest standards of integrity in all dealings and advocating for justice for the marginalized and oppressed.
+                        </p>
+
+                        <!-- Scripture Reference -->
+                        <div class="mt-6 pt-4 border-t border-mission-tan/10 text-sm italic text-mission-dark/70">
+                            "He has shown you, O mortal, what is good. And what does the LORD require of you? To act justly and to love mercy and to walk humbly with your God." — Micah 6:8
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Card 2 -->
+            <div class="group h-full">
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl animate-fade-in animate-delay-200 relative overflow-hidden group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-mission-tan/10">
+                    <!-- Decorative Corner -->
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-mission-tan/10 transform -translate-y-8 translate-x-8 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-hands-helping text-mission-brown text-2xl group-hover:text-mission-brown/80 transition-colors duration-500"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-brown group-hover:text-mission-brown/90 transition-colors duration-500">Compassion</h3>
+
+                        <p class="text-mission-dark group-hover:text-mission-dark/90 transition-colors duration-500">
+                            Showing Christ-like compassion for the underprivileged and responding to their needs with practical support and spiritual guidance.
+                        </p>
+
+                        <!-- Scripture Reference -->
+                        <div class="mt-6 pt-4 border-t border-mission-tan/10 text-sm italic text-mission-dark/70">
+                            "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you." — Ephesians 4:32
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Card 3 -->
+            <div class="group h-full">
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl animate-fade-in animate-delay-300 relative overflow-hidden group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-mission-tan/10">
+                    <!-- Decorative Corner -->
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-mission-tan/10 transform -translate-y-8 translate-x-8 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-book-open text-mission-brown text-2xl group-hover:text-mission-brown/80 transition-colors duration-500"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-brown group-hover:text-mission-brown/90 transition-colors duration-500">Gospel Dedication</h3>
+
+                        <p class="text-mission-dark group-hover:text-mission-dark/90 transition-colors duration-500">
+                            Unwavering commitment to spreading the gospel of Jesus Christ to the unreached and making disciples in all nations.
+                        </p>
+
+                        <!-- Scripture Reference -->
+                        <div class="mt-6 pt-4 border-t border-mission-tan/10 text-sm italic text-mission-dark/70">
+                            "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit." — Matthew 28:19
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Card 4 -->
+            <div class="group h-full">
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl animate-fade-in animate-delay-400 relative overflow-hidden group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-mission-tan/10">
+                    <!-- Decorative Corner -->
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-mission-tan/10 transform -translate-y-8 translate-x-8 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-city text-mission-brown text-2xl group-hover:text-mission-brown/80 transition-colors duration-500"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-brown group-hover:text-mission-brown/90 transition-colors duration-500">Community Transformation</h3>
+
+                        <p class="text-mission-dark group-hover:text-mission-dark/90 transition-colors duration-500">
+                            Empowering communities through holistic development initiatives that address spiritual, educational, and economic needs.
+                        </p>
+
+                        <!-- Scripture Reference -->
+                        <div class="mt-6 pt-4 border-t border-mission-tan/10 text-sm italic text-mission-dark/70">
+                            "Seek the peace and prosperity of the city to which I have carried you into exile. Pray to the LORD for it, because if it prospers, you too will prosper." — Jeremiah 29:7
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Card 5 -->
+            <div class="group h-full">
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl animate-fade-in animate-delay-500 relative overflow-hidden group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-mission-tan/10">
+                    <!-- Decorative Corner -->
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-mission-tan/10 transform -translate-y-8 translate-x-8 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-users text-mission-brown text-2xl group-hover:text-mission-brown/80 transition-colors duration-500"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-brown group-hover:text-mission-brown/90 transition-colors duration-500">Leadership Development</h3>
+
+                        <p class="text-mission-dark group-hover:text-mission-dark/90 transition-colors duration-500">
+                            Identifying, mentoring, and equipping leaders who will continue the work of ministry and community transformation.
+                        </p>
+
+                        <!-- Scripture Reference -->
+                        <div class="mt-6 pt-4 border-t border-mission-tan/10 text-sm italic text-mission-dark/70">
+                            "And the things you have heard me say in the presence of many witnesses entrust to reliable people who will also be qualified to teach others." — 2 Timothy 2:2
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Card 6 -->
+            <div class="group h-full">
+                <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl animate-fade-in animate-delay-600 relative overflow-hidden group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-mission-tan/10">
+                    <!-- Decorative Corner -->
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-mission-tan/10 transform -translate-y-8 translate-x-8 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-handshake text-mission-brown text-2xl group-hover:text-mission-brown/80 transition-colors duration-500"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-brown group-hover:text-mission-brown/90 transition-colors duration-500">Partnership & Unity</h3>
+
+                        <p class="text-mission-dark group-hover:text-mission-dark/90 transition-colors duration-500">
+                            Building strategic partnerships with like-minded organizations and fostering unity within the body of Christ.
+                        </p>
+
+                        <!-- Scripture Reference -->
+                        <div class="mt-6 pt-4 border-t border-mission-tan/10 text-sm italic text-mission-dark/70">
+                            "How good and pleasant it is when God's people live together in unity!" — Psalm 133:1
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Values Statement -->
+        <div class="mt-16 text-center">
+            <div class="max-w-3xl mx-auto bg-mission-brown/5 rounded-xl p-8 border border-mission-tan/10 shadow-inner">
+                <h3 class="text-2xl font-bold mb-4 text-mission-brown">Our Values in Action</h3>
+                <p class="text-mission-dark leading-relaxed">
+                    These core values are not just words on a page—they are the principles that guide every aspect of Pastor Prince's ministry. From his missionary work in remote villages to church services in urban centers, these values shape how he interacts with people, makes decisions, and fulfills his calling to spread the gospel of Jesus Christ.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation Script -->
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delay {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .animate-float-slow {
+            animation: float 10s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</section>
+
+<!-- Ministry Timeline -->
+<section class="py-24 bg-white about-section">
+    <!-- Background Pattern -->
+    <div class="about-section-bg" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); opacity: 0.03;"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <div class="inline-block mb-4">
+                <span class="bg-mission-brown/10 text-mission-brown px-4 py-1 rounded-full text-sm font-bold tracking-wider">JOURNEY</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-mission-brown">Ministry Timeline</h2>
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">A journey of faith, service, and transformation across decades, impacting lives throughout Africa and beyond.</p>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto">
+            <!-- Timeline Container -->
+            <div class="flex flex-col space-y-16">
+                <!-- 1995 -->
+                <div class="flex flex-col md:flex-row items-start">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:pr-10 md:text-right">
+                        <div class="inline-block bg-mission-brown text-white font-bold rounded-full px-4 py-1 mb-2">1995</div>
+                        <h3 class="text-xl font-bold text-mission-brown">Pioneer Missionary Work</h3>
+                    </div>
+
+                    <div class="timeline-item md:w-2/3 animate-fade-in">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-mission-tan/10 relative">
+                            <!-- Image -->
+                            <div class="mb-4 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pioneer Missionary Work" class="w-full h-48 object-cover">
+                            </div>
+
+                            <p class="text-mission-dark leading-relaxed">Pastor Prince began his journey as a pioneer missionary for the Redeemed Christian Church of God (RCCG) in Eastern Africa, establishing the foundation for what would become a transformative ministry across multiple countries.</p>
+
+                            <div class="mt-4 flex items-center text-sm text-mission-brown/70">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Nairobi, Kenya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1997 -->
+                <div class="flex flex-col md:flex-row items-start">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:pr-10 md:text-right">
+                        <div class="inline-block bg-mission-brown text-white font-bold rounded-full px-4 py-1 mb-2">1997</div>
+                        <h3 class="text-xl font-bold text-mission-brown">Pastoral Ordination</h3>
+                    </div>
+
+                    <div class="timeline-item md:w-2/3 animate-fade-in">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-mission-tan/10 relative">
+                            <!-- Image -->
+                            <div class="mb-4 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1438804339143-a0d6a81276d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pastoral Ordination" class="w-full h-48 object-cover">
+                            </div>
+
+                            <p class="text-mission-dark leading-relaxed">Ordained as a pastor, marking the beginning of his impactful leadership at RCCG and globally. This ordination empowered Pastor Prince to establish churches and mentor other pastors throughout Eastern Africa.</p>
+
+                            <div class="mt-4 flex items-center text-sm text-mission-brown/70">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>RCCG Headquarters, Lagos, Nigeria</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2005 -->
+                <div class="flex flex-col md:flex-row items-start">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:pr-10 md:text-right">
+                        <div class="inline-block bg-mission-brown text-white font-bold rounded-full px-4 py-1 mb-2">2005</div>
+                        <h3 class="text-xl font-bold text-mission-brown">RCCG Solution Centre</h3>
+                    </div>
+
+                    <div class="timeline-item md:w-2/3 animate-fade-in">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-mission-tan/10 relative">
+                            <!-- Image -->
+                            <div class="mb-4 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1469571486292-b53601010376?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="RCCG Solution Centre" class="w-full h-48 object-cover">
+                            </div>
+
+                            <p class="text-mission-dark leading-relaxed">Established RCCG Solution Centre in Nairobi, which has grown to become a beacon of hope and spiritual transformation for thousands of people in Kenya and beyond.</p>
+
+                            <div class="mt-4 flex items-center text-sm text-mission-brown/70">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Raila Odinga Way, Nairobi, Kenya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2010 -->
+                <div class="flex flex-col md:flex-row items-start">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:pr-10 md:text-right">
+                        <div class="inline-block bg-mission-brown text-white font-bold rounded-full px-4 py-1 mb-2">2010</div>
+                        <h3 class="text-xl font-bold text-mission-brown">Nigeria High Commissioner's Award</h3>
+                    </div>
+
+                    <div class="timeline-item md:w-2/3 animate-fade-in">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-mission-tan/10 relative">
+                            <!-- Image -->
+                            <div class="mb-4 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1541802645635-11f2286a7482?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nigeria High Commissioner's Award" class="w-full h-48 object-cover">
+                            </div>
+
+                            <p class="text-mission-dark leading-relaxed">Received the Nigeria High Commissioner's Award for exemplary community service and social development in Kenya, recognizing Pastor Prince's significant contributions to both spiritual and social transformation.</p>
+
+                            <div class="mt-4 flex items-center text-sm text-mission-brown/70">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Nigerian Embassy, Nairobi, Kenya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2018 -->
+                <div class="flex flex-col md:flex-row items-start">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:pr-10 md:text-right">
+                        <div class="inline-block bg-mission-brown text-white font-bold rounded-full px-4 py-1 mb-2">2018</div>
+                        <h3 class="text-xl font-bold text-mission-brown">Rwanda Genocide Survivors Ministry</h3>
+                    </div>
+
+                    <div class="timeline-item md:w-2/3 animate-fade-in">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-mission-tan/10 relative">
+                            <!-- Image -->
+                            <div class="mb-4 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1504870712357-65ea720d6078?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rwanda Genocide Survivors Ministry" class="w-full h-48 object-cover">
+                            </div>
+
+                            <p class="text-mission-dark leading-relaxed">Launched a specialized ministry to widowed survivors of the genocide in Rwanda, providing spiritual counseling, emotional support, and practical assistance to help them rebuild their lives.</p>
+
+                            <div class="mt-4 flex items-center text-sm text-mission-brown/70">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Kigali, Rwanda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2025 -->
+                <div class="flex flex-col md:flex-row items-start">
+                    <div class="md:w-1/3 mb-6 md:mb-0 md:pr-10 md:text-right">
+                        <div class="inline-block bg-mission-brown text-white font-bold rounded-full px-4 py-1 mb-2">2025</div>
+                        <h3 class="text-xl font-bold text-mission-brown">South Sudan Mission</h3>
+                    </div>
+
+                    <div class="timeline-item md:w-2/3 animate-fade-in">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-mission-tan/10 relative">
+                            <!-- Image -->
+                            <div class="mb-4 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="South Sudan Mission" class="w-full h-48 object-cover">
+                            </div>
+
+                            <p class="text-mission-dark leading-relaxed">Led a successful mission to Kapoeta, South Sudan, where 1,138 souls received salvation. The mission also included church building projects, community development initiatives, and training for local pastors.</p>
+
+                            <div class="mt-4 flex items-center text-sm text-mission-brown/70">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Kapoeta, South Sudan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vision and Mission -->
+<section class="py-24 bg-gradient-to-r from-mission-brown to-mission-dark text-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-mission-tan/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-mission-tan/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1541802645635-11f2286a7482?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Mission Background" class="w-full h-full object-cover opacity-10">
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <div class="inline-block mb-4">
+                <span class="bg-mission-tan/20 text-mission-cream px-4 py-1 rounded-full text-sm font-bold tracking-wider">PURPOSE</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Vision & Mission</h2>
+            <p class="text-xl max-w-3xl mx-auto leading-relaxed">The driving purpose behind Pastor Prince's global missionary work and ministry.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="quote-card animate-slide-in-left">
+                <div class="w-20 h-20 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mb-6 mx-auto transform transition-all duration-500 hover:scale-110">
+                    <i class="fas fa-eye text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-6 text-center">Our Vision</h3>
+                <p class="text-lg leading-relaxed">To transform lives through the gospel of Jesus Christ, establishing a global network of churches and community support systems that empower individuals to fulfill their God-given purpose.</p>
+
+                <div class="mt-8 flex justify-center">
+                    <div class="w-16 h-1 bg-mission-tan rounded-full"></div>
+                </div>
+
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-globe-africa text-mission-tan"></i>
+                        </div>
+                        <p class="text-sm">Global Impact</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-church text-mission-tan"></i>
+                        </div>
+                        <p class="text-sm">Church Planting</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card animate-slide-in-right">
+                <div class="w-20 h-20 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mb-6 mx-auto transform transition-all duration-500 hover:scale-110">
+                    <i class="fas fa-bullseye text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-6 text-center">Our Mission</h3>
+                <p class="text-lg leading-relaxed">To spread the gospel to unreached communities, establish churches, develop leaders, and provide holistic support that addresses spiritual, educational, and economic needs of communities across Africa and beyond.</p>
+
+                <div class="mt-8 flex justify-center">
+                    <div class="w-16 h-1 bg-mission-tan rounded-full"></div>
+                </div>
+
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-users text-mission-tan"></i>
+                        </div>
+                        <p class="text-sm">Leadership Development</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-hands-helping text-mission-tan"></i>
+                        </div>
+                        <p class="text-sm">Community Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Statistics -->
+        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="transform transition-all duration-500 hover:-translate-y-2 animate-fade-in animate-delay-100">
+                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-globe-africa text-mission-tan text-2xl"></i>
+                </div>
+                <div class="text-4xl font-bold text-mission-tan mb-2">10+</div>
+                <div class="text-lg">Countries</div>
+            </div>
+
+            <div class="transform transition-all duration-500 hover:-translate-y-2 animate-fade-in animate-delay-200">
+                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-church text-mission-tan text-2xl"></i>
+                </div>
+                <div class="text-4xl font-bold text-mission-tan mb-2">50+</div>
+                <div class="text-lg">Churches</div>
+            </div>
+
+            <div class="transform transition-all duration-500 hover:-translate-y-2 animate-fade-in animate-delay-300">
+                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-users text-mission-tan text-2xl"></i>
+                </div>
+                <div class="text-4xl font-bold text-mission-tan mb-2">10,000+</div>
+                <div class="text-lg">Souls Saved</div>
+            </div>
+
+            <div class="transform transition-all duration-500 hover:-translate-y-2 animate-fade-in animate-delay-400">
+                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-calendar-alt text-mission-tan text-2xl"></i>
+                </div>
+                <div class="text-4xl font-bold text-mission-tan mb-2">30+</div>
+                <div class="text-lg">Years of Service</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-24 bg-gray-50 about-section">
+    <!-- Background Pattern -->
+    <div class="about-section-bg" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); opacity: 0.03;"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <div class="inline-block mb-4">
+                <span class="bg-mission-brown/10 text-mission-brown px-4 py-1 rounded-full text-sm font-bold tracking-wider">TESTIMONIALS</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-mission-brown">Lives Transformed</h2>
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">Hear from those whose lives have been forever changed through Pastor Prince's ministry and missionary work.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in animate-delay-100">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <span class="text-mission-brown font-bold text-xl">JM</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-mission-brown text-lg">John Mwangi</h4>
+                        <p class="text-mission-dark/70">Nairobi, Kenya</p>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <div class="flex text-mission-tan mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic text-mission-dark">"Pastor Prince's ministry has completely transformed my life. Through his teachings at RCCG Solution Centre, I found purpose and direction. His dedication to spreading the gospel is truly inspiring."</p>
+                </div>
+
+                <div class="text-sm text-mission-dark/70">
+                    <i class="fas fa-calendar-alt mr-1"></i> Member since 2010
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in animate-delay-200">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <span class="text-mission-brown font-bold text-xl">SA</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-mission-brown text-lg">Sarah Auma</h4>
+                        <p class="text-mission-dark/70">Turkana, Kenya</p>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <div class="flex text-mission-tan mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic text-mission-dark">"The church building project in our community has given us hope and a place to worship. Pastor Prince's mentorship program has also provided scholarships for our children's education. We are forever grateful."</p>
+                </div>
+
+                <div class="text-sm text-mission-dark/70">
+                    <i class="fas fa-calendar-alt mr-1"></i> Beneficiary since 2015
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white rounded-xl p-8 shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in animate-delay-300">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <span class="text-mission-brown font-bold text-xl">DK</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-mission-brown text-lg">David Kioko</h4>
+                        <p class="text-mission-dark/70">Kapoeta, South Sudan</p>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <div class="flex text-mission-tan mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic text-mission-dark">"During the recent mission in South Sudan, I gave my life to Christ. Despite the heavy rain, Pastor Prince continued to preach the gospel. Now I am studying the Bible and growing in faith with the church community."</p>
+                </div>
+
+                <div class="text-sm text-mission-dark/70">
+                    <i class="fas fa-calendar-alt mr-1"></i> Converted in 2025
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute -top-20 -right-20 w-80 h-80 bg-mission-tan/10 rounded-full"></div>
+    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-mission-brown/5 rounded-full"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="bg-gradient-to-r from-mission-cream/30 to-mission-tan/30 rounded-2xl p-0 shadow-2xl border border-mission-tan/20 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <!-- Image Side -->
+                <div class="relative h-64 md:h-auto">
+                    <img src="https://images.unsplash.com/photo-1504870712357-65ea720d6078?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Join Our Mission" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-mission-brown/70 to-transparent flex flex-col justify-center p-8 md:hidden">
+                        <h2 class="text-3xl font-bold mb-4 text-white">Join Our Mission</h2>
+                        <p class="text-lg text-white/90">Be part of transforming lives across Africa.</p>
+                    </div>
+                </div>
+
+                <!-- Content Side -->
+                <div class="p-8 md:p-12 lg:p-16">
+                    <div class="max-w-lg">
+                        <div class="inline-block mb-4">
+                            <span class="bg-mission-brown/10 text-mission-brown px-4 py-1 rounded-full text-sm font-bold tracking-wider">GET INVOLVED</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-mission-brown">Join Pastor Prince's Mission</h2>
+                        <p class="text-lg text-mission-dark mb-8 leading-relaxed">Be a part of transforming lives across Africa and beyond through the gospel of Jesus Christ. Your prayers, support, and involvement make a difference in reaching the unreached with the message of hope.</p>
+
+                        <!-- Ways to Get Involved -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-pray text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-mission-brown mb-1">Prayer Support</h3>
+                                    <p class="text-sm text-mission-dark">Commit to praying for our missions and the people we serve.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-hand-holding-usd text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-mission-brown mb-1">Financial Support</h3>
+                                    <p class="text-sm text-mission-dark">Donate to fund our mission projects and outreach activities.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-users text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-mission-brown mb-1">Join a Mission Trip</h3>
+                                    <p class="text-sm text-mission-dark">Participate in our upcoming mission trips to Africa.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                                    <i class="fas fa-bullhorn text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-mission-brown mb-1">Spread the Word</h3>
+                                    <p class="text-sm text-mission-dark">Share our mission with your church, friends, and family.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="{% url 'missionary_work' %}" class="hero-button group">
+                                <span>Explore Missionary Work</span>
+                                <i class="fas fa-globe-africa ml-2 transform group-hover:scale-125 transition-transform duration-300"></i>
+                            </a>
+                            <a href="{% url 'contact' %}" class="hero-button outline group">
+                                <span>Contact Us</span>
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="mt-20 text-center max-w-3xl mx-auto">
+            <h3 class="text-2xl font-bold mb-4 text-mission-brown">Stay Updated with Pastor Prince</h3>
+            <p class="text-lg text-mission-dark mb-8">Subscribe to our newsletter to receive updates on Pastor Prince's missionary work, prayer requests, and upcoming events.</p>
+
+            <form class="flex flex-col md:flex-row gap-4 justify-center">
+                <input type="email" placeholder="Your Email Address" class="px-6 py-3 rounded-full border border-mission-tan/30 focus:border-mission-tan focus:ring-2 focus:ring-mission-tan/20 outline-none flex-grow max-w-md">
+                <button type="submit" class="hero-button whitespace-nowrap">
+                    Subscribe Now
+                </button>
+            </form>
+
+            <p class="text-sm text-mission-dark/70 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Animation Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate elements when they come into view
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-slide-in-right, .animate-slide-in-left');
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+
+                // If element is in viewport
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    element.style.visibility = 'visible';
+                }
+            });
+        };
+
+        // Run on load
+        animateOnScroll();
+
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    });
+</script>
+{% endblock %}

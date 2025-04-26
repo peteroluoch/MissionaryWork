@@ -1,0 +1,1005 @@
+{% extends 'base.html' %}
+
+{% block title %}Pastor Prince Obasi-Ike | Media{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Media Gallery" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-mission-brown/90 to-mission-brown/70"></div>
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
+    <div class="absolute bottom-0 right-0 w-full h-20 bg-white" style="clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);"></div>
+
+    <!-- Floating Media Elements -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-mission-tan/30 rounded-lg transform rotate-12"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-40 h-24 border-4 border-mission-tan/30 rounded-lg transform -rotate-6"></div>
+        <div class="absolute top-1/3 right-1/3 w-24 h-24 border-4 border-mission-tan/30 rounded-full"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center text-white max-w-4xl mx-auto">
+            <!-- Animated Badge -->
+            <div class="inline-block mb-6 relative animate-fade-in">
+                <span class="bg-white/10 text-mission-cream px-8 py-3 rounded-full text-sm font-bold tracking-wider relative z-10 shadow-lg border border-mission-tan/30">MULTIMEDIA RESOURCES</span>
+                <div class="absolute -inset-1 bg-mission-tan/20 rounded-full blur-md -z-10"></div>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 animate-slide-up" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);">
+                Media Gallery
+            </h1>
+
+            <p class="text-xl md:text-2xl mb-12 animate-slide-up animate-delay-200 max-w-3xl mx-auto leading-relaxed" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);">
+                Explore videos, photos, and testimonies from Pastor Prince Obasi-Ike's transformative missionary work across Africa and beyond.
+            </p>
+
+            <!-- Quick Links -->
+            <div class="flex flex-wrap justify-center gap-4 mt-8 animate-fade-in animate-delay-300">
+                <a href="#videos" class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full transition-all duration-300 flex items-center group">
+                    <i class="fas fa-video mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Videos</span>
+                </a>
+                <a href="#photos" class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full transition-all duration-300 flex items-center group">
+                    <i class="fas fa-images mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Photos</span>
+                </a>
+                <a href="#social" class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full transition-all duration-300 flex items-center group">
+                    <i class="fas fa-share-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                    <span>Social Media</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <a href="#videos" class="text-white">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </div>
+</section>
+
+<!-- YouTube Videos -->
+<section id="videos" class="py-24 bg-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+    <div class="absolute bottom-0 right-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(100% 100%, 0 100%, 100% 0);"></div>
+
+    <!-- Floating Shapes -->
+    <div class="absolute top-1/4 left-10 w-24 h-24 bg-mission-tan/10 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/4 right-10 w-16 h-16 bg-mission-brown/10 rounded-full animate-float-delay"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">WATCH & LEARN</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    YouTube Videos
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                Watch Pastor Prince's inspiring sermons, mission reports, and powerful testimonies from the field.
+            </p>
+        </div>
+
+        <!-- Video Categories -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="px-6 py-3 bg-mission-brown text-white rounded-full font-medium transition-all duration-300 flex items-center">
+                <i class="fas fa-play-circle mr-2"></i>
+                <span>All Videos</span>
+            </button>
+            <button class="px-6 py-3 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full font-medium transition-all duration-300 flex items-center">
+                <i class="fas fa-globe-africa mr-2"></i>
+                <span>Mission Reports</span>
+            </button>
+            <button class="px-6 py-3 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full font-medium transition-all duration-300 flex items-center">
+                <i class="fas fa-pray mr-2"></i>
+                <span>Sermons</span>
+            </button>
+            <button class="px-6 py-3 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full font-medium transition-all duration-300 flex items-center">
+                <i class="fas fa-user-friends mr-2"></i>
+                <span>Testimonies</span>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Video 1 -->
+            <div class="group bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="relative">
+                    <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Video Category Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Mission Report
+                    </div>
+                    <!-- Video Duration -->
+                    <div class="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                        12:45
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-globe-africa text-mission-brown"></i>
+                        </div>
+                        <div class="text-sm text-mission-dark/70">
+                            <span>July 25, 2024</span>
+                            <span class="mx-2">•</span>
+                            <span>1.2K views</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-mission-brown group-hover:text-mission-brown/80 transition-colors duration-300">South Sudan Mission Report</h3>
+                    <p class="text-mission-dark mb-4 line-clamp-2">Pastor Prince shares the amazing testimonies from the recent mission in Kapoeta, South Sudan, where over 1,000 souls were saved.</p>
+                    <a href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" class="text-mission-brown hover:text-mission-tan font-medium flex items-center group">
+                        <span>Watch on YouTube</span>
+                        <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="group bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="relative">
+                    <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Video Category Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Prayer
+                    </div>
+                    <!-- Video Duration -->
+                    <div class="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                        45:12
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-pray text-mission-brown"></i>
+                        </div>
+                        <div class="text-sm text-mission-dark/70">
+                            <span>June 18, 2024</span>
+                            <span class="mx-2">•</span>
+                            <span>3.5K views</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-mission-brown group-hover:text-mission-brown/80 transition-colors duration-300">Stand in the Gap Prayers</h3>
+                    <p class="text-mission-dark mb-4 line-clamp-2">Join Pastor Prince for a powerful prayer session focused on intercession for nations and communities in need of spiritual breakthrough.</p>
+                    <a href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" class="text-mission-brown hover:text-mission-tan font-medium flex items-center group">
+                        <span>Watch on YouTube</span>
+                        <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="group bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="relative">
+                    <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Video Category Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Sermon
+                    </div>
+                    <!-- Video Duration -->
+                    <div class="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                        38:27
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-book-open text-mission-brown"></i>
+                        </div>
+                        <div class="text-sm text-mission-dark/70">
+                            <span>May 30, 2024</span>
+                            <span class="mx-2">•</span>
+                            <span>5.8K views</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-mission-brown group-hover:text-mission-brown/80 transition-colors duration-300">The Power of the Gospel</h3>
+                    <p class="text-mission-dark mb-4 line-clamp-2">Pastor Prince delivers a powerful message on the transformative power of the gospel and how it changes lives across cultures.</p>
+                    <a href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" class="text-mission-brown hover:text-mission-tan font-medium flex items-center group">
+                        <span>Watch on YouTube</span>
+                        <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="group bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="relative">
+                    <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Video Category Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Testimony
+                    </div>
+                    <!-- Video Duration -->
+                    <div class="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                        22:15
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-microphone-alt text-mission-brown"></i>
+                        </div>
+                        <div class="text-sm text-mission-dark/70">
+                            <span>April 12, 2024</span>
+                            <span class="mx-2">•</span>
+                            <span>2.7K views</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-mission-brown group-hover:text-mission-brown/80 transition-colors duration-300">Rwanda Mission Testimonies</h3>
+                    <p class="text-mission-dark mb-4 line-clamp-2">Hear the powerful testimonies from Pastor Prince's mission work in Rwanda, including stories of healing and restoration.</p>
+                    <a href="https://www.youtube.com/watch?v=VIDEO_ID_4" target="_blank" class="text-mission-brown hover:text-mission-tan font-medium flex items-center group">
+                        <span>Watch on YouTube</span>
+                        <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="group bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="relative">
+                    <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Video Category Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Project Update
+                    </div>
+                    <!-- Video Duration -->
+                    <div class="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                        18:32
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-church text-mission-brown"></i>
+                        </div>
+                        <div class="text-sm text-mission-dark/70">
+                            <span>March 5, 2024</span>
+                            <span class="mx-2">•</span>
+                            <span>1.9K views</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-mission-brown group-hover:text-mission-brown/80 transition-colors duration-300">Church Building Project</h3>
+                    <p class="text-mission-dark mb-4 line-clamp-2">Pastor Prince shares updates on the church building projects across different countries and the impact they're having on communities.</p>
+                    <a href="https://www.youtube.com/watch?v=VIDEO_ID_5" target="_blank" class="text-mission-brown hover:text-mission-tan font-medium flex items-center group">
+                        <span>Watch on YouTube</span>
+                        <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="group bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="relative">
+                    <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                        <iframe class="w-full h-56" src="https://www.youtube.com/embed/VIDEO_ID_6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <!-- Video Category Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Training
+                    </div>
+                    <!-- Video Duration -->
+                    <div class="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                        52:08
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-chalkboard-teacher text-mission-brown"></i>
+                        </div>
+                        <div class="text-sm text-mission-dark/70">
+                            <span>February 18, 2024</span>
+                            <span class="mx-2">•</span>
+                            <span>4.3K views</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-mission-brown group-hover:text-mission-brown/80 transition-colors duration-300">Missionary Training</h3>
+                    <p class="text-mission-dark mb-4 line-clamp-2">Pastor Prince conducts a comprehensive training session for aspiring missionaries and church planters preparing for the field.</p>
+                    <a href="https://www.youtube.com/watch?v=VIDEO_ID_6" target="_blank" class="text-mission-brown hover:text-mission-tan font-medium flex items-center group">
+                        <span>Watch on YouTube</span>
+                        <i class="fas fa-external-link-alt ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="https://www.youtube.com/channel/UC63CJHrodxR5yhhfyf_Z9tw" target="_blank" class="hero-button group">
+                <span>Visit YouTube Channel</span>
+                <i class="fab fa-youtube ml-2 transform group-hover:scale-125 transition-transform duration-300"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Animation Script -->
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delay {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</section>
+
+<!-- Photo Gallery -->
+<section id="photos" class="py-24 bg-mission-cream/10 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 right-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(100% 0, 0 0, 100% 100%);"></div>
+    <div class="absolute bottom-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 100%, 100% 100%, 0 0);"></div>
+
+    <!-- Floating Shapes -->
+    <div class="absolute top-1/3 right-10 w-20 h-20 bg-mission-tan/10 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/3 left-10 w-12 h-12 bg-mission-brown/10 rounded-full animate-float-delay"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">VISUAL JOURNEY</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    Photo Gallery
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                Browse through captivating moments from Pastor Prince's missionary work across Africa and beyond.
+            </p>
+        </div>
+
+        <!-- Gallery Tabs -->
+        <div class="mb-12">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="px-6 py-3 bg-mission-brown text-white rounded-full font-medium transition-all duration-300 flex items-center shadow-md">
+                    <i class="fas fa-images mr-2"></i>
+                    <span>All Photos</span>
+                </button>
+                <button class="px-6 py-3 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full font-medium transition-all duration-300 flex items-center shadow-md">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>South Sudan</span>
+                </button>
+                <button class="px-6 py-3 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full font-medium transition-all duration-300 flex items-center shadow-md">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Kenya</span>
+                </button>
+                <button class="px-6 py-3 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full font-medium transition-all duration-300 flex items-center shadow-md">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Rwanda</span>
+                </button>
+                <button class="px-6 py-3 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full font-medium transition-all duration-300 flex items-center shadow-md">
+                    <i class="fas fa-globe-africa mr-2"></i>
+                    <span>Other Missions</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Gallery Grid with Masonry Effect -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-auto">
+            <!-- Image 1 - Large -->
+            <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gospel Outreach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="font-bold text-xl">Gospel Outreach</h3>
+                        <p class="text-sm text-mission-cream">Kapoeta Central Market, South Sudan</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    South Sudan
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Prayer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Team Prayer</h3>
+                        <p class="text-xs text-mission-cream">Morning Devotion</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Kenya
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Church Site</h3>
+                        <p class="text-xs text-mission-cream">Nanimtoit</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    South Sudan
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Arrival" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Team Arrival</h3>
+                        <p class="text-xs text-mission-cream">Kapoeta Airport</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    South Sudan
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Distribution" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Water Distribution</h3>
+                        <p class="text-xs text-mission-cream">Nanimtoit Village</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    South Sudan
+                </div>
+            </div>
+
+            <!-- Image 6 - Large -->
+            <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1489657780376-e0d8630c4bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Gathering" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="font-bold text-xl">Community Gathering</h3>
+                        <p class="text-sm text-mission-cream">Kapoeta North</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    South Sudan
+                </div>
+            </div>
+
+            <!-- Image 7 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Children's Ministry" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Children's Ministry</h3>
+                        <p class="text-xs text-mission-cream">Kapoeta Village</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    South Sudan
+                </div>
+            </div>
+
+            <!-- Image 8 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1504025468847-0e438279542c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bible Study" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Bible Study</h3>
+                        <p class="text-xs text-mission-cream">RCCG Solution Centre</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Kenya
+                </div>
+            </div>
+
+            <!-- Image 9 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1453342664588-b702c83fc822?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Service" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Church Service</h3>
+                        <p class="text-xs text-mission-cream">Sunday Worship</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Rwanda
+                </div>
+            </div>
+
+            <!-- Image 10 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1517732306149-e8f829eb588a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pastoral Visit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Pastoral Visit</h3>
+                        <p class="text-xs text-mission-cream">Home Visitation</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Burundi
+                </div>
+            </div>
+
+            <!-- Image 11 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1509099652299-30938b0aeb63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Youth Program" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Youth Program</h3>
+                        <p class="text-xs text-mission-cream">Leadership Training</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Kenya
+                </div>
+            </div>
+
+            <!-- Image 12 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1526139334526-f591a54b477c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Baptism Service" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Baptism Service</h3>
+                        <p class="text-xs text-mission-cream">New Believers</p>
+                    </div>
+                </div>
+                <!-- Location Badge -->
+                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                    Rwanda
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-16">
+            <button class="hero-button group">
+                <span>Load More Photos</span>
+                <i class="fas fa-plus ml-2 transform group-hover:rotate-90 transition-transform duration-300"></i>
+            </button>
+        </div>
+
+        <!-- Photo Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-images text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">500+</span>
+                <p class="text-mission-dark">Photos</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-globe-africa text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">10+</span>
+                <p class="text-mission-dark">Countries</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-church text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">50+</span>
+                <p class="text-mission-dark">Mission Trips</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-calendar-alt text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">30+</span>
+                <p class="text-mission-dark">Years of Service</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Media -->
+<section id="social" class="py-24 bg-mission-brown relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Map Background" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
+    <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-mission-tan/10 rounded-full"></div>
+    <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-tan/5 rounded-full"></div>
+
+    <!-- Floating Social Icons -->
+    <div class="absolute top-1/4 right-1/4 w-12 h-12 bg-blue-600/30 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/3 left-1/3 w-10 h-10 bg-red-600/30 rounded-full animate-float-delay"></div>
+    <div class="absolute top-1/2 right-1/3 w-8 h-8 bg-pink-600/30 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-10 h-10 bg-blue-400/30 rounded-full animate-float-delay"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-white/10 text-mission-cream px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">STAY CONNECTED</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-cream">
+                <span class="relative inline-block">
+                    Connect on Social Media
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-cream/90 max-w-3xl mx-auto leading-relaxed">
+                Follow Pastor Prince Obasi-Ike on social media for regular updates, sermons, and mission reports from the field.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Facebook -->
+            <div class="social-card group">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-mission-tan/20 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl relative overflow-hidden">
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-blue-600/10 transform -translate-y-10 translate-x-10 rotate-45 group-hover:bg-blue-600/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <!-- Social Icon -->
+                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-all duration-500 group-hover:scale-110 shadow-lg">
+                            <i class="fab fa-facebook-f text-white text-3xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-cream text-center">Facebook</h3>
+                        <p class="text-mission-cream/80 mb-6 text-center">Follow Pastor Prince's official Facebook page for daily updates, inspirational messages, and live streams.</p>
+
+                        <!-- Stats -->
+                        <div class="flex justify-center items-center mb-6 text-mission-cream/70 text-sm">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-users mr-2"></i>
+                                <span>5.2K Followers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-star mr-2"></i>
+                                <span>4.9 Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="https://www.facebook.com/PPOBASIIKE/" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                                <i class="fab fa-facebook-f mr-2"></i> Follow
+                            </a>
+                        </div>
+
+                        <!-- Recent Post Preview -->
+                        <div class="mt-6 p-4 bg-white/10 rounded-lg border border-white/10">
+                            <p class="text-sm text-mission-cream/90 italic">"The harvest is plentiful, but the laborers are few. Join us in prayer for our upcoming mission to South Sudan..."</p>
+                            <div class="flex items-center justify-between mt-2 text-xs text-mission-cream/70">
+                                <span>2 days ago</span>
+                                <span>124 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube -->
+            <div class="social-card group">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-mission-tan/20 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl relative overflow-hidden">
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-red-600/10 transform -translate-y-10 translate-x-10 rotate-45 group-hover:bg-red-600/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <!-- Social Icon -->
+                        <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-all duration-500 group-hover:scale-110 shadow-lg">
+                            <i class="fab fa-youtube text-white text-3xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-cream text-center">YouTube</h3>
+                        <p class="text-mission-cream/80 mb-6 text-center">Subscribe to Pastor Prince's YouTube channel for sermons, teachings, mission reports, and testimonies.</p>
+
+                        <!-- Stats -->
+                        <div class="flex justify-center items-center mb-6 text-mission-cream/70 text-sm">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-users mr-2"></i>
+                                <span>3.8K Subscribers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-video mr-2"></i>
+                                <span>120+ Videos</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="https://www.youtube.com/channel/UC63CJHrodxR5yhhfyf_Z9tw" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                                <i class="fab fa-youtube mr-2"></i> Subscribe
+                            </a>
+                        </div>
+
+                        <!-- Recent Video Preview -->
+                        <div class="mt-6 p-4 bg-white/10 rounded-lg border border-white/10">
+                            <p class="text-sm text-mission-cream/90 font-medium">Latest: "South Sudan Mission Report - July 2024"</p>
+                            <div class="flex items-center justify-between mt-2 text-xs text-mission-cream/70">
+                                <span>1 week ago</span>
+                                <span>1.2K views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="social-card group">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-mission-tan/20 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl relative overflow-hidden">
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-pink-600/10 transform -translate-y-10 translate-x-10 rotate-45 group-hover:bg-pink-600/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <!-- Social Icon -->
+                        <div class="w-20 h-20 bg-gradient-to-br from-pink-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-all duration-500 group-hover:scale-110 shadow-lg">
+                            <i class="fab fa-instagram text-white text-3xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-cream text-center">Instagram</h3>
+                        <p class="text-mission-cream/80 mb-6 text-center">Follow Pastor Prince on Instagram for photos and videos from his missionary work across Africa and beyond.</p>
+
+                        <!-- Stats -->
+                        <div class="flex justify-center items-center mb-6 text-mission-cream/70 text-sm">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-users mr-2"></i>
+                                <span>2.5K Followers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-image mr-2"></i>
+                                <span>350+ Posts</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#" target="_blank" class="inline-block bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                                <i class="fab fa-instagram mr-2"></i> Follow
+                            </a>
+                        </div>
+
+                        <!-- Recent Post Preview -->
+                        <div class="mt-6 p-4 bg-white/10 rounded-lg border border-white/10">
+                            <p class="text-sm text-mission-cream/90 italic">"Moments from our water distribution project in Nanimtoit Village, South Sudan. #MissionaryWork #SouthSudan"</p>
+                            <div class="flex items-center justify-between mt-2 text-xs text-mission-cream/70">
+                                <span>3 days ago</span>
+                                <span>215 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Twitter -->
+            <div class="social-card group">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-mission-tan/20 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl relative overflow-hidden">
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-blue-400/10 transform -translate-y-10 translate-x-10 rotate-45 group-hover:bg-blue-400/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <!-- Social Icon -->
+                        <div class="w-20 h-20 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-all duration-500 group-hover:scale-110 shadow-lg">
+                            <i class="fab fa-twitter text-white text-3xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-4 text-mission-cream text-center">Twitter</h3>
+                        <p class="text-mission-cream/80 mb-6 text-center">Follow Pastor Prince on Twitter for updates, inspirational quotes, and real-time mission updates.</p>
+
+                        <!-- Stats -->
+                        <div class="flex justify-center items-center mb-6 text-mission-cream/70 text-sm">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-users mr-2"></i>
+                                <span>1.8K Followers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-comment mr-2"></i>
+                                <span>500+ Tweets</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#" target="_blank" class="inline-block bg-blue-400 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                                <i class="fab fa-twitter mr-2"></i> Follow
+                            </a>
+                        </div>
+
+                        <!-- Recent Tweet Preview -->
+                        <div class="mt-6 p-4 bg-white/10 rounded-lg border border-white/10">
+                            <p class="text-sm text-mission-cream/90 italic">"Praise God for the 1,138 souls saved during our recent mission to South Sudan! The harvest is truly plentiful. #MissionaryWork"</p>
+                            <div class="flex items-center justify-between mt-2 text-xs text-mission-cream/70">
+                                <span>5 days ago</span>
+                                <span>87 retweets</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Quote -->
+        <div class="mt-20 text-center max-w-3xl mx-auto">
+            <div class="text-6xl text-mission-tan/30 mb-4">"</div>
+            <p class="text-2xl italic text-mission-cream mb-6 leading-relaxed">
+                Connect with us on social media to stay updated on our missionary work and be part of spreading the gospel across nations.
+            </p>
+            <div class="text-mission-tan font-bold">— Pastor Prince Obasi-Ike</div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="py-24 bg-gradient-to-b from-white to-mission-cream/20 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+    <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-mission-tan/10 rounded-full"></div>
+    <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-tan/5 rounded-full"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="bg-gradient-to-r from-mission-cream/30 to-mission-tan/20 rounded-2xl overflow-hidden shadow-2xl border border-mission-tan/20 transform transition-all duration-500 hover:shadow-3xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <!-- Content Side -->
+                <div class="p-12 md:p-16 relative">
+                    <!-- Decorative Corner Elements -->
+                    <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-mission-tan/30 rounded-tl-xl"></div>
+                    <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-mission-tan/30 rounded-br-xl"></div>
+
+                    <div class="relative z-10">
+                        <div class="inline-block mb-6 relative">
+                            <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">STAY INFORMED</span>
+                        </div>
+
+                        <h2 class="text-4xl md:text-5xl font-bold mb-8 text-mission-brown leading-tight">
+                            Subscribe to Our Newsletter
+                        </h2>
+
+                        <p class="text-xl text-mission-dark mb-10 leading-relaxed">
+                            Stay updated with Pastor Prince's missionary work, upcoming events, and receive inspirational messages directly in your inbox.
+                        </p>
+
+                        <!-- Newsletter Benefits -->
+                        <div class="mb-10 space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-globe-africa text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-mission-brown text-lg">Mission Updates</h3>
+                                    <p class="text-mission-dark/80">Get the latest updates from our missionary work across Africa</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-calendar-alt text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-mission-brown text-lg">Event Notifications</h3>
+                                    <p class="text-mission-dark/80">Be the first to know about upcoming events and missions</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                                    <i class="fas fa-pray text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-mission-brown text-lg">Inspirational Content</h3>
+                                    <p class="text-mission-dark/80">Receive weekly devotionals and inspirational messages</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Form -->
+                        <form class="space-y-6">
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                                    <i class="fas fa-user text-mission-brown/50"></i>
+                                </div>
+                                <input type="text" placeholder="Your Name" class="w-full pl-12 px-4 py-4 rounded-xl border border-mission-tan/30 focus:outline-none focus:ring-2 focus:ring-mission-brown/50 bg-white/80 backdrop-blur-sm shadow-inner">
+                            </div>
+
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                                    <i class="fas fa-envelope text-mission-brown/50"></i>
+                                </div>
+                                <input type="email" placeholder="Your Email" class="w-full pl-12 px-4 py-4 rounded-xl border border-mission-tan/30 focus:outline-none focus:ring-2 focus:ring-mission-brown/50 bg-white/80 backdrop-blur-sm shadow-inner">
+                            </div>
+
+                            <div class="flex items-center">
+                                <input type="checkbox" id="privacy" class="w-5 h-5 rounded border-mission-tan/30 text-mission-brown focus:ring-mission-tan/30">
+                                <label for="privacy" class="ml-2 text-sm text-mission-dark/80">I agree to receive emails and accept the <a href="#" class="text-mission-brown hover:underline">privacy policy</a></label>
+                            </div>
+
+                            <button type="submit" class="hero-button group w-full">
+                                <span>Subscribe Now</span>
+                                <i class="fas fa-paper-plane ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Image Side -->
+                <div class="relative h-full min-h-[500px]">
+                    <!-- Main Image -->
+                    <img src="https://images.unsplash.com/photo-1504025468847-0e438279542c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Newsletter" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-mission-brown/20"></div>
+
+                    <!-- Overlay Content -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center p-8 max-w-md">
+                            <div class="w-20 h-20 bg-mission-tan/30 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-white/50">
+                                <i class="fas fa-envelope-open-text text-white text-3xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4">Join 5,000+ Subscribers</h3>
+                            <p class="text-mission-cream text-lg mb-6">Be part of our growing community of supporters and prayer partners from around the world.</p>
+
+                            <!-- Testimonial -->
+                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 text-left">
+                                <p class="text-white/90 italic text-sm mb-2">"The newsletter keeps me connected to the mission field and inspires me to pray for the work being done."</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-mission-tan/30 rounded-full flex items-center justify-center mr-2">
+                                        <span class="text-white font-bold text-xs">JM</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-xs font-bold">Jane Miller</p>
+                                        <p class="text-white/70 text-xs">Subscriber since 2020</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

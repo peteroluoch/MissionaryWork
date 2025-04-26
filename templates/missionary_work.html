@@ -1,0 +1,1246 @@
+{% extends 'base.html' %}
+
+{% block title %}Pastor Prince Obasi-Ike | Missionary Work{% endblock %}
+
+{% block extra_css %}
+<style>
+    .country-card {
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .country-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .animate-fade-in {
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+    }
+
+    .animate-slide-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideUp 1s ease forwards;
+    }
+
+    .animate-slide-in-right {
+        opacity: 0;
+        transform: translateX(30px);
+        animation: slideInRight 1s ease forwards;
+    }
+
+    .animate-slide-in-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideInLeft 1s ease forwards;
+    }
+
+    .animate-delay-100 { animation-delay: 0.1s; }
+    .animate-delay-200 { animation-delay: 0.2s; }
+    .animate-delay-300 { animation-delay: 0.3s; }
+    .animate-delay-400 { animation-delay: 0.4s; }
+    .animate-delay-500 { animation-delay: 0.5s; }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .map-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #d4a76a;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        box-shadow: 0 0 0 rgba(212, 167, 106, 0.4);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(212, 167, 106, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(212, 167, 106, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(212, 167, 106, 0);
+        }
+    }
+
+    .map-tooltip {
+        position: absolute;
+        background-color: white;
+        color: #3a2921;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+        transform: translateY(-100%) translateX(-50%);
+        margin-top: -10px;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .map-dot:hover .map-tooltip {
+        opacity: 1;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Missionary Work" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-mission-brown/90 to-mission-brown/70"></div>
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
+    <div class="absolute bottom-0 right-0 w-full h-20 bg-white" style="clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);"></div>
+
+    <!-- Floating Map Elements -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <svg viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+            <path d="M720 400C720 620 500 800 400 800C300 800 0 620 0 400C0 180 300 0 400 0C500 0 720 180 720 400Z" fill="#D4A76A"/>
+            <path d="M1440 400C1440 620 1220 800 1120 800C1020 800 720 620 720 400C720 180 1020 0 1120 0C1220 0 1440 180 1440 400Z" fill="#D4A76A"/>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center text-white max-w-4xl mx-auto">
+            <!-- Animated Badge -->
+            <div class="inline-block mb-6 relative animate-fade-in">
+                <span class="bg-white/10 text-mission-cream px-8 py-3 rounded-full text-sm font-bold tracking-wider relative z-10 shadow-lg border border-mission-tan/30">SINCE 1995</span>
+                <div class="absolute -inset-1 bg-mission-tan/20 rounded-full blur-md -z-10"></div>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 animate-slide-up" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);">
+                Global Missionary Work
+            </h1>
+
+            <p class="text-xl md:text-2xl mb-12 animate-slide-up animate-delay-200 max-w-3xl mx-auto leading-relaxed" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);">
+                Pastor Prince Obasi-Ike has been transforming lives through the gospel of Jesus Christ across multiple countries in Africa and beyond.
+            </p>
+
+            <!-- Quick Stats -->
+            <div class="flex flex-wrap justify-center gap-8 mt-10 animate-fade-in animate-delay-300">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-2xl font-bold text-mission-tan">10+</span>
+                        <span class="text-sm text-mission-cream">Countries</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-2xl font-bold text-mission-tan">50+</span>
+                        <span class="text-sm text-mission-cream">Churches</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-2xl font-bold text-mission-tan">10,000+</span>
+                        <span class="text-sm text-mission-cream">Souls Saved</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-fade-in animate-delay-400">
+                <a href="#kenya" class="hero-button group">
+                    <span>Explore Countries</span>
+                    <i class="fas fa-globe ml-2 transform group-hover:rotate-12 transition-transform duration-300"></i>
+                </a>
+                <a href="{% url 'latest_mission' %}" class="hero-button outline group">
+                    <span>Latest Mission</span>
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <a href="#map-section" class="text-white">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section id="map-section" class="py-24 bg-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+    <div class="absolute bottom-0 right-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(100% 100%, 0 100%, 100% 0);"></div>
+
+    <!-- Floating Shapes -->
+    <div class="absolute top-1/4 left-10 w-24 h-24 bg-mission-tan/10 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/4 right-10 w-16 h-16 bg-mission-brown/10 rounded-full animate-float-delay"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">GLOBAL IMPACT</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    Our Global Reach
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                Pastor Prince Obasi-Ike's missionary work spans across multiple countries in Africa and beyond, transforming lives through the gospel of Jesus Christ.
+            </p>
+        </div>
+
+        <div class="bg-gradient-to-r from-mission-cream/20 to-mission-tan/20 p-8 rounded-2xl shadow-xl border border-mission-tan/20 animate-fade-in animate-delay-200 relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <pattern id="pattern-circles" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+                        <circle id="pattern-circle" cx="25" cy="25" r="12" fill="none" stroke="#D4A76A" stroke-width="1"></circle>
+                    </pattern>
+                    <rect id="rect" x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"></rect>
+                </svg>
+            </div>
+
+            <!-- Interactive Map -->
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1489657780376-e0d8630c4bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Map of Africa" class="w-full rounded-xl shadow-lg">
+                <div class="absolute inset-0 bg-mission-brown/20 rounded-xl"></div>
+
+                <!-- Interactive Map Dots -->
+                <div class="map-dot" style="top: 40%; left: 55%;">
+                    <div class="map-tooltip">
+                        <strong>Kenya</strong>
+                        <p class="text-xs">Base of operations since 1995</p>
+                    </div>
+                </div>
+
+                <div class="map-dot" style="top: 30%; left: 54%;">
+                    <div class="map-tooltip">
+                        <strong>South Sudan</strong>
+                        <p class="text-xs">1,138 souls saved in 2025</p>
+                    </div>
+                </div>
+
+                <div class="map-dot" style="top: 45%; left: 52%;">
+                    <div class="map-tooltip">
+                        <strong>Rwanda</strong>
+                        <p class="text-xs">Ministry to genocide survivors</p>
+                    </div>
+                </div>
+
+                <div class="map-dot" style="top: 47%; left: 51%;">
+                    <div class="map-tooltip">
+                        <strong>Burundi</strong>
+                        <p class="text-xs">Church planting & community support</p>
+                    </div>
+                </div>
+
+                <div class="map-dot" style="top: 35%; left: 55%;">
+                    <div class="map-tooltip">
+                        <strong>Turkana, Kenya</strong>
+                        <p class="text-xs">Mentorship & water projects</p>
+                    </div>
+                </div>
+
+                <div class="map-dot" style="top: 60%; left: 85%;">
+                    <div class="map-tooltip">
+                        <strong>Malaysia</strong>
+                        <p class="text-xs">Ministry connections</p>
+                    </div>
+                </div>
+
+                <!-- Map Legend -->
+                <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm p-3 rounded-lg shadow-md border border-mission-tan/20">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-mission-tan rounded-full mr-2"></div>
+                        <span class="text-sm text-mission-brown font-medium">Mission Locations</span>
+                    </div>
+                    <div class="text-xs text-mission-dark/80">
+                        Hover over dots for details
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6 text-mission-dark text-sm italic">
+                <p>Click on the map markers to learn more about Pastor Prince's missionary work in each location</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="#kenya" class="px-4 py-2 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full transition-colors duration-300 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Kenya</span>
+                </a>
+                <a href="#south-sudan" class="px-4 py-2 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full transition-colors duration-300 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>South Sudan</span>
+                </a>
+                <a href="#rwanda" class="px-4 py-2 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full transition-colors duration-300 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Rwanda</span>
+                </a>
+                <a href="#burundi-more-btn" class="px-4 py-2 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full transition-colors duration-300 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Burundi</span>
+                </a>
+                <a href="#malaysia-more-btn" class="px-4 py-2 bg-mission-tan/20 hover:bg-mission-tan/30 text-mission-brown rounded-full transition-colors duration-300 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Malaysia</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mission Impact Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-slide-up animate-delay-300">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-globe-africa text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">10+</span>
+                <p class="text-mission-dark">Countries Reached</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-slide-up animate-delay-400">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-church text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">50+</span>
+                <p class="text-mission-dark">Churches Established</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-slide-up animate-delay-500">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-users text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">10,000+</span>
+                <p class="text-mission-dark">Souls Saved</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl text-center shadow-lg border border-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-slide-up animate-delay-600">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-calendar-alt text-mission-brown text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-brown block mb-1">30+</span>
+                <p class="text-mission-dark">Years of Service</p>
+            </div>
+        </div>
+
+        <!-- Mission Quote -->
+        <div class="mt-16 max-w-4xl mx-auto bg-mission-brown/5 rounded-xl p-8 border border-mission-tan/10 shadow-inner text-center">
+            <div class="text-6xl text-mission-tan/20 mb-4">"</div>
+            <p class="text-xl italic text-mission-dark mb-6">The harvest is plentiful, but the laborers are few; therefore pray earnestly to the Lord of the harvest to send out laborers into his harvest.</p>
+            <div class="text-mission-brown font-bold">Matthew 9:37-38</div>
+        </div>
+    </div>
+
+    <!-- Animation Script -->
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delay {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</section>
+
+<!-- Countries Section -->
+<section class="py-16 bg-mission-cream/10">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <!-- Animated Badge with Glow Effect -->
+            <div class="inline-block mb-6 relative animate-fade-in">
+                <span class="bg-mission-brown/10 text-mission-brown px-8 py-3 rounded-full text-sm font-bold tracking-wider relative z-10 shadow-lg">MISSION FIELDS</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75"></div>
+                <div class="absolute -inset-1 bg-mission-tan/10 rounded-full blur-md -z-10"></div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="flex justify-center items-center mb-6">
+                <div class="h-px w-16 bg-mission-tan/50"></div>
+                <div class="mx-4 text-mission-tan">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <div class="h-px w-16 bg-mission-tan/50"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    Countries Impacted
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                Explore Pastor Prince's missionary work across different countries, transforming lives through the gospel of Jesus Christ.
+            </p>
+
+            <!-- Decorative Flourish -->
+            <div class="mt-8 text-mission-tan/30 text-3xl">
+                <i class="fas fa-church"></i>
+            </div>
+        </div>
+
+        <!-- Kenya -->
+        <div id="kenya" class="bg-white rounded-2xl shadow-xl overflow-hidden mb-24 country-card animate-fade-in animate-delay-200 border border-mission-tan/10 relative">
+            <!-- Country Badge -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                <div class="bg-mission-brown text-white px-8 py-3 rounded-full font-bold shadow-lg flex items-center gap-3">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>KENYA</span>
+                </div>
+            </div>
+
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <pattern id="pattern-circles-kenya" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+                        <circle id="pattern-circle-kenya" cx="25" cy="25" r="12" fill="none" stroke="#D4A76A" stroke-width="1"></circle>
+                    </pattern>
+                    <rect id="rect-kenya" x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles-kenya)"></rect>
+                </svg>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div class="relative p-12 animate-slide-in-right animate-delay-300">
+                    <!-- Decorative Corner Elements -->
+                    <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-mission-tan/30 rounded-tl-xl"></div>
+                    <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-mission-tan/30 rounded-br-xl"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-history text-mission-brown text-xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-mission-brown">Kenya</h3>
+                        </div>
+
+                        <p class="text-mission-dark mb-6 leading-relaxed">
+                            Pastor Prince began his journey as a pioneer missionary for the Redeemed Christian Church of God (RCCG) in Eastern Africa in 1995. Kenya has been the base of his operations, where he has established numerous churches and community support systems.
+                        </p>
+
+                        <!-- Timeline Element -->
+                        <div class="flex items-center mb-6">
+                            <div class="h-px w-12 bg-mission-tan/50"></div>
+                            <div class="mx-4 text-mission-tan/70 text-sm font-bold">
+                                SINCE 1995
+                            </div>
+                            <div class="h-px flex-grow bg-mission-tan/50"></div>
+                        </div>
+
+                        <h4 class="text-xl font-bold mb-4 text-mission-tan flex items-center">
+                            <i class="fas fa-trophy mr-3"></i>
+                            Key Achievements
+                        </h4>
+
+                        <ul class="space-y-4 text-mission-dark mb-8">
+                            <li class="flex items-start p-3 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                <span>Established RCCG Solution Centre in Nairobi, which has become a beacon of hope and empowerment within the community</span>
+                            </li>
+                            <li class="flex items-start p-3 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                <span>Conducts weekly Bible studies at thirteen secondary schools in Nairobi, impacting the lives of young students</span>
+                            </li>
+                            <li class="flex items-start p-3 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                <span>Received the Nigeria High Commissioner's Award for exemplary community service and social development in Kenya</span>
+                            </li>
+                            <li class="flex items-start p-3 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                <span>Provides scholarships for education and economic empowerment programs to help individuals reach their full potential</span>
+                            </li>
+                        </ul>
+
+                        <!-- Stats Cards -->
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-mission-tan/10 text-center">
+                                <div class="text-2xl font-bold text-mission-brown">30+</div>
+                                <div class="text-sm text-mission-dark">Churches Established</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-md border border-mission-tan/10 text-center">
+                                <div class="text-2xl font-bold text-mission-brown">5,000+</div>
+                                <div class="text-sm text-mission-dark">Lives Transformed</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <button id="kenya-more-btn" class="hero-button group">
+                                <span>Learn More About Kenya Missions</span>
+                                <i class="fas fa-chevron-down ml-2 transition-transform duration-300 group-hover:rotate-180"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative animate-slide-in-left animate-delay-400">
+                    <!-- Main Image Container -->
+                    <div class="relative h-full">
+                        <!-- Decorative Background Elements -->
+                        <div class="absolute -top-8 -right-8 w-full h-full bg-mission-tan/10 transform rotate-6 -z-10"></div>
+
+                        <!-- Main Image -->
+                        <img src="https://images.unsplash.com/photo-1489657780376-e0d8630c4bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kenya Missions" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-mission-brown/20"></div>
+
+                        <!-- Location Badge -->
+                        <div class="absolute top-6 left-6 bg-white p-3 rounded-lg shadow-lg animate-fade-in animate-delay-500">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-map-marker-alt text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <div class="text-lg font-bold text-mission-brown">Nairobi</div>
+                                    <div class="text-xs text-mission-dark">RCCG Solution Centre</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Turkana Badge -->
+                        <div class="absolute bottom-6 right-6 bg-white p-3 rounded-lg shadow-lg animate-fade-in animate-delay-600">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-water text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <div class="text-lg font-bold text-mission-brown">Turkana</div>
+                                    <div class="text-xs text-mission-dark">Water Projects</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quote Overlay -->
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-mission-brown to-transparent p-6">
+                            <p class="text-white italic text-lg">"Kenya has been our base of operations since 1995, and God has done amazing things."</p>
+                            <p class="text-mission-tan font-bold mt-2">— Pastor Prince Obasi-Ike</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expanded Kenya Content (Hidden by Default) -->
+            <div id="kenya-more" class="hidden bg-mission-cream/10 p-8 border-t border-mission-tan/20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-mission-brown">RCCG Solution Centre, Nairobi</h4>
+                        <p class="text-mission-dark mb-4">The RCCG Solution Centre in Nairobi was established by Pastor Prince as a hub for spiritual growth, community outreach, and social development. Located on Raila Odinga Way, opposite Armed Forces Memorial Hospital, the centre has become a beacon of hope for many in the community.</p>
+
+                        <p class="text-mission-dark mb-4">The centre offers:</p>
+                        <ul class="space-y-2 text-mission-dark mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Regular worship services and prayer meetings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Counseling and spiritual guidance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Community outreach programs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Youth development initiatives</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-mission-brown">Turkana County Initiatives</h4>
+                        <p class="text-mission-dark mb-4">Pastor Prince has developed a special focus on Turkana County, one of the most marginalized regions in Kenya. His work in this area has been transformative, addressing both spiritual and physical needs of the community.</p>
+
+                        <p class="text-mission-dark mb-4">Key initiatives in Turkana include:</p>
+                        <ul class="space-y-2 text-mission-dark mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Mentoring program for local residents, providing guidance and support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Drilling of boreholes to provide clean water to communities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Church planting in remote areas to bring the gospel to unreached communities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Educational scholarships for children from disadvantaged backgrounds</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="#turkana-gallery" class="text-mission-tan hover:text-mission-brown font-medium">View Turkana Mission Gallery →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials from Kenya -->
+                <div class="mt-8">
+                    <h4 class="text-xl font-bold mb-4 text-mission-brown">Testimonials from Kenya</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-mission-tan/10">
+                            <p class="italic text-mission-dark mb-4">"Pastor Prince's mentorship program in Turkana has given me hope and direction. Through his guidance, I was able to complete my education and now I am giving back to my community."</p>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-mission-tan rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-mission-brown font-bold">JK</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-mission-brown">James Kiprop</h5>
+                                    <p class="text-sm text-mission-dark">Turkana County, Kenya</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-mission-tan/10">
+                            <p class="italic text-mission-dark mb-4">"The RCCG Solution Centre has been a true solution for my family. Through Pastor Prince's teachings and the support of the church community, we have grown spiritually and found purpose."</p>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-mission-tan rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-mission-brown font-bold">MW</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-mission-brown">Mary Wanjiku</h5>
+                                    <p class="text-sm text-mission-dark">Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- South Sudan -->
+        <div id="south-sudan" class="bg-white rounded-lg shadow-lg overflow-hidden mb-16 country-card animate-fade-in animate-delay-300">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="md:order-2 p-8 animate-slide-in-left animate-delay-400">
+                    <h3 class="text-2xl font-bold mb-4 text-mission-brown">South Sudan</h3>
+                    <p class="text-mission-dark mb-4">Pastor Prince's recent mission to South Sudan in April 2025 was a tremendous success, with 1,138 souls receiving salvation during mission activities in Kapoeta. Despite challenging conditions, including heavy rain, the team persevered in preaching the gospel across several occasions.</p>
+
+                    <h4 class="text-xl font-bold mb-2 text-mission-tan">Key Achievements:</h4>
+                    <ul class="space-y-2 text-mission-dark mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>1,138 souls saved during the April 2025 mission in Kapoeta</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>Church building construction in Nanimtoit, Kapoeta North</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>Gospel outreach to multiple communities despite heavy rainfall</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>Provision of essential resources, clean water, and medical assistance</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8">
+                        <button id="south-sudan-more-btn" class="text-mission-tan hover:text-mission-brown font-medium transition-colors duration-300 flex items-center">
+                            <span>Learn More About South Sudan Mission</span>
+                            <i class="fas fa-chevron-down ml-2 transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:order-1 animate-slide-in-right animate-delay-400">
+                    <img src="https://via.placeholder.com/600x400?text=South+Sudan+Missions" alt="South Sudan Missions" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Expanded South Sudan Content (Hidden by Default) -->
+            <div id="south-sudan-more" class="hidden bg-mission-cream/10 p-8 border-t border-mission-tan/20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-mission-brown">Gospel Outreach in Kapoeta</h4>
+                        <p class="text-mission-dark mb-4">The mission team conducted multiple gospel outreach events across Kapoeta, reaching thousands with the message of Christ. Despite heavy rain on several occasions, the preaching continued, and many souls were saved.</p>
+
+                        <p class="text-mission-dark mb-4">Outreach activities included:</p>
+                        <ul class="space-y-2 text-mission-dark mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Open-air crusades in multiple locations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Door-to-door evangelism</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Youth and children's programs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Training for local church leaders</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-mission-brown">Church Building Project</h4>
+                        <p class="text-mission-dark mb-4">One of the key objectives of the mission was to start church building construction in Nanimtoit, Kapoeta North. Although the team faced some challenges, including river conditions, they made significant progress in establishing a foundation for the local church.</p>
+
+                        <p class="text-mission-dark mb-4">The church building project includes:</p>
+                        <ul class="space-y-2 text-mission-dark mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Site selection and preparation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Community involvement in construction</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Training local leaders for church management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Provision of building materials and resources</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="{% url 'latest_mission' %}" class="text-mission-tan hover:text-mission-brown font-medium">View Full South Sudan Mission Report →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Diary Highlights -->
+                <div class="mt-8">
+                    <h4 class="text-xl font-bold mb-4 text-mission-brown">Mission Diary Highlights</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-mission-tan/10">
+                            <h5 class="font-bold text-mission-brown mb-2">Day 1: Arrival</h5>
+                            <p class="text-sm text-mission-dark">Our team arrived in Kapoeta and was warmly welcomed by local leaders. We spent the day setting up our base and preparing for the mission activities ahead.</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-mission-tan/10">
+                            <h5 class="font-bold text-mission-brown mb-2">Day 2: First Outreach</h5>
+                            <p class="text-sm text-mission-dark">We conducted our first gospel outreach event in the central market area of Kapoeta. Despite the challenges, many people gathered to hear the message, and 87 souls gave their lives to Christ.</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-mission-tan/10">
+                            <h5 class="font-bold text-mission-brown mb-2">Day 3: Church Site</h5>
+                            <p class="text-sm text-mission-dark">We met with local leaders to select a site for the church building in Nanimtoit. After prayer and consultation, a suitable location was identified, and initial preparations began.</p>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-mission-tan/10">
+                            <h5 class="font-bold text-mission-brown mb-2">Day 4: Nanimtoit</h5>
+                            <p class="text-sm text-mission-dark">We took the message of Christ to the people of Nanimtoit, Kapoeta North. Despite heavy rain, the gospel was preached, and many souls were saved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rwanda -->
+        <div id="rwanda" class="bg-white rounded-lg shadow-lg overflow-hidden mb-16 country-card animate-fade-in animate-delay-400">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-8 animate-slide-in-right animate-delay-500">
+                    <h3 class="text-2xl font-bold mb-4 text-mission-brown">Rwanda</h3>
+                    <p class="text-mission-dark mb-4">Pastor Prince has led missions to Rwanda to minister to widowed survivors of the genocide, pray with them, and offer assistance. His work in Rwanda focuses on healing, reconciliation, and community support in a country that has experienced significant trauma.</p>
+
+                    <h4 class="text-xl font-bold mb-2 text-mission-tan">Key Achievements:</h4>
+                    <ul class="space-y-2 text-mission-dark mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>Ministry to widowed survivors of the genocide, providing spiritual and emotional support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>Establishment of prayer and support groups in multiple communities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>Provision of material assistance, including food, clothing, and shelter to those in need</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                            <span>Gospel outreach and church planting in areas with limited access to spiritual resources</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8">
+                        <button id="rwanda-more-btn" class="text-mission-tan hover:text-mission-brown font-medium transition-colors duration-300 flex items-center">
+                            <span>Learn More About Rwanda Missions</span>
+                            <i class="fas fa-chevron-down ml-2 transition-transform duration-300"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="animate-slide-in-left animate-delay-500">
+                    <img src="https://via.placeholder.com/600x400?text=Rwanda+Missions" alt="Rwanda Missions" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Expanded Rwanda Content (Hidden by Default) -->
+            <div id="rwanda-more" class="hidden bg-mission-cream/10 p-8 border-t border-mission-tan/20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-mission-brown">Healing and Reconciliation Ministry</h4>
+                        <p class="text-mission-dark mb-4">Pastor Prince's work in Rwanda has been particularly focused on bringing healing and reconciliation to communities affected by the 1994 genocide. Through prayer, counseling, and community support, he has helped many find peace and forgiveness.</p>
+
+                        <p class="text-mission-dark mb-4">The healing ministry includes:</p>
+                        <ul class="space-y-2 text-mission-dark mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Regular prayer meetings for widows and survivors</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Trauma counseling and emotional support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Reconciliation workshops bringing together different community groups</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Bible studies focused on forgiveness and healing</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-mission-brown">Community Development</h4>
+                        <p class="text-mission-dark mb-4">Beyond spiritual support, Pastor Prince has been involved in practical community development initiatives in Rwanda, helping survivors rebuild their lives and communities.</p>
+
+                        <p class="text-mission-dark mb-4">Community development projects include:</p>
+                        <ul class="space-y-2 text-mission-dark mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Vocational training for widows to help them become self-sufficient</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Microfinance initiatives to support small businesses</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Educational support for orphans and vulnerable children</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-mission-tan text-xs mt-1.5 mr-2"></i>
+                                <span>Housing assistance for those who lost their homes</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Testimonial from Rwanda -->
+                <div class="mt-8 bg-white p-6 rounded-lg shadow-md border border-mission-tan/10">
+                    <p class="italic text-mission-dark mb-4">"After losing my husband and children in the genocide, I had lost all hope. Pastor Prince's ministry brought healing to my heart through prayer and the word of God. Today, I lead a support group for other widows, and we are rebuilding our lives together. The church he helped establish has become our family."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-mission-tan rounded-full flex items-center justify-center mr-3">
+                            <span class="text-mission-brown font-bold">CM</span>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-mission-brown">Christine Mukamana</h5>
+                            <p class="text-sm text-mission-dark">Kigali, Rwanda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Countries -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in animate-delay-500">
+            <!-- Burundi -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden country-card">
+                <div class="relative overflow-hidden">
+                    <img src="https://via.placeholder.com/600x400?text=Burundi+Missions" alt="Burundi Missions" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="font-bold">Burundi Mission</p>
+                            <p class="text-sm">Establishing churches since 2010</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-mission-brown">Burundi</h3>
+                    <p class="text-mission-dark mb-4">Pastor Prince has been establishing churches and providing community support in Burundi, focusing on areas with limited access to spiritual resources.</p>
+
+                    <button id="burundi-more-btn" class="text-mission-tan hover:text-mission-brown font-medium transition-colors duration-300 flex items-center">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </button>
+
+                    <!-- Hidden Modal Content -->
+                    <div id="burundi-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                            <div class="p-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h3 class="text-2xl font-bold text-mission-brown">Burundi Mission Work</h3>
+                                    <button class="burundi-close-btn text-mission-dark hover:text-mission-brown">
+                                        <i class="fas fa-times text-xl"></i>
+                                    </button>
+                                </div>
+                                <p class="text-mission-dark mb-4">Pastor Prince's work in Burundi has focused on establishing churches in areas with limited access to spiritual resources and providing community support to those in need.</p>
+
+                                <h4 class="text-xl font-bold mb-2 text-mission-tan">Key Initiatives:</h4>
+                                <ul class="space-y-2 text-mission-dark mb-6">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Church planting in rural communities</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Training local pastors and church leaders</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Community development projects</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Youth empowerment programs</span>
+                                    </li>
+                                </ul>
+
+                                <img src="https://via.placeholder.com/800x400?text=Burundi+Mission+Work" alt="Burundi Mission Work" class="w-full rounded-lg mb-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Malaysia -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden country-card">
+                <div class="relative overflow-hidden">
+                    <img src="https://via.placeholder.com/600x400?text=Malaysia+Missions" alt="Malaysia Missions" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="font-bold">Malaysia Mission</p>
+                            <p class="text-sm">Ministry connections since 2015</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-mission-brown">Malaysia</h3>
+                    <p class="text-mission-dark mb-4">Pastor Prince has been spreading the gospel and establishing ministry connections in Malaysia, reaching out to diverse communities.</p>
+
+                    <button id="malaysia-more-btn" class="text-mission-tan hover:text-mission-brown font-medium transition-colors duration-300 flex items-center">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </button>
+
+                    <!-- Hidden Modal Content -->
+                    <div id="malaysia-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                            <div class="p-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h3 class="text-2xl font-bold text-mission-brown">Malaysia Mission Work</h3>
+                                    <button class="malaysia-close-btn text-mission-dark hover:text-mission-brown">
+                                        <i class="fas fa-times text-xl"></i>
+                                    </button>
+                                </div>
+                                <p class="text-mission-dark mb-4">Pastor Prince's work in Malaysia has focused on establishing ministry connections and spreading the gospel to diverse communities in this multicultural nation.</p>
+
+                                <h4 class="text-xl font-bold mb-2 text-mission-tan">Key Initiatives:</h4>
+                                <ul class="space-y-2 text-mission-dark mb-6">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Collaboration with local churches and ministries</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Leadership conferences and training</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Outreach to immigrant communities</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-mission-tan mt-1 mr-2"></i>
+                                        <span>Support for local mission initiatives</span>
+                                    </li>
+                                </ul>
+
+                                <img src="https://via.placeholder.com/800x400?text=Malaysia+Mission+Work" alt="Malaysia Mission Work" class="w-full rounded-lg mb-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Turkana, Kenya -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden country-card">
+                <div class="relative overflow-hidden">
+                    <img src="https://via.placeholder.com/600x400?text=Turkana+Missions" alt="Turkana Missions" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="font-bold">Turkana, Kenya</p>
+                            <p class="text-sm">Mentorship & water projects</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-mission-brown">Turkana, Kenya</h3>
+                    <p class="text-mission-dark mb-4">Pastor Prince has developed special initiatives in Turkana County, Kenya, including mentorship programs and water projects for this marginalized region.</p>
+
+                    <a href="#kenya" class="text-mission-tan hover:text-mission-brown font-medium transition-colors duration-300 flex items-center">
+                        <span>View Kenya Missions</span>
+                        <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impact Section -->
+<section class="py-16 bg-gradient-to-r from-mission-brown to-mission-dark text-mission-cream">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12 animate-slide-up">
+            <h2 class="text-3xl font-bold mb-4">Our Global Impact</h2>
+            <p class="text-lg max-w-3xl mx-auto">Through Pastor Prince Obasi-Ike's missionary work since 1995, lives are being transformed in multiple ways across Africa and beyond.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 border border-mission-cream border-opacity-20 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in animate-delay-200">
+                <div class="w-16 h-16 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-church text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-center">Spiritual Growth</h3>
+                <p class="text-center">Over 10,000 souls have come to know Christ through Pastor Prince's ministry, with many growing in their faith through discipleship programs.</p>
+
+                <div class="mt-6 text-center">
+                    <div class="inline-block w-24 h-1 bg-mission-tan rounded-full"></div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <span class="text-3xl font-bold text-mission-tan">10,000+</span>
+                    <p class="text-sm text-mission-cream/70">Souls Saved</p>
+                </div>
+            </div>
+
+            <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 border border-mission-cream border-opacity-20 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in animate-delay-300">
+                <div class="w-16 h-16 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-graduation-cap text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-center">Education</h3>
+                <p class="text-center">Pastor Prince provides scholarships and educational support to help individuals reach their full potential, particularly in Kenya and Rwanda.</p>
+
+                <div class="mt-6 text-center">
+                    <div class="inline-block w-24 h-1 bg-mission-tan rounded-full"></div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <span class="text-3xl font-bold text-mission-tan">500+</span>
+                    <p class="text-sm text-mission-cream/70">Scholarships Provided</p>
+                </div>
+            </div>
+
+            <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 border border-mission-cream border-opacity-20 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in animate-delay-400">
+                <div class="w-16 h-16 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-hands-helping text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-center">Community Development</h3>
+                <p class="text-center">Building infrastructure, providing clean water, and empowering communities to thrive through various development initiatives.</p>
+
+                <div class="mt-6 text-center">
+                    <div class="inline-block w-24 h-1 bg-mission-tan rounded-full"></div>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <span class="text-3xl font-bold text-mission-tan">30+</span>
+                    <p class="text-sm text-mission-cream/70">Community Projects</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Statistics -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in animate-delay-500">
+            <div class="text-center">
+                <span class="text-4xl font-bold text-mission-tan block mb-2">50+</span>
+                <span class="text-xl text-mission-cream/80">Churches Established</span>
+            </div>
+            <div class="text-center">
+                <span class="text-4xl font-bold text-mission-tan block mb-2">10+</span>
+                <span class="text-xl text-mission-cream/80">Countries Reached</span>
+            </div>
+            <div class="text-center">
+                <span class="text-4xl font-bold text-mission-tan block mb-2">30+</span>
+                <span class="text-xl text-mission-cream/80">Years of Service</span>
+            </div>
+            <div class="text-center">
+                <span class="text-4xl font-bold text-mission-tan block mb-2">100+</span>
+                <span class="text-xl text-mission-cream/80">Local Leaders Trained</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="bg-gradient-to-r from-mission-cream/30 to-mission-tan/30 rounded-xl p-8 md:p-12 shadow-lg border border-mission-tan/20 animate-fade-in">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="animate-slide-in-right">
+                    <h2 class="text-3xl font-bold mb-4 text-mission-brown">Join Our Global Mission</h2>
+                    <p class="text-lg text-mission-dark mb-6">Be a part of transforming lives across Africa and beyond through the gospel of Jesus Christ. Your prayers, support, and involvement make a difference in reaching the unreached with the message of hope.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="{% url 'latest_mission' %}" class="hero-button">Latest Mission</a>
+                        <a href="{% url 'contact' %}" class="hero-button outline">Support Our Work</a>
+                    </div>
+                </div>
+                <div class="hidden md:block animate-slide-in-left">
+                    <img src="https://via.placeholder.com/600x400?text=Join+Our+Mission" alt="Join Our Mission" class="rounded-lg shadow-md">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Interactive Elements -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Kenya expand/collapse
+        const kenyaMoreBtn = document.getElementById('kenya-more-btn');
+        const kenyaMore = document.getElementById('kenya-more');
+
+        if (kenyaMoreBtn && kenyaMore) {
+            kenyaMoreBtn.addEventListener('click', function() {
+                kenyaMore.classList.toggle('hidden');
+                kenyaMoreBtn.querySelector('i').classList.toggle('rotate-180');
+            });
+        }
+
+        // South Sudan expand/collapse
+        const southSudanMoreBtn = document.getElementById('south-sudan-more-btn');
+        const southSudanMore = document.getElementById('south-sudan-more');
+
+        if (southSudanMoreBtn && southSudanMore) {
+            southSudanMoreBtn.addEventListener('click', function() {
+                southSudanMore.classList.toggle('hidden');
+                southSudanMoreBtn.querySelector('i').classList.toggle('rotate-180');
+            });
+        }
+
+        // Rwanda expand/collapse
+        const rwandaMoreBtn = document.getElementById('rwanda-more-btn');
+        const rwandaMore = document.getElementById('rwanda-more');
+
+        if (rwandaMoreBtn && rwandaMore) {
+            rwandaMoreBtn.addEventListener('click', function() {
+                rwandaMore.classList.toggle('hidden');
+                rwandaMoreBtn.querySelector('i').classList.toggle('rotate-180');
+            });
+        }
+
+        // Burundi modal
+        const burundiMoreBtn = document.getElementById('burundi-more-btn');
+        const burundiModal = document.getElementById('burundi-modal');
+        const burundiCloseBtn = document.querySelector('.burundi-close-btn');
+
+        if (burundiMoreBtn && burundiModal && burundiCloseBtn) {
+            burundiMoreBtn.addEventListener('click', function() {
+                burundiModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+
+            burundiCloseBtn.addEventListener('click', function() {
+                burundiModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Malaysia modal
+        const malaysiaMoreBtn = document.getElementById('malaysia-more-btn');
+        const malaysiaModal = document.getElementById('malaysia-modal');
+        const malaysiaCloseBtn = document.querySelector('.malaysia-close-btn');
+
+        if (malaysiaMoreBtn && malaysiaModal && malaysiaCloseBtn) {
+            malaysiaMoreBtn.addEventListener('click', function() {
+                malaysiaModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+
+            malaysiaCloseBtn.addEventListener('click', function() {
+                malaysiaModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Animate elements when they come into view
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-slide-in-right, .animate-slide-in-left');
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+
+                // If element is in viewport
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    element.style.visibility = 'visible';
+                }
+            });
+        };
+
+        // Run on load
+        animateOnScroll();
+
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    });
+</script>
+{% endblock %}

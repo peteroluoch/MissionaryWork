@@ -1,0 +1,1407 @@
+{% extends 'base.html' %}
+
+{% block title %}Pastor Prince Obasi-Ike | Latest Mission{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Latest Mission Page Specific Styles */
+    .mission-hero {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .mission-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+    }
+
+    .mission-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(58, 41, 33, 0.9), rgba(58, 41, 33, 0.7));
+        z-index: 2;
+    }
+
+    .mission-hero-content {
+        position: relative;
+        z-index: 3;
+    }
+
+    .mission-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mission-section-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        z-index: 0;
+    }
+
+    .mission-card {
+        transition: all 0.3s ease;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        background-color: white;
+    }
+
+    .mission-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .mission-image {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+    }
+
+    .mission-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .mission-card:hover .mission-image img {
+        transform: scale(1.1);
+    }
+
+    .mission-content {
+        padding: 1.5rem;
+    }
+
+    .mission-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #3a2921;
+        margin-bottom: 0.75rem;
+    }
+
+    .mission-description {
+        color: #5d534a;
+        margin-bottom: 1rem;
+    }
+
+    .mission-link {
+        display: inline-flex;
+        align-items: center;
+        color: #d4a76a;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .mission-link:hover {
+        color: #3a2921;
+    }
+
+    .mission-link i {
+        margin-left: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .mission-link:hover i {
+        transform: translateX(5px);
+    }
+
+    .mission-stat {
+        border-radius: 0.5rem;
+        padding: 1rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .mission-stat:hover {
+        transform: translateY(-5px);
+    }
+
+    .mission-stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #d4a76a;
+        line-height: 1;
+    }
+
+    .mission-stat-label {
+        color: #5d534a;
+        margin-top: 0.5rem;
+    }
+
+    .mission-diary-card {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        background-color: white;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+    }
+
+    .mission-diary-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .mission-diary-content {
+        padding: 1.5rem;
+    }
+
+    .mission-diary-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #3a2921;
+        margin-bottom: 0.75rem;
+    }
+
+    .mission-diary-description {
+        color: #5d534a;
+        margin-bottom: 1rem;
+    }
+
+    .mission-diary-images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .mission-diary-image {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        height: 200px;
+    }
+
+    .mission-diary-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .mission-diary-card:hover .mission-diary-image img {
+        transform: scale(1.05);
+    }
+
+    .testimonial-card {
+        border-radius: 1rem;
+        overflow: hidden;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .photo-gallery-image {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        height: 200px;
+        transition: all 0.3s ease;
+    }
+
+    .photo-gallery-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .photo-gallery-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .animate-fade-in {
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    .animate-slide-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 1s ease-out forwards;
+    }
+
+    .animate-slide-in-right {
+        opacity: 0;
+        transform: translateX(20px);
+        animation: slideInRight 1s ease-out forwards;
+    }
+
+    .animate-slide-in-left {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideInLeft 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-delay-100 {
+        animation-delay: 0.1s;
+    }
+
+    .animate-delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .animate-delay-300 {
+        animation-delay: 0.3s;
+    }
+
+    .animate-delay-400 {
+        animation-delay: 0.4s;
+    }
+
+    .animate-delay-500 {
+        animation-delay: 0.5s;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="mission-hero">
+    <div class="mission-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="mission-hero-overlay"></div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="mission-hero-content text-center text-white">
+            <div class="inline-block mb-4 animate-fade-in">
+                <span class="bg-mission-tan/20 text-mission-cream px-4 py-1 rounded-full text-sm font-bold tracking-wider">JULY 2024</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-slide-up" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);">Latest Mission: South Sudan</h1>
+            <p class="text-xl max-w-3xl mx-auto mb-8 animate-slide-up animate-delay-200" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);">We thank God for <span class="text-mission-tan font-bold">1,138 souls</span> that received salvation during our mission activities in Kapoeta, South Sudan from July 14th, 2024.</p>
+
+            <!-- Mission Stats -->
+            <div class="flex flex-wrap justify-center gap-8 mt-10 animate-fade-in animate-delay-300">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-2xl font-bold text-mission-tan">1,138</span>
+                        <span class="text-sm text-mission-cream">Souls Saved</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-2xl font-bold text-mission-tan">14 Days</span>
+                        <span class="text-sm text-mission-cream">Mission Duration</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-2xl font-bold text-mission-tan">Kapoeta</span>
+                        <span class="text-sm text-mission-cream">South Sudan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <a href="#mission-overview" class="text-white">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Mission Overview -->
+<section id="mission-overview" class="py-24 bg-white mission-section">
+    <!-- Background Pattern -->
+    <div class="mission-section-bg" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); opacity: 0.03;"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <div class="inline-block mb-4">
+                <span class="bg-mission-brown/10 text-mission-brown px-4 py-1 rounded-full text-sm font-bold tracking-wider">OVERVIEW</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-mission-brown">South Sudan Mission</h2>
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">A transformative journey to spread the gospel and support communities in Kapoeta, South Sudan.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="relative animate-slide-in-left">
+                <!-- Main Image -->
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Mission" class="rounded-xl shadow-2xl mx-auto relative z-10">
+
+                <!-- Decorative Elements -->
+                <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-mission-tan/10 rounded-full -z-10"></div>
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-mission-brown/10 rounded-full -z-10"></div>
+
+                <!-- Location Map -->
+                <div class="absolute top-5 -right-10 md:-right-20 bg-white p-4 rounded-lg shadow-lg animate-fade-in animate-delay-300">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-map-marked-alt text-mission-brown text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold text-mission-brown">Kapoeta</div>
+                            <div class="text-sm text-mission-dark">South Sudan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Date -->
+                <div class="absolute bottom-5 -left-10 md:-left-20 bg-white p-4 rounded-lg shadow-lg animate-fade-in animate-delay-400">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-calendar-alt text-mission-brown text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold text-mission-brown">July 14-28</div>
+                            <div class="text-sm text-mission-dark">2024</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Photo -->
+                <div class="absolute -bottom-16 right-0 md:right-10 w-32 h-32 md:w-48 md:h-48 rounded-lg shadow-lg overflow-hidden border-4 border-white animate-fade-in animate-delay-500">
+                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Mission Team" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="animate-slide-in-right">
+                <h2 class="text-3xl font-bold mb-6 text-mission-brown">Mission Overview</h2>
+                <div class="space-y-6 text-mission-dark leading-relaxed">
+                    <p>In July 2024, Pastor Prince Obasi-Ike led a team to Kapoeta, South Sudan for a transformative mission trip. The mission focused on spreading the gospel, church building, and community support in this region that has faced significant challenges.</p>
+
+                    <p>Despite challenging conditions, including heavy rain and difficult terrain, the team persevered in preaching the gospel across several locations. The mission was a tremendous success, with 1,138 souls receiving salvation through various outreach activities.</p>
+
+                    <blockquote class="border-l-4 border-mission-tan pl-4 italic my-8">
+                        "Not even the heavy rain could stop the preaching of the gospel in Kapoeta. God's power was manifested, and many souls were saved."
+                        <footer class="text-mission-brown font-bold mt-2">— Pastor Prince Obasi-Ike</footer>
+                    </blockquote>
+
+                    <p>The team also began construction on a church building in Nanimtoit, Kapoeta North, which will serve as a permanent place of worship for the local community. Additionally, essential resources, clean water, and medical assistance were provided to meet the immediate needs of the people.</p>
+                </div>
+
+                <!-- Mission Objectives -->
+                <div class="mt-10">
+                    <h3 class="text-xl font-bold mb-4 text-mission-brown flex items-center">
+                        <i class="fas fa-bullseye mr-3 text-mission-tan"></i>
+                        Mission Objectives
+                    </h3>
+                    <ul class="space-y-3 text-mission-dark">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                            <span>Conduct gospel outreach events in multiple locations across Kapoeta</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                            <span>Begin construction of a church building in Nanimtoit</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                            <span>Provide essential resources and support to the local community</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                            <span>Train local leaders for continued ministry after the mission</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Mission Impact -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+                    <div class="mission-stat bg-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2">
+                        <div class="mission-stat-number">1,138</div>
+                        <div class="mission-stat-label">Souls Saved</div>
+                    </div>
+                    <div class="mission-stat bg-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2">
+                        <div class="mission-stat-number">14+</div>
+                        <div class="mission-stat-label">Days of Ministry</div>
+                    </div>
+                    <div class="mission-stat bg-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2">
+                        <div class="mission-stat-number">5</div>
+                        <div class="mission-stat-label">Outreach Events</div>
+                    </div>
+                    <div class="mission-stat bg-mission-tan/10 transform transition-all duration-500 hover:-translate-y-2">
+                        <div class="mission-stat-number">12</div>
+                        <div class="mission-stat-label">Team Members</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Activities -->
+<section class="py-24 bg-gradient-to-b from-white to-mission-cream/10 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+    <div class="absolute bottom-0 right-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(100% 100%, 0 100%, 100% 0);"></div>
+
+    <!-- Floating Shapes -->
+    <div class="absolute top-1/4 left-10 w-24 h-24 bg-mission-tan/10 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/4 right-10 w-16 h-16 bg-mission-brown/10 rounded-full animate-float-delay"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">MISSION IMPACT</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    Mission Activities
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                Our team engaged in various transformative activities to spread the gospel and support the local community in Kapoeta, South Sudan.
+            </p>
+        </div>
+
+        <!-- Activity Cards with 3D Effect -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Gospel Outreach -->
+            <div class="group h-full perspective-1000">
+                <div class="relative h-full transform transition-all duration-500 group-hover:rotate-y-6 preserve-3d">
+                    <div class="activity-card bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2">
+                        <!-- Card Header with Image -->
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gospel Outreach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-mission-brown to-transparent opacity-70"></div>
+
+                            <!-- Activity Icon -->
+                            <div class="absolute top-4 right-4 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-500 group-hover:rotate-12">
+                                <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-bullhorn text-mission-brown text-xl"></i>
+                                </div>
+                            </div>
+
+                            <!-- Activity Title -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">Gospel Outreach</h3>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-mission-tan/30 rounded-full flex items-center justify-center mr-2">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                    <span class="text-white/90 text-sm">Multiple Locations, Kapoeta</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-8">
+                            <p class="text-mission-dark mb-6 leading-relaxed">
+                                We conducted multiple gospel outreach events across Kapoeta, reaching thousands with the message of Christ. Despite heavy rain on several occasions, the preaching continued, and many souls were saved.
+                            </p>
+
+                            <!-- Stats -->
+                            <div class="grid grid-cols-2 gap-4 mb-8">
+                                <div class="bg-mission-tan/10 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-mission-brown">5</div>
+                                    <div class="text-sm text-mission-dark">Outreach Events</div>
+                                </div>
+                                <div class="bg-mission-tan/10 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-mission-brown">1,138</div>
+                                    <div class="text-sm text-mission-dark">Souls Saved</div>
+                                </div>
+                            </div>
+
+                            <h4 class="text-xl font-bold mb-4 text-mission-brown flex items-center">
+                                <i class="fas fa-star text-mission-tan mr-3"></i>
+                                Key Highlights
+                            </h4>
+
+                            <ul class="space-y-3 text-mission-dark">
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Open-air crusades in multiple locations</span>
+                                </li>
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Door-to-door evangelism in remote villages</span>
+                                </li>
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Youth and children's programs with Bible teachings</span>
+                                </li>
+                            </ul>
+
+                            <!-- Quote -->
+                            <div class="mt-8 p-4 bg-mission-brown/5 rounded-lg border-l-4 border-mission-tan italic text-mission-dark/80">
+                                "Not even the heavy rain could stop the preaching of the gospel in Kapoeta."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Church Building -->
+            <div class="group h-full perspective-1000">
+                <div class="relative h-full transform transition-all duration-500 group-hover:rotate-y-6 preserve-3d">
+                    <div class="activity-card bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2">
+                        <!-- Card Header with Image -->
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Building" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-mission-brown to-transparent opacity-70"></div>
+
+                            <!-- Activity Icon -->
+                            <div class="absolute top-4 right-4 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-500 group-hover:rotate-12">
+                                <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-church text-mission-brown text-xl"></i>
+                                </div>
+                            </div>
+
+                            <!-- Activity Title -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">Church Building</h3>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-mission-tan/30 rounded-full flex items-center justify-center mr-2">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                    <span class="text-white/90 text-sm">Nanimtoit, Kapoeta North</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-8">
+                            <p class="text-mission-dark mb-6 leading-relaxed">
+                                One of the key objectives of our mission was to start church building construction in Nanimtoit, Kapoeta North. Although we faced some challenges, including river conditions, we made significant progress in establishing a foundation for the local church.
+                            </p>
+
+                            <!-- Progress Bar -->
+                            <div class="mb-8">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-mission-brown">Construction Progress</span>
+                                    <span class="text-sm font-medium text-mission-brown">35%</span>
+                                </div>
+                                <div class="w-full bg-mission-tan/10 rounded-full h-2.5">
+                                    <div class="bg-mission-tan h-2.5 rounded-full" style="width: 35%"></div>
+                                </div>
+                            </div>
+
+                            <h4 class="text-xl font-bold mb-4 text-mission-brown flex items-center">
+                                <i class="fas fa-star text-mission-tan mr-3"></i>
+                                Key Highlights
+                            </h4>
+
+                            <ul class="space-y-3 text-mission-dark">
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Site selection and preparation with local leaders</span>
+                                </li>
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Community involvement in construction process</span>
+                                </li>
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Training local leaders for church management</span>
+                                </li>
+                            </ul>
+
+                            <!-- Next Steps -->
+                            <div class="mt-8 p-4 bg-mission-brown/5 rounded-lg">
+                                <h5 class="font-bold text-mission-brown mb-2">Next Steps:</h5>
+                                <p class="text-mission-dark/80">Continue construction during our next mission trip in December 2024.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Support -->
+            <div class="group h-full perspective-1000">
+                <div class="relative h-full transform transition-all duration-500 group-hover:rotate-y-6 preserve-3d">
+                    <div class="activity-card bg-white rounded-xl shadow-xl overflow-hidden border border-mission-tan/10 h-full transform transition-all duration-500 group-hover:-translate-y-2">
+                        <!-- Card Header with Image -->
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Support" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-mission-brown to-transparent opacity-70"></div>
+
+                            <!-- Activity Icon -->
+                            <div class="absolute top-4 right-4 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-500 group-hover:rotate-12">
+                                <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-hands-helping text-mission-brown text-xl"></i>
+                                </div>
+                            </div>
+
+                            <!-- Activity Title -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">Community Support</h3>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-mission-tan/30 rounded-full flex items-center justify-center mr-2">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                    <span class="text-white/90 text-sm">Multiple Villages, Kapoeta</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-8">
+                            <p class="text-mission-dark mb-6 leading-relaxed">
+                                Our mission extended beyond spiritual outreach to include practical support for the local community. We provided essential resources and support to help meet the immediate needs of the people of Kapoeta.
+                            </p>
+
+                            <!-- Impact Stats -->
+                            <div class="grid grid-cols-2 gap-4 mb-8">
+                                <div class="bg-mission-tan/10 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-mission-brown">500+</div>
+                                    <div class="text-sm text-mission-dark">Families Helped</div>
+                                </div>
+                                <div class="bg-mission-tan/10 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-mission-brown">3</div>
+                                    <div class="text-sm text-mission-dark">Villages Reached</div>
+                                </div>
+                            </div>
+
+                            <h4 class="text-xl font-bold mb-4 text-mission-brown flex items-center">
+                                <i class="fas fa-star text-mission-tan mr-3"></i>
+                                Key Highlights
+                            </h4>
+
+                            <ul class="space-y-3 text-mission-dark">
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Distribution of food and clean water to families</span>
+                                </li>
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Medical assistance and health education programs</span>
+                                </li>
+                                <li class="flex items-start p-2 bg-mission-tan/5 rounded-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                                    <i class="fas fa-check-circle text-mission-tan mt-1 mr-3"></i>
+                                    <span>Educational materials for children and schools</span>
+                                </li>
+                            </ul>
+
+                            <!-- Testimonial -->
+                            <div class="mt-8 p-4 bg-mission-brown/5 rounded-lg border-l-4 border-mission-tan italic text-mission-dark/80">
+                                "The mission team provided clean water for our village and taught us about Jesus. My children now have hope for a better future." — Mary Akol
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation Script -->
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delay {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .rotate-y-6 {
+            transform: rotateY(6deg);
+        }
+    </style>
+</section>
+
+<!-- Mission Diary -->
+<section class="py-24 bg-mission-cream/10 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 right-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(100% 0, 0 0, 100% 100%);"></div>
+    <div class="absolute bottom-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 100%, 100% 100%, 0 0);"></div>
+
+    <!-- Floating Shapes -->
+    <div class="absolute top-1/3 right-10 w-20 h-20 bg-mission-tan/10 rounded-full animate-float"></div>
+    <div class="absolute bottom-1/3 left-10 w-12 h-12 bg-mission-brown/10 rounded-full animate-float-delay"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">DAILY JOURNAL</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    Mission Diary
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                A day-by-day account of our transformative journey in Kapoeta, South Sudan, as we witnessed God's power at work.
+            </p>
+        </div>
+
+        <!-- Interactive Timeline -->
+        <div class="relative">
+            <!-- Timeline Line -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-mission-tan/30 hidden md:block"></div>
+
+            <div class="space-y-16 md:space-y-0 relative">
+                <!-- Day 1 -->
+                <div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 bg-mission-tan rounded-full z-10 hidden md:flex items-center justify-center">
+                        <div class="w-3 h-3 bg-mission-brown rounded-full"></div>
+                    </div>
+
+                    <!-- Date Badge (Left Side) -->
+                    <div class="md:text-right md:pr-12 mb-8 md:mb-0">
+                        <div class="inline-block md:float-right bg-mission-brown text-white px-4 py-2 rounded-lg shadow-md mb-4">
+                            <div class="font-bold">DAY 1</div>
+                            <div class="text-sm">July 14, 2024</div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 md:ml-auto transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <h3 class="text-2xl font-bold mb-4 text-mission-brown">Arrival in Kapoeta</h3>
+                            <p class="text-mission-dark mb-6 leading-relaxed">Our team arrived in Kapoeta and was warmly welcomed by local leaders. We spent the day setting up our base and preparing for the mission activities ahead.</p>
+
+                            <div class="flex items-center text-sm text-mission-dark/70 mb-4">
+                                <i class="fas fa-map-marker-alt text-mission-tan mr-2"></i>
+                                <span>Kapoeta Town Center</span>
+                            </div>
+
+                            <div class="relative overflow-hidden rounded-lg h-48 group">
+                                <img src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Day 1: Arrival" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-4 text-white">
+                                        <p class="font-bold">Team Arrival</p>
+                                        <p class="text-sm">Meeting with local leaders</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty Space (Right Side) -->
+                    <div class="hidden md:block"></div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 bg-mission-tan rounded-full z-10 hidden md:flex items-center justify-center">
+                        <div class="w-3 h-3 bg-mission-brown rounded-full"></div>
+                    </div>
+
+                    <!-- Empty Space (Left Side) -->
+                    <div class="hidden md:block"></div>
+
+                    <!-- Date Badge (Right Side) -->
+                    <div class="md:pl-12 mb-8 md:mb-0">
+                        <div class="inline-block bg-mission-brown text-white px-4 py-2 rounded-lg shadow-md mb-4">
+                            <div class="font-bold">DAY 2</div>
+                            <div class="text-sm">July 15, 2024</div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <h3 class="text-2xl font-bold mb-4 text-mission-brown">First Gospel Outreach</h3>
+                            <p class="text-mission-dark mb-6 leading-relaxed">We conducted our first gospel outreach event in the central market area of Kapoeta. Despite the challenges, many people gathered to hear the message, and 87 souls gave their lives to Christ.</p>
+
+                            <div class="flex items-center text-sm text-mission-dark/70 mb-4">
+                                <i class="fas fa-map-marker-alt text-mission-tan mr-2"></i>
+                                <span>Kapoeta Central Market</span>
+                            </div>
+
+                            <!-- Stats -->
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-mission-tan/10 p-3 rounded-lg text-center">
+                                    <div class="text-xl font-bold text-mission-brown">87</div>
+                                    <div class="text-xs text-mission-dark">Souls Saved</div>
+                                </div>
+                                <div class="bg-mission-tan/10 p-3 rounded-lg text-center">
+                                    <div class="text-xl font-bold text-mission-brown">300+</div>
+                                    <div class="text-xs text-mission-dark">Attendees</div>
+                                </div>
+                            </div>
+
+                            <div class="relative overflow-hidden rounded-lg h-48 group">
+                                <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Day 2: Gospel Outreach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-4 text-white">
+                                        <p class="font-bold">Market Outreach</p>
+                                        <p class="text-sm">Preaching to the gathered crowd</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 bg-mission-tan rounded-full z-10 hidden md:flex items-center justify-center">
+                        <div class="w-3 h-3 bg-mission-brown rounded-full"></div>
+                    </div>
+
+                    <!-- Date Badge (Left Side) -->
+                    <div class="md:text-right md:pr-12 mb-8 md:mb-0">
+                        <div class="inline-block md:float-right bg-mission-brown text-white px-4 py-2 rounded-lg shadow-md mb-4">
+                            <div class="font-bold">DAY 3</div>
+                            <div class="text-sm">July 16, 2024</div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 md:ml-auto transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <h3 class="text-2xl font-bold mb-4 text-mission-brown">Church Building Site Selection</h3>
+                            <p class="text-mission-dark mb-6 leading-relaxed">We met with local leaders to select a site for the church building in Nanimtoit. After prayer and consultation, a suitable location was identified, and initial preparations began.</p>
+
+                            <div class="flex items-center text-sm text-mission-dark/70 mb-4">
+                                <i class="fas fa-map-marker-alt text-mission-tan mr-2"></i>
+                                <span>Nanimtoit, Kapoeta North</span>
+                            </div>
+
+                            <!-- Quote -->
+                            <div class="p-4 bg-mission-brown/5 rounded-lg border-l-4 border-mission-tan italic text-mission-dark/80 mb-6">
+                                "This church will be a beacon of hope for the entire community."
+                            </div>
+
+                            <div class="relative overflow-hidden rounded-lg h-48 group">
+                                <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Day 3: Church Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-4 text-white">
+                                        <p class="font-bold">Site Selection</p>
+                                        <p class="text-sm">Meeting with community leaders</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty Space (Right Side) -->
+                    <div class="hidden md:block"></div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="md:grid md:grid-cols-2 md:gap-8 items-center relative">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-1/2 top-0 transform -translate-x-1/2 w-6 h-6 bg-mission-tan rounded-full z-10 hidden md:flex items-center justify-center">
+                        <div class="w-3 h-3 bg-mission-brown rounded-full"></div>
+                    </div>
+
+                    <!-- Empty Space (Left Side) -->
+                    <div class="hidden md:block"></div>
+
+                    <!-- Date Badge (Right Side) -->
+                    <div class="md:pl-12">
+                        <div class="inline-block bg-mission-brown text-white px-4 py-2 rounded-lg shadow-md mb-4">
+                            <div class="font-bold">DAY 4</div>
+                            <div class="text-sm">July 17, 2024</div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <h3 class="text-2xl font-bold mb-4 text-mission-brown">Outreach in Nanimtoit</h3>
+                            <p class="text-mission-dark mb-6 leading-relaxed">We took the message of Christ to the people of Nanimtoit, Kapoeta North. Despite heavy rain, the gospel was preached, and many souls were saved.</p>
+
+                            <div class="flex items-center text-sm text-mission-dark/70 mb-4">
+                                <i class="fas fa-map-marker-alt text-mission-tan mr-2"></i>
+                                <span>Nanimtoit Village Center</span>
+                            </div>
+
+                            <!-- Weather Challenge -->
+                            <div class="flex items-center p-3 bg-mission-tan/10 rounded-lg mb-6">
+                                <div class="w-10 h-10 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-cloud-rain text-mission-brown"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-mission-brown">Weather Challenge</div>
+                                    <div class="text-sm text-mission-dark">Heavy rain during the outreach</div>
+                                </div>
+                            </div>
+
+                            <div class="relative overflow-hidden rounded-lg h-48 group">
+                                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Day 4: Nanimtoit Outreach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                    <div class="p-4 text-white">
+                                        <p class="font-bold">Village Outreach</p>
+                                        <p class="text-sm">Preaching despite the rain</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline End Dot -->
+            <div class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-8 h-8 bg-mission-tan rounded-full z-10 hidden md:flex items-center justify-center">
+                <div class="w-4 h-4 bg-mission-brown rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- View Full Diary Button -->
+        <div class="text-center mt-16">
+            <a href="#" class="hero-button group">
+                <span>View Full Mission Diary</span>
+                <i class="fas fa-book-open ml-2 transform group-hover:scale-125 transition-transform duration-300"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24 bg-mission-brown relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Map Background" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
+    <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-mission-tan/10 rounded-full"></div>
+    <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-tan/5 rounded-full"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-white/10 text-mission-cream px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">TRANSFORMED LIVES</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-cream">
+                <span class="relative inline-block">
+                    Testimonials
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-cream/90 max-w-3xl mx-auto leading-relaxed">
+                Hear from those whose lives were transformed during our mission in Kapoeta, South Sudan.
+            </p>
+        </div>
+
+        <!-- Testimonial Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card group">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-mission-tan/20 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl relative overflow-hidden">
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-mission-tan/10 transform -translate-y-10 translate-x-10 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <!-- Quote Icon -->
+                        <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-quote-left text-mission-tan text-xl"></i>
+                        </div>
+
+                        <!-- Quote Text -->
+                        <p class="text-mission-cream mb-8 italic text-lg leading-relaxed">
+                            "I had never heard the gospel before Pastor Prince came to our village. Now I have given my life to Christ and am learning to read the Bible."
+                        </p>
+
+                        <!-- Person Info -->
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 bg-mission-tan/30 rounded-full flex items-center justify-center mr-4 flex-shrink-0 border-2 border-mission-tan/50">
+                                <span class="text-mission-cream font-bold text-xl">JL</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-mission-cream text-lg">John Lokwang</h4>
+                                <div class="flex items-center text-mission-tan text-sm">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Kapoeta, South Sudan</span>
+                                </div>
+                                <div class="flex items-center text-mission-tan/80 text-xs mt-1">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span>Converted: July 15, 2024</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decorative Quote -->
+                        <div class="absolute bottom-4 right-4 text-6xl text-mission-tan/10 font-serif">"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card group">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-mission-tan/20 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl relative overflow-hidden">
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-mission-tan/10 transform -translate-y-10 translate-x-10 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <!-- Quote Icon -->
+                        <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-quote-left text-mission-tan text-xl"></i>
+                        </div>
+
+                        <!-- Quote Text -->
+                        <p class="text-mission-cream mb-8 italic text-lg leading-relaxed">
+                            "The mission team provided clean water for our village and taught us about Jesus. My children now have hope for a better future."
+                        </p>
+
+                        <!-- Person Info -->
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 bg-mission-tan/30 rounded-full flex items-center justify-center mr-4 flex-shrink-0 border-2 border-mission-tan/50">
+                                <span class="text-mission-cream font-bold text-xl">MA</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-mission-cream text-lg">Mary Akol</h4>
+                                <div class="flex items-center text-mission-tan text-sm">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Nanimtoit, South Sudan</span>
+                                </div>
+                                <div class="flex items-center text-mission-tan/80 text-xs mt-1">
+                                    <i class="fas fa-home mr-2"></i>
+                                    <span>Mother of 3 children</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decorative Quote -->
+                        <div class="absolute bottom-4 right-4 text-6xl text-mission-tan/10 font-serif">"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card group">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-mission-tan/20 h-full transform transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl relative overflow-hidden">
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-mission-tan/10 transform -translate-y-10 translate-x-10 rotate-45 group-hover:bg-mission-tan/20 transition-all duration-500"></div>
+
+                    <div class="relative z-10">
+                        <!-- Quote Icon -->
+                        <div class="w-12 h-12 bg-mission-tan/20 rounded-full flex items-center justify-center mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:bg-mission-tan/30">
+                            <i class="fas fa-quote-left text-mission-tan text-xl"></i>
+                        </div>
+
+                        <!-- Quote Text -->
+                        <p class="text-mission-cream mb-8 italic text-lg leading-relaxed">
+                            "Pastor Prince's mission has strengthened our local church. We now have more members and a vision for building a permanent church structure."
+                        </p>
+
+                        <!-- Person Info -->
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 bg-mission-tan/30 rounded-full flex items-center justify-center mr-4 flex-shrink-0 border-2 border-mission-tan/50">
+                                <span class="text-mission-cream font-bold text-xl">PT</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-mission-cream text-lg">Pastor Thomas</h4>
+                                <div class="flex items-center text-mission-tan text-sm">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>Kapoeta North, South Sudan</span>
+                                </div>
+                                <div class="flex items-center text-mission-tan/80 text-xs mt-1">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>Community Leader</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decorative Quote -->
+                        <div class="absolute bottom-4 right-4 text-6xl text-mission-tan/10 font-serif">"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+            <div class="bg-white/10 p-6 rounded-xl text-center border border-mission-tan/20 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-users text-mission-tan text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-cream block mb-1">1,138</span>
+                <p class="text-mission-tan">Souls Saved</p>
+            </div>
+
+            <div class="bg-white/10 p-6 rounded-xl text-center border border-mission-tan/20 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-church text-mission-tan text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-cream block mb-1">1</span>
+                <p class="text-mission-tan">Church Started</p>
+            </div>
+
+            <div class="bg-white/10 p-6 rounded-xl text-center border border-mission-tan/20 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-hands-helping text-mission-tan text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-cream block mb-1">500+</span>
+                <p class="text-mission-tan">Families Helped</p>
+            </div>
+
+            <div class="bg-white/10 p-6 rounded-xl text-center border border-mission-tan/20 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div class="w-16 h-16 bg-mission-tan/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <i class="fas fa-calendar-alt text-mission-tan text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-mission-cream block mb-1">14</span>
+                <p class="text-mission-tan">Days of Ministry</p>
+            </div>
+        </div>
+
+        <!-- Scripture Quote -->
+        <div class="mt-20 text-center max-w-3xl mx-auto">
+            <div class="text-6xl text-mission-tan/30 mb-4">"</div>
+            <p class="text-2xl italic text-mission-cream mb-6 leading-relaxed">
+                And this gospel of the kingdom will be preached in the whole world as a testimony to all nations, and then the end will come.
+            </p>
+            <div class="text-mission-tan font-bold">Matthew 24:14</div>
+        </div>
+    </div>
+</section>
+
+<!-- Photo Gallery -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 right-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(100% 0, 0 0, 100% 100%);"></div>
+    <div class="absolute bottom-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 100%, 100% 100%, 0 0);"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">VISUAL JOURNEY</span>
+                <div class="absolute inset-0 bg-mission-tan/20 rounded-full animate-ping opacity-75 animation-delay-2000"></div>
+            </div>
+
+            <h2 class="text-5xl md:text-6xl font-bold mb-8 text-mission-brown">
+                <span class="relative inline-block">
+                    Photo Gallery
+                    <div class="absolute -bottom-3 left-0 w-full h-1 bg-mission-tan"></div>
+                </span>
+            </h2>
+
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">
+                Capturing powerful moments from our transformative mission in Kapoeta, South Sudan.
+            </p>
+        </div>
+
+        <!-- Gallery Grid with Masonry Effect -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-auto">
+            <!-- Image 1 - Large -->
+            <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gospel Outreach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="font-bold text-xl">Gospel Outreach</h3>
+                        <p class="text-sm text-mission-cream">Kapoeta Central Market</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Prayer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Team Prayer</h3>
+                        <p class="text-xs text-mission-cream">Morning Devotion</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Church Site</h3>
+                        <p class="text-xs text-mission-cream">Nanimtoit</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Arrival" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Team Arrival</h3>
+                        <p class="text-xs text-mission-cream">Kapoeta Airport</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Distribution" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Water Distribution</h3>
+                        <p class="text-xs text-mission-cream">Nanimtoit Village</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 6 - Large -->
+            <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1489657780376-e0d8630c4bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Gathering" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-6 text-white">
+                        <h3 class="font-bold text-xl">Community Gathering</h3>
+                        <p class="text-sm text-mission-cream">Kapoeta North</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 7 -->
+            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Children's Ministry" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4 text-white">
+                        <h3 class="font-bold">Children's Ministry</h3>
+                        <p class="text-xs text-mission-cream">Kapoeta Village</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View More Button -->
+        <div class="text-center mt-16">
+            <a href="{% url 'media' %}" class="hero-button group">
+                <span>View Full Gallery</span>
+                <i class="fas fa-images ml-2 transform group-hover:scale-125 transition-transform duration-300"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-24 bg-gradient-to-b from-white to-mission-cream/20 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-20 bg-mission-brown/5" style="clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+    <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-mission-tan/10 rounded-full"></div>
+    <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-tan/5 rounded-full"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="bg-gradient-to-r from-mission-brown to-mission-brown/90 rounded-2xl overflow-hidden shadow-2xl border border-mission-tan/20 transform transition-all duration-500 hover:shadow-3xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <!-- Content Side -->
+                <div class="p-12 md:p-16 relative">
+                    <!-- Decorative Corner Elements -->
+                    <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-mission-tan/30 rounded-tl-xl"></div>
+                    <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-mission-tan/30 rounded-br-xl"></div>
+
+                    <div class="relative z-10">
+                        <div class="inline-block mb-6 relative">
+                            <span class="bg-white/10 text-mission-cream px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">JOIN THE MISSION</span>
+                        </div>
+
+                        <h2 class="text-4xl md:text-5xl font-bold mb-8 text-mission-cream leading-tight">
+                            Support Our Next Mission
+                        </h2>
+
+                        <p class="text-xl text-mission-cream/90 mb-10 leading-relaxed">
+                            Help us continue our missionary work in South Sudan and beyond. Your support makes a difference in transforming lives through the gospel of Jesus Christ.
+                        </p>
+
+                        <!-- Impact Stats -->
+                        <div class="grid grid-cols-2 gap-6 mb-10">
+                            <div class="bg-white/10 p-4 rounded-xl text-center border border-mission-tan/20">
+                                <div class="text-2xl font-bold text-mission-cream">$50</div>
+                                <div class="text-sm text-mission-tan">Provides Bibles for 10 new believers</div>
+                            </div>
+                            <div class="bg-white/10 p-4 rounded-xl text-center border border-mission-tan/20">
+                                <div class="text-2xl font-bold text-mission-cream">$100</div>
+                                <div class="text-sm text-mission-tan">Supplies clean water for a village</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="{% url 'contact' %}" class="hero-button group">
+                                <span>Donate Now</span>
+                                <i class="fas fa-heart ml-2 transform group-hover:scale-125 transition-transform duration-300"></i>
+                            </a>
+                            <a href="{% url 'contact' %}" class="hero-button outline group">
+                                <span>Contact Us</span>
+                                <i class="fas fa-envelope ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Side -->
+                <div class="relative h-full min-h-[400px]">
+                    <!-- Main Image -->
+                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Support Our Mission" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-mission-brown/20"></div>
+
+                    <!-- Overlay Content -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <div class="w-20 h-20 bg-mission-tan/30 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-white/50">
+                                <i class="fas fa-globe-africa text-white text-3xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Next Mission</h3>
+                            <p class="text-mission-cream">December 2024</p>
+                        </div>
+                    </div>
+
+                    <!-- Quote Overlay -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-mission-brown to-transparent p-6">
+                        <p class="text-white italic text-lg">"The harvest is plentiful, but the laborers are few."</p>
+                        <p class="text-mission-tan font-bold mt-2">— Matthew 9:37</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

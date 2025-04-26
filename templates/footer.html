@@ -1,0 +1,263 @@
+<!-- Modern Corporate Footer -->
+<footer class="relative pt-20 pb-10 overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-gradient-to-b from-mission-brown to-mission-dark"></div>
+    <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
+    <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-mission-tan/10 rounded-full"></div>
+    <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-tan/5 rounded-full"></div>
+    
+    <!-- World Map Background -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Map Background" class="w-full h-full object-cover">
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Footer Top with Logo and Newsletter -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-16 pb-16 border-b border-mission-cream/10">
+            <!-- Logo and Tagline -->
+            <div class="mb-10 md:mb-0 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start mb-4">
+                    <div class="w-16 h-16 bg-mission-tan rounded-full flex items-center justify-center mr-4">
+                        <span class="text-mission-brown text-2xl font-bold">PP</span>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-mission-cream">Pastor Prince</h2>
+                        <p class="text-mission-cream/70 text-sm">Transforming Lives Since 1995</p>
+                    </div>
+                </div>
+                <p class="text-mission-cream/80 max-w-md">Pioneer missionary transforming lives through the gospel of Jesus Christ across Africa and beyond.</p>
+            </div>
+            
+            <!-- Newsletter Form -->
+            <div class="w-full md:w-auto">
+                <h3 class="text-xl font-bold mb-4 text-mission-cream text-center md:text-left">Subscribe to Our Newsletter</h3>
+                <form class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Your Email Address" class="px-6 py-3 rounded-full border-none bg-white/10 text-mission-cream placeholder-mission-cream/50 focus:ring-2 focus:ring-mission-tan/50 outline-none w-full sm:w-64">
+                    <button type="submit" class="bg-mission-tan hover:bg-white text-mission-brown font-bold py-3 px-6 rounded-full transition duration-300 whitespace-nowrap">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Footer Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-mission-cream mb-16">
+            <!-- About Column -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-info text-mission-tan"></i>
+                    </span>
+                    About Us
+                </h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="{% url 'about' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Our Story</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Pastor Prince</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Our Vision</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Testimonials</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Missionary Work Column -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-globe-africa text-mission-tan"></i>
+                    </span>
+                    Mission Areas
+                </h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="{% url 'missionary_work' %}#kenya" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Kenya</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'missionary_work' %}#south-sudan" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">South Sudan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'missionary_work' %}#rwanda" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Rwanda</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'missionary_work' %}#kenya" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Turkana</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'missionary_work' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Other Countries</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Quick Links Column -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-link text-mission-tan"></i>
+                    </span>
+                    Quick Links
+                </h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="{% url 'home' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'latest_mission' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Latest Mission</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'media' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Media Gallery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Contact Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Donate</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Contact Column -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-mission-tan/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-envelope text-mission-tan"></i>
+                    </span>
+                    Contact Us
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-mission-tan/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                            <i class="fas fa-map-marker-alt text-mission-tan"></i>
+                        </div>
+                        <span>RCCG Solution Centre, Nairobi, Kenya</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-mission-tan/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                            <i class="fas fa-phone text-mission-tan"></i>
+                        </div>
+                        <span>+254 123 456 789</span>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-mission-tan/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                            <i class="fas fa-envelope text-mission-tan"></i>
+                        </div>
+                        <span>info@pastorprince.org</span>
+                    </li>
+                </ul>
+                
+                <!-- Social Media Icons -->
+                <div class="mt-6">
+                    <h4 class="text-sm font-bold mb-4 text-mission-cream/70">FOLLOW US</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 bg-mission-tan/10 hover:bg-mission-tan/30 rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-facebook-f text-mission-tan"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-mission-tan/10 hover:bg-mission-tan/30 rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-twitter text-mission-tan"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-mission-tan/10 hover:bg-mission-tan/30 rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-instagram text-mission-tan"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-mission-tan/10 hover:bg-mission-tan/30 rounded-full flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-youtube text-mission-tan"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="border-t border-mission-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col md:flex-row items-center gap-2 mb-4 md:mb-0">
+                <p class="text-mission-cream/70 text-sm">&copy; {% now "Y" %} Pastor Prince Obasi-Ike. All rights reserved.</p>
+                <span class="hidden md:inline text-mission-cream/40">|</span>
+                <p class="text-mission-cream/70 text-sm">Developed by <a href="#" class="text-mission-tan hover:text-white transition-colors duration-300">Codegx Technology</a></p>
+            </div>
+            
+            <!-- Bottom Links -->
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <a href="#" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Privacy Policy</a>
+                <a href="#" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Terms of Service</a>
+                <a href="#" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Cookie Policy</a>
+                <a href="#" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Sitemap</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 z-50 opacity-0 pointer-events-none">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <script>
+        // Back to Top Button
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTopButton.classList.add('opacity-100');
+                    backToTopButton.classList.remove('opacity-0');
+                    backToTopButton.classList.remove('pointer-events-none');
+                } else {
+                    backToTopButton.classList.remove('opacity-100');
+                    backToTopButton.classList.add('opacity-0');
+                    backToTopButton.classList.add('pointer-events-none');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</footer>
