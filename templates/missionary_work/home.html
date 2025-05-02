@@ -1,14 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'shared/base.html' %}
 
 {% block title %}Pastor Prince Obasi-Ike | Home{% endblock %}
 
 {% block extra_css %}
 <style>
-    /* Hero Slider Styles */
+    /* Hero Slider Styles - Mobile First Approach */
     .hero-slider {
         position: relative;
-        height: 100vh;
-        min-height: 700px;
+        height: 90vh; /* Reduced height for mobile */
+        min-height: 500px; /* Smaller minimum height for mobile */
         overflow: hidden;
     }
 
@@ -36,7 +36,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom, rgba(58, 41, 33, 0.5), rgba(58, 41, 33, 0.7));
+        background: linear-gradient(to bottom, rgba(58, 41, 33, 0.7), rgba(58, 41, 33, 0.85)); /* Darker overlay for better text readability on mobile */
         z-index: 3;
     }
 
@@ -50,34 +50,41 @@
         align-items: center;
         color: #fff;
         text-align: center;
-        padding: 0 20px;
+        padding: 0 16px; /* Smaller padding for mobile */
     }
 
     .hero-title {
-        font-size: 4rem;
+        font-size: 2.25rem; /* Smaller font size for mobile */
         font-weight: 700;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem; /* Reduced margin for mobile */
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.4);
         animation: fadeInDown 1.5s ease-out;
         color: #fff;
+        line-height: 1.2; /* Improved line height for readability */
     }
 
     .hero-subtitle {
-        font-size: 1.5rem;
-        max-width: 800px;
-        margin-bottom: 2rem;
+        font-size: 1.125rem; /* Smaller font size for mobile */
+        max-width: 100%; /* Full width on mobile */
+        margin-bottom: 1.5rem; /* Reduced margin for mobile */
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.4);
         animation: fadeInUp 1.5s ease-out;
         color: #fff;
+        line-height: 1.5; /* Improved line height for readability */
     }
 
     .hero-buttons {
         animation: fadeIn 2s ease-out;
+        display: flex;
+        flex-direction: column; /* Stack buttons on mobile */
+        gap: 0.75rem; /* Space between stacked buttons */
+        width: 100%; /* Full width on mobile */
+        max-width: 300px; /* Limit maximum width */
     }
 
     .hero-scroll-indicator {
         position: absolute;
-        bottom: 30px;
+        bottom: 20px; /* Moved up for mobile */
         left: 50%;
         transform: translateX(-50%);
         z-index: 5;
@@ -86,22 +93,22 @@
 
     .hero-scroll-indicator i {
         color: #d4a76a;
-        font-size: 2rem;
+        font-size: 1.5rem; /* Smaller icon for mobile */
     }
 
     .hero-slider-nav {
         position: absolute;
-        bottom: 30px;
+        bottom: 20px; /* Moved up for mobile */
         left: 50%;
         transform: translateX(-50%);
         z-index: 5;
         display: flex;
-        gap: 10px;
+        gap: 8px; /* Smaller gap for mobile */
     }
 
     .hero-slider-dot {
-        width: 12px;
-        height: 12px;
+        width: 10px; /* Smaller dots for mobile */
+        height: 10px;
         border-radius: 50%;
         background-color: rgba(255, 255, 255, 0.5);
         cursor: pointer;
@@ -114,14 +121,16 @@
     }
 
     .hero-stats {
-        position: absolute;
-        bottom: 80px;
-        left: 0;
+        position: relative; /* Changed from absolute for mobile */
+        bottom: auto;
+        left: auto;
         width: 100%;
         z-index: 5;
-        display: flex;
-        justify-content: center;
-        gap: 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+        gap: 16px; /* Smaller gap for mobile */
+        margin-top: 2rem; /* Add margin for spacing */
+        margin-bottom: 3rem; /* Space for slider nav */
     }
 
     .hero-stat {
@@ -133,71 +142,25 @@
     }
 
     .hero-stat-number {
-        font-size: 2.5rem;
+        font-size: 1.75rem; /* Smaller font size for mobile */
         font-weight: 700;
         color: #d4a76a;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem; /* Reduced margin for mobile */
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
     .hero-stat-label {
-        font-size: 1rem;
+        font-size: 0.875rem; /* Smaller font size for mobile */
         text-transform: uppercase;
         letter-spacing: 1px;
     }
 
+    /* Mobile-first approach: Hide floating cards by default */
     .floating-mission-card {
-        position: absolute;
-        top: 50%;
-        right: 5%;
-        transform: translateY(-50%);
-        z-index: 5;
-        width: 300px;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        animation: floatIn 1.5s ease-out;
         display: none;
     }
 
-    .floating-mission-card.active {
-        display: block;
-    }
-
-    .floating-mission-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #3a2921;
-        margin-bottom: 10px;
-    }
-
-    .floating-mission-text {
-        color: #5d534a;
-        margin-bottom: 15px;
-    }
-
-    .floating-mission-link {
-        display: inline-flex;
-        align-items: center;
-        color: #d4a76a;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-
-    .floating-mission-link:hover {
-        color: #3a2921;
-    }
-
-    .floating-mission-link i {
-        margin-left: 5px;
-        transition: transform 0.3s ease;
-    }
-
-    .floating-mission-link:hover i {
-        transform: translateX(5px);
-    }
-
+    /* Animations */
     @keyframes fadeInDown {
         from {
             opacity: 0;
@@ -252,47 +215,200 @@
         }
     }
 
-    @media (max-width: 768px) {
+    /* Responsive Breakpoints - Progressive Enhancement */
+    @media (min-width: 640px) {
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 1.25rem;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            max-width: 80%;
+        }
+
+        .hero-buttons {
+            flex-direction: row;
+            justify-content: center;
+            width: auto;
+            max-width: none;
         }
 
         .hero-stats {
-            flex-wrap: wrap;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns on small tablets */
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .hero-slider {
+            height: 100vh;
+            min-height: 650px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.375rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            position: absolute;
+            bottom: 80px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .hero-stat-number {
+            font-size: 2.25rem;
+        }
+
+        .hero-stat-label {
+            font-size: 1rem;
+        }
+
+        .hero-scroll-indicator {
+            bottom: 30px;
+        }
+
+        .hero-scroll-indicator i {
+            font-size: 1.75rem;
+        }
+
+        .hero-slider-nav {
+            bottom: 30px;
+        }
+
+        /* Show floating cards on tablet and above */
+        .floating-mission-card {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            z-index: 5;
+            width: 280px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: floatIn 1.5s ease-out;
+            display: none;
+        }
+
+        .floating-mission-card.active {
+            display: block;
+        }
+
+        .floating-mission-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #3a2921;
+            margin-bottom: 10px;
+        }
+
+        .floating-mission-text {
+            color: #5d534a;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .floating-mission-link {
+            display: inline-flex;
+            align-items: center;
+            color: #d4a76a;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .floating-mission-link:hover {
+            color: #3a2921;
+        }
+
+        .floating-mission-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-mission-link:hover i {
+            transform: translateX(5px);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero-title {
+            font-size: 4rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
         }
 
         .floating-mission-card {
-            display: none !important;
+            width: 300px;
+            right: 8%;
         }
 
-        .hero-slider {
-            min-height: 600px;
+        .floating-mission-title {
+            font-size: 1.5rem;
+        }
+
+        .floating-mission-text {
+            font-size: 1rem;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
         }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section with Slider -->
+<!-- Hero Section with Slider - Mobile First -->
 <section class="hero-slider">
     <!-- Slide 1 -->
     <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-        <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(58, 41, 33, 0.6), rgba(58, 41, 33, 0.8));"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">Pastor Prince Obasi-Ike</h1>
-            <p class="hero-subtitle" style="text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);">Pioneer missionary transforming lives through the gospel of Jesus Christ across Africa since 1995.</p>
-            <div class="hero-buttons mt-8">
-                <a href="{% url 'latest_mission' %}" class="hero-button">Latest Mission in South Sudan</a>
-                <a href="{% url 'about' %}" class="hero-button outline">Learn More</a>
+            <h1 class="hero-title">Pastor Prince Obasi-Ike</h1>
+            <p class="hero-subtitle">Pioneer missionary transforming lives through the gospel of Jesus Christ across Africa since 1995.</p>
+            <div class="hero-buttons">
+                <a href="{% url 'latest_mission' %}" class="hero-button w-full text-center">Latest Mission</a>
+                <a href="{% url 'about' %}" class="hero-button outline w-full text-center">Learn More</a>
+            </div>
+
+            <!-- Hero Statistics - Mobile Optimized -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">30+</div>
+                    <div class="hero-stat-label">Years of Service</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">10+</div>
+                    <div class="hero-stat-label">Countries</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">10,000+</div>
+                    <div class="hero-stat-label">Souls Saved</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">50+</div>
+                    <div class="hero-stat-label">Churches Built</div>
+                </div>
             </div>
         </div>
 
-        <!-- Floating Mission Card for Slide 1 -->
+        <!-- Floating Mission Card for Slide 1 - Hidden on Mobile, Visible on Tablet+ -->
         <div class="floating-mission-card active">
             <h3 class="floating-mission-title">South Sudan Mission</h3>
             <p class="floating-mission-text">1,138 souls saved during our recent mission to Kapoeta, South Sudan in April 2025.</p>
@@ -304,17 +420,37 @@
 
     <!-- Slide 2 -->
     <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-        <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(58, 41, 33, 0.6), rgba(58, 41, 33, 0.8));"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">Transforming Lives in Kenya</h1>
-            <p class="hero-subtitle" style="text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);">Establishing churches, providing education, and mentoring communities in Kenya since 1995.</p>
-            <div class="hero-buttons mt-8">
-                <a href="{% url 'missionary_work' %}#kenya" class="hero-button">Kenya Missions</a>
-                <a href="{% url 'about' %}" class="hero-button outline">Learn More</a>
+            <h1 class="hero-title">Transforming Lives in Kenya</h1>
+            <p class="hero-subtitle">Establishing churches, providing education, and mentoring communities in Kenya since 1995.</p>
+            <div class="hero-buttons">
+                <a href="{% url 'missionary_work' %}#kenya" class="hero-button w-full text-center">Kenya Missions</a>
+                <a href="{% url 'about' %}" class="hero-button outline w-full text-center">Learn More</a>
+            </div>
+
+            <!-- Hero Statistics - Mobile Optimized -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">30+</div>
+                    <div class="hero-stat-label">Years of Service</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">10+</div>
+                    <div class="hero-stat-label">Countries</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">10,000+</div>
+                    <div class="hero-stat-label">Souls Saved</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">50+</div>
+                    <div class="hero-stat-label">Churches Built</div>
+                </div>
             </div>
         </div>
 
-        <!-- Floating Mission Card for Slide 2 -->
+        <!-- Floating Mission Card for Slide 2 - Hidden on Mobile, Visible on Tablet+ -->
         <div class="floating-mission-card">
             <h3 class="floating-mission-title">Turkana Initiatives</h3>
             <p class="floating-mission-text">Mentoring programs, water projects, and educational scholarships for the marginalized Turkana region.</p>
@@ -326,17 +462,37 @@
 
     <!-- Slide 3 -->
     <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1504870712357-65ea720d6078?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-        <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(58, 41, 33, 0.6), rgba(58, 41, 33, 0.8));"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">Healing and Reconciliation</h1>
-            <p class="hero-subtitle" style="text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);">Ministering to genocide survivors in Rwanda through prayer, counseling, and community support.</p>
-            <div class="hero-buttons mt-8">
-                <a href="{% url 'missionary_work' %}#rwanda" class="hero-button">Rwanda Missions</a>
-                <a href="{% url 'about' %}" class="hero-button outline">Learn More</a>
+            <h1 class="hero-title">Healing and Reconciliation</h1>
+            <p class="hero-subtitle">Ministering to genocide survivors in Rwanda through prayer, counseling, and community support.</p>
+            <div class="hero-buttons">
+                <a href="{% url 'missionary_work' %}#rwanda" class="hero-button w-full text-center">Rwanda Missions</a>
+                <a href="{% url 'about' %}" class="hero-button outline w-full text-center">Learn More</a>
+            </div>
+
+            <!-- Hero Statistics - Mobile Optimized -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">30+</div>
+                    <div class="hero-stat-label">Years of Service</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">10+</div>
+                    <div class="hero-stat-label">Countries</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">10,000+</div>
+                    <div class="hero-stat-label">Souls Saved</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">50+</div>
+                    <div class="hero-stat-label">Churches Built</div>
+                </div>
             </div>
         </div>
 
-        <!-- Floating Mission Card for Slide 3 -->
+        <!-- Floating Mission Card for Slide 3 - Hidden on Mobile, Visible on Tablet+ -->
         <div class="floating-mission-card">
             <h3 class="floating-mission-title">Rwanda Ministry</h3>
             <p class="floating-mission-text">Providing spiritual and emotional support to widowed survivors of the genocide through prayer and counseling.</p>
@@ -346,30 +502,14 @@
         </div>
     </div>
 
-    <!-- Hero Statistics -->
-    <div class="hero-stats">
-        <div class="hero-stat">
-            <div class="hero-stat-number">30+</div>
-            <div class="hero-stat-label">Years of Service</div>
-        </div>
-        <div class="hero-stat">
-            <div class="hero-stat-number">10+</div>
-            <div class="hero-stat-label">Countries</div>
-        </div>
-        <div class="hero-stat">
-            <div class="hero-stat-number">10,000+</div>
-            <div class="hero-stat-label">Souls Saved</div>
-        </div>
-    </div>
-
-    <!-- Slider Navigation Dots -->
+    <!-- Slider Navigation Dots - Touch Friendly -->
     <div class="hero-slider-nav">
         <div class="hero-slider-dot active" data-slide="0"></div>
         <div class="hero-slider-dot" data-slide="1"></div>
         <div class="hero-slider-dot" data-slide="2"></div>
     </div>
 
-    <!-- Scroll Indicator -->
+    <!-- Scroll Indicator - Mobile Optimized -->
     <div class="hero-scroll-indicator">
         <i class="fas fa-chevron-down"></i>
     </div>
@@ -447,67 +587,69 @@
     });
 </script>
 
-<!-- Latest Mission Section -->
-<section class="py-20 bg-gray-50 relative overflow-hidden">
-    <!-- Decorative Elements -->
+<!-- Latest Mission Section - Mobile First -->
+<section class="py-12 sm:py-16 md:py-20 bg-gray-50 relative overflow-hidden">
+    <!-- Decorative Elements - Hidden on small mobile, visible on larger screens -->
     <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent"></div>
-    <div class="absolute -top-10 -right-10 w-40 h-40 bg-mission-tan/10 rounded-full"></div>
-    <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-brown/5 rounded-full"></div>
+    <div class="absolute -top-10 -right-10 w-40 h-40 bg-mission-tan/10 rounded-full hidden sm:block"></div>
+    <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-brown/5 rounded-full hidden sm:block"></div>
 
     <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center mb-16 max-w-4xl mx-auto">
-            <div class="inline-block mb-4">
-                <span class="bg-mission-tan/20 text-mission-brown px-4 py-1 rounded-full text-sm font-bold tracking-wider">APRIL 2025</span>
+        <div class="text-center mb-8 sm:mb-12 md:mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-3 sm:mb-4">
+                <span class="bg-mission-tan/20 text-mission-brown px-3 py-1 sm:px-4 rounded-full text-xs sm:text-sm font-bold tracking-wider">APRIL 2025</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-mission-brown">Latest Mission: South Sudan</h2>
-            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">We thank God for <span class="text-mission-brown font-bold">1,138 souls</span> that received salvation during our mission activities in Kapoeta, South Sudan from April 14th to 20th, 2025.</p>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-mission-brown">Latest Mission: South Sudan</h2>
+            <p class="text-base sm:text-lg md:text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed px-2">We thank God for <span class="text-mission-brown font-bold">1,138 souls</span> that received salvation during our mission activities in Kapoeta, South Sudan from April 14th to 20th, 2025.</p>
 
-            <!-- Mission Stats -->
-            <div class="flex flex-wrap justify-center gap-8 mt-10">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-mission-brown text-white rounded-full flex items-center justify-center mr-3">
-                        <i class="fas fa-users"></i>
+            <!-- Mission Stats - Mobile Optimized Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10">
+                <div class="flex items-center justify-center sm:justify-start">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-brown text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-users text-sm sm:text-base"></i>
                     </div>
                     <div class="text-left">
-                        <span class="block text-2xl font-bold text-mission-brown">1,138</span>
-                        <span class="text-sm text-mission-dark">Souls Saved</span>
+                        <span class="block text-xl sm:text-2xl font-bold text-mission-brown">1,138</span>
+                        <span class="text-xs sm:text-sm text-mission-dark">Souls Saved</span>
                     </div>
                 </div>
 
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-mission-brown text-white rounded-full flex items-center justify-center mr-3">
-                        <i class="fas fa-calendar-alt"></i>
+                <div class="flex items-center justify-center sm:justify-start">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-brown text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-calendar-alt text-sm sm:text-base"></i>
                     </div>
                     <div class="text-left">
-                        <span class="block text-2xl font-bold text-mission-brown">7 Days</span>
-                        <span class="text-sm text-mission-dark">Mission Duration</span>
+                        <span class="block text-xl sm:text-2xl font-bold text-mission-brown">7 Days</span>
+                        <span class="text-xs sm:text-sm text-mission-dark">Mission Duration</span>
                     </div>
                 </div>
 
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-mission-brown text-white rounded-full flex items-center justify-center mr-3">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="flex items-center justify-center sm:justify-start">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-brown text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-map-marker-alt text-sm sm:text-base"></i>
                     </div>
                     <div class="text-left">
-                        <span class="block text-2xl font-bold text-mission-brown">Kapoeta</span>
-                        <span class="text-sm text-mission-dark">South Sudan</span>
+                        <span class="block text-xl sm:text-2xl font-bold text-mission-brown">Kapoeta</span>
+                        <span class="text-xs sm:text-sm text-mission-dark">South Sudan</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+        <!-- Mission Cards - Mobile First Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+            <!-- Card 1 -->
+            <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
                 <div class="mission-image overflow-hidden rounded-t-lg">
-                    <img src="https://images.unsplash.com/photo-1541802645635-11f2286a7482?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Gospel Outreach" class="w-full h-60 object-cover transition-transform duration-700 hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1541802645635-11f2286a7482?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Gospel Outreach" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
                 </div>
-                <div class="mission-content p-6 bg-white rounded-b-lg">
-                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-10 mb-4 shadow-lg border-4 border-white">
-                        <i class="fas fa-bullhorn text-xl"></i>
+                <div class="mission-content p-4 sm:p-6 bg-white rounded-b-lg">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-8 sm:-mt-10 mb-3 sm:mb-4 shadow-lg border-4 border-white">
+                        <i class="fas fa-bullhorn text-base sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-mission-brown">Gospel Outreach</h3>
-                    <p class="text-mission-dark mb-4 leading-relaxed">Not even the heavy rain could stop the preaching of the gospel in Kapoeta. Many souls were saved through our outreach activities in multiple communities.</p>
-                    <a href="{% url 'latest_mission' %}" class="mission-link group">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-mission-brown">Gospel Outreach</h3>
+                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">Not even the heavy rain could stop the preaching of the gospel in Kapoeta. Many souls were saved through our outreach activities in multiple communities.</p>
+                    <a href="{% url 'latest_mission' %}" class="mission-link group inline-flex items-center">
                         <span class="relative">
                             Read More
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-mission-tan group-hover:w-full transition-all duration-300"></span>
@@ -517,17 +659,18 @@
                 </div>
             </div>
 
-            <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+            <!-- Card 2 -->
+            <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
                 <div class="mission-image overflow-hidden rounded-t-lg">
-                    <img src="https://images.unsplash.com/photo-1438804339143-a0d6a81276d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Church Building" class="w-full h-60 object-cover transition-transform duration-700 hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1438804339143-a0d6a81276d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Church Building" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
                 </div>
-                <div class="mission-content p-6 bg-white rounded-b-lg">
-                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-10 mb-4 shadow-lg border-4 border-white">
-                        <i class="fas fa-church text-xl"></i>
+                <div class="mission-content p-4 sm:p-6 bg-white rounded-b-lg">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-8 sm:-mt-10 mb-3 sm:mb-4 shadow-lg border-4 border-white">
+                        <i class="fas fa-church text-base sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-mission-brown">Church Building</h3>
-                    <p class="text-mission-dark mb-4 leading-relaxed">We started the church building construction in Nanimtoit, Kapoeta North, to provide a permanent place of worship for the local community.</p>
-                    <a href="{% url 'latest_mission' %}" class="mission-link group">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-mission-brown">Church Building</h3>
+                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">We started the church building construction in Nanimtoit, Kapoeta North, to provide a permanent place of worship for the local community.</p>
+                    <a href="{% url 'latest_mission' %}" class="mission-link group inline-flex items-center">
                         <span class="relative">
                             Read More
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-mission-tan group-hover:w-full transition-all duration-300"></span>
@@ -537,17 +680,18 @@
                 </div>
             </div>
 
-            <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+            <!-- Card 3 -->
+            <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl sm:col-span-2 lg:col-span-1">
                 <div class="mission-image overflow-hidden rounded-t-lg">
-                    <img src="https://images.unsplash.com/photo-1469571486292-b53601010376?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Community Support" class="w-full h-60 object-cover transition-transform duration-700 hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1469571486292-b53601010376?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Community Support" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
                 </div>
-                <div class="mission-content p-6 bg-white rounded-b-lg">
-                    <div class="w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-10 mb-4 shadow-lg border-4 border-white">
-                        <i class="fas fa-hands-helping text-xl"></i>
+                <div class="mission-content p-4 sm:p-6 bg-white rounded-b-lg">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-8 sm:-mt-10 mb-3 sm:mb-4 shadow-lg border-4 border-white">
+                        <i class="fas fa-hands-helping text-base sm:text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-mission-brown">Community Support</h3>
-                    <p class="text-mission-dark mb-4 leading-relaxed">Our mission team provided essential resources, clean water, and medical assistance to the people of Kapoeta, showing God's love in practical ways.</p>
-                    <a href="{% url 'latest_mission' %}" class="mission-link group">
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-mission-brown">Community Support</h3>
+                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">Our mission team provided essential resources, clean water, and medical assistance to the people of Kapoeta, showing God's love in practical ways.</p>
+                    <a href="{% url 'latest_mission' %}" class="mission-link group inline-flex items-center">
                         <span class="relative">
                             Read More
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-mission-tan group-hover:w-full transition-all duration-300"></span>
@@ -558,8 +702,8 @@
             </div>
         </div>
 
-        <div class="text-center mt-16">
-            <a href="{% url 'latest_mission' %}" class="hero-button inline-flex items-center group">
+        <div class="text-center mt-8 sm:mt-12 md:mt-16">
+            <a href="{% url 'latest_mission' %}" class="hero-button inline-flex items-center group w-full sm:w-auto justify-center">
                 <span>View Full Mission Report</span>
                 <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
             </a>
