@@ -1,20 +1,11 @@
-<<<<<<< HEAD
-# Python
-__pycache__/
-*.py[cod]
-*.class
-*.so
-=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
+*.class
 *.so
 
 # Distribution / packaging
->>>>>>> bfd8dde39021698cab23f135d1afa251c01a7de2
 .Python
 build/
 develop-eggs/
@@ -28,22 +19,18 @@ parts/
 sdist/
 var/
 wheels/
-<<<<<<< HEAD
 *.egg-info/
 .installed.cfg
 *.egg
 
 # Django
-=======
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -70,28 +57,23 @@ cover/
 *.mo
 *.pot
 
-# Django stuff:
->>>>>>> bfd8dde39021698cab23f135d1afa251c01a7de2
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-<<<<<<< HEAD
-media/
-
 # Virtual Environment
 venv/
 env/
 ENV/
+.venv/
 .env
+env.bak/
+venv.bak/
 
-# IDE
+# IDEs and Editors
 .idea/
 .vscode/
 *.swp
 *.swo
+.vs/
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
 
@@ -100,23 +82,22 @@ node_modules/
 staticfiles/
 home_temp.html
 home_updated.html
-=======
 
-# Flask stuff:
+# Flask
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy
 .scrapy
 
-# Sphinx documentation
+# Sphinx
 docs/_build/
 
 # PyBuilder
 .pybuilder/
 target/
 
-# Jupyter Notebook
+# Jupyter
 .ipynb_checkpoints
 
 # IPython
@@ -124,93 +105,45 @@ profile_default/
 ipython_config.py
 
 # pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+.python-version
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+# pipenv / poetry / pdm
+Pipfile.lock
+poetry.lock
+pdm.lock
 .pdm.toml
 .pdm-python
 .pdm-build/
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+# PEP 582
 __pypackages__/
 
-# Celery stuff
+# Celery
 celerybeat-schedule
 celerybeat.pid
 
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
+# Spyder
 .spyderproject
 .spyproject
 
-# Rope project settings
+# Rope
 .ropeproject
 
-# mkdocs documentation
+# mkdocs
 /site
 
-# mypy
+# mypy / type checkers
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
-# Pyre type checker
 .pyre/
-
-# pytype static type analyzer
 .pytype/
 
 # Cython debug symbols
 cython_debug/
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
-
-# Ruff stuff:
+# Ruff
 .ruff_cache/
 
-# PyPI configuration file
+# PyPI config
 .pypirc
->>>>>>> bfd8dde39021698cab23f135d1afa251c01a7de2
