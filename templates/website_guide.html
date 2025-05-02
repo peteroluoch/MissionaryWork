@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+
+{% block title %}Website Guide - Pastor Prince Obasi-Ike{% endblock %}
+
+{% block extra_css %}
+<style>
+    .guide-section {
+        padding: 4rem 0;
+    }
+    
+    .guide-section:nth-child(even) {
+        background-color: rgba(212, 167, 106, 0.1);
+    }
+    
+    .guide-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .guide-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #3a2921;
+        margin-bottom: 1rem;
+    }
+    
+    .guide-subtitle {
+        font-size: 1.25rem;
+        color: #5d534a;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .guide-section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #3a2921;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .guide-section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #d4a76a;
+    }
+    
+    .guide-card {
+        background-color: white;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(212, 167, 106, 0.2);
+    }
+    
+    .guide-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .guide-card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #3a2921;
+        margin-bottom: 1rem;
+    }
+    
+    .guide-card-icon {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(212, 167, 106, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .guide-card-icon i {
+        font-size: 1.75rem;
+        color: #3a2921;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Pastor Prince Missionary Work" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-mission-brown/90 to-mission-brown/70"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center text-white max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);">
+                Website Guide & Documentation
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);">
+                A comprehensive guide to the Pastor Prince Obasi-Ike Missionary Work website
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mt-8">
+                <a href="#guide-sections" class="bg-white text-mission-brown hover:bg-mission-tan hover:text-white px-8 py-3 rounded-full font-bold transition-all duration-300 inline-flex items-center">
+                    <i class="fas fa-book-open mr-2"></i> Explore Guide
+                </a>
+                <a href="{% url 'home' %}" class="bg-mission-tan text-white hover:bg-white hover:text-mission-brown px-8 py-3 rounded-full font-bold transition-all duration-300 inline-flex items-center">
+                    <i class="fas fa-home mr-2"></i> Visit Website
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <a href="#guide-sections" class="text-white">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Introduction Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block mb-6 relative">
+                <span class="bg-mission-brown/10 text-mission-brown px-6 py-2 rounded-full text-sm font-bold tracking-wider relative z-10">WEBSITE DOCUMENTATION</span>
+            </div>
+            
+            <h2 class="text-4xl font-bold mb-6 text-mission-brown">Welcome to the Pastor Prince Obasi-Ike Website Guide</h2>
+            
+            <p class="text-xl text-mission-dark mb-8 leading-relaxed">
+                This comprehensive guide provides detailed information about the Pastor Prince Obasi-Ike Missionary Work website, its features, content, and how to navigate it effectively.
+            </p>
+            
+            <p class="text-lg text-mission-dark mb-8 leading-relaxed">
+                Whether you're a first-time visitor or a regular user, this guide will help you make the most of your experience on our website and connect with Pastor Prince's missionary work across Africa.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Guide Sections -->
+<section id="guide-sections" class="py-16 bg-mission-cream/10">
+    <div class="container mx-auto px-4">
+        <div class="guide-header">
+            <h2 class="guide-title">Guide Sections</h2>
+            <p class="guide-subtitle">Explore the different sections of our website guide to learn more about the Pastor Prince Obasi-Ike Missionary Work website.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Part 1 -->
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3 class="guide-card-title">Introduction & Overview</h3>
+                    <p class="text-mission-dark mb-6">Learn about the purpose of the website, who it serves, and the key features that enhance your experience.</p>
+                    <ul class="space-y-2 text-mission-dark mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Website purpose and mission</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Target audience information</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Key website features</span>
+                        </li>
+                    </ul>
+                    <a href="{% url 'website_guide_part1' %}" class="bg-mission-brown text-white hover:bg-mission-tan px-6 py-2 rounded-full inline-flex items-center transition-colors duration-300">
+                        <span>View Section</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Part 2 -->
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="guide-card-title">Website Features & Pages</h3>
+                    <p class="text-mission-dark mb-6">Discover the features of our website and get detailed information about each page and its content.</p>
+                    <ul class="space-y-2 text-mission-dark mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Responsive design and interactive elements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Detailed page descriptions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Navigation tips and features</span>
+                        </li>
+                    </ul>
+                    <a href="{% url 'website_guide_part2' %}" class="bg-mission-brown text-white hover:bg-mission-tan px-6 py-2 rounded-full inline-flex items-center transition-colors duration-300">
+                        <span>View Section</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Part 3 -->
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3 class="guide-card-title">Media Resources & Involvement</h3>
+                    <p class="text-mission-dark mb-6">Explore our media resources and learn how you can get involved with Pastor Prince's missionary work.</p>
+                    <ul class="space-y-2 text-mission-dark mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Photo and video galleries</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Social media integration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Ways to support the mission</span>
+                        </li>
+                    </ul>
+                    <a href="{% url 'website_guide_part3' %}" class="bg-mission-brown text-white hover:bg-mission-tan px-6 py-2 rounded-full inline-flex items-center transition-colors duration-300">
+                        <span>View Section</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Part 4 -->
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-address-card"></i>
+                    </div>
+                    <h3 class="guide-card-title">Contact Information</h3>
+                    <p class="text-mission-dark mb-6">Find all the ways to connect with Pastor Prince's ministry and get the support you need.</p>
+                    <ul class="space-y-2 text-mission-dark mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Contact details and office hours</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Physical address and map</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-mission-tan mt-1 mr-2"></i>
+                            <span>Service times and information</span>
+                        </li>
+                    </ul>
+                    <a href="{% url 'website_guide_part4' %}" class="bg-mission-brown text-white hover:bg-mission-tan px-6 py-2 rounded-full inline-flex items-center transition-colors duration-300">
+                        <span>View Section</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download Full Guide Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="bg-mission-brown rounded-xl p-8 md:p-12 text-white text-center">
+            <h2 class="text-3xl font-bold mb-6">Download Complete Documentation</h2>
+            <p class="text-xl text-mission-cream/90 max-w-3xl mx-auto mb-8">
+                Want to have the complete website documentation for offline reference? Download the full guide in PDF format.
+            </p>
+            <a href="/static/documents/Pastor_Prince_Website_Guide.pdf" download class="bg-white text-mission-brown hover:bg-mission-tan hover:text-white px-8 py-3 rounded-full font-bold transition-all duration-300 inline-flex items-center">
+                <i class="fas fa-file-pdf mr-2"></i> Download Full Guide (PDF)
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Credits Section -->
+<section class="py-10 bg-gray-100">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-mission-dark">
+            This website was developed by <span class="font-bold">Codegx Technology</span>
+        </p>
+        <p class="text-mission-dark/70 text-sm mt-2">
+            Last Updated: April 26, 2025
+        </p>
+    </div>
+</section>
+{% endblock %}

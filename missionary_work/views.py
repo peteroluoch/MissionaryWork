@@ -23,3 +23,24 @@ def media(request):
 def contact(request):
     """View for the contact page"""
     return render(request, 'contact.html')
+
+# Website Guide Views
+def website_guide(request):
+    """View for the main website guide page"""
+    return render(request, 'website_guide.html')
+
+def website_guide_part1(request):
+    """View for website guide part 1: Introduction and Overview"""
+    return render(request, 'website_guide_part1.html')
+
+def website_guide_part2(request):
+    """View for website guide part 2: Website Features and Pages"""
+    return render(request, 'website_guide_part2.html')
+
+def website_guide_part3(request):
+    """View for website guide part 3: Media Resources and Involvement"""
+    return render(request, 'website_guide_part3.html')
+
+def website_guide_part4(request):
+    """View for website guide part 4: Contact Information"""
+    return render(request, 'website_guide_part4.html')

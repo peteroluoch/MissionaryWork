@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block title %}Website Guide - Features & Pages - Pastor Prince Obasi-Ike{% endblock %}
+
+{% block content %}
+<!-- Website Features Section -->
+<section id="website-features" class="guide-section">
+    <div class="container mx-auto px-4">
+        <h2 class="guide-section-title">Website Features</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="guide-card-title">Responsive Design</h3>
+                    <p class="text-mission-dark mb-4">Our website is fully optimized for all devices, providing a consistent experience whether you're viewing on a desktop computer, tablet, or mobile phone.</p>
+                    <div class="flex items-center justify-center space-x-4 mt-6">
+                        <i class="fas fa-desktop text-2xl text-mission-tan"></i>
+                        <i class="fas fa-tablet-alt text-2xl text-mission-tan"></i>
+                        <i class="fas fa-mobile-alt text-2xl text-mission-tan"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3 class="guide-card-title">Rich Media Content</h3>
+                    <p class="text-mission-dark mb-4">Explore our extensive collection of:</p>
+                    <ul class="guide-list">
+                        <li>Photo galleries from mission trips</li>
+                        <li>Video testimonials and sermon excerpts</li>
+                        <li>Interactive maps showing mission locations</li>
+                        <li>Downloadable resources and documents</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3 class="guide-card-title">Interactive Elements</h3>
+                    <p class="text-mission-dark mb-4">Engage with our content through:</p>
+                    <ul class="guide-list">
+                        <li>Animated sliders showcasing mission activities</li>
+                        <li>Interactive timeline of ministry milestones</li>
+                        <li>Expandable content sections for detailed information</li>
+                        <li>Side navigation panels for mission initiatives</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="guide-card-title">Communication Channels</h3>
+                    <p class="text-mission-dark mb-4">Connect with us through:</p>
+                    <ul class="guide-list">
+                        <li>Contact forms for inquiries and prayer requests</li>
+                        <li>Newsletter subscription for regular updates</li>
+                        <li>Social media integration across multiple platforms</li>
+                        <li>Direct contact information for personal communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Page Guide Section -->
+<section id="page-guide" class="guide-section">
+    <div class="container mx-auto px-4">
+        <h2 class="guide-section-title">Page Guide</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <!-- Home Page -->
+            <div class="md:col-span-2">
+                <div class="guide-card">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-2/3">
+                            <div class="guide-card-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="guide-card-title">Home Page</h3>
+                            <p class="text-mission-dark mb-4">The gateway to our website features:</p>
+                            <ul class="guide-list">
+                                <li>Dynamic hero slider showcasing different mission areas</li>
+                                <li>Side mission panel with information about key initiatives</li>
+                                <li>Mission statistics highlighting our impact (30+ years, 10+ countries)</li>
+                                <li>Overview of our core ministry areas</li>
+                                <li>Quick access to key sections of the website</li>
+                            </ul>
+                            <a href="{% url 'home' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                                <span>Visit Home Page</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="md:w-1/3">
+                            <div class="guide-image h-full">
+                                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Home Page" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- About Page -->
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="guide-card-title">About Page</h3>
+                    <p class="text-mission-dark mb-4">Learn about Pastor Prince and his ministry:</p>
+                    <ul class="guide-list">
+                        <li>Detailed biography and calling to missionary work</li>
+                        <li>Vision and mission statements</li>
+                        <li>Core values guiding our ministry</li>
+                        <li>Timeline of significant ministry milestones</li>
+                        <li>Testimonials from partners and beneficiaries</li>
+                    </ul>
+                    <a href="{% url 'about' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Visit About Page</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Missionary Work Page -->
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3 class="guide-card-title">Missionary Work Page</h3>
+                    <p class="text-mission-dark mb-4">Explore our work across different countries:</p>
+                    <ul class="guide-list">
+                        <li>Interactive map showing mission locations</li>
+                        <li>Detailed information about work in Kenya, South Sudan, Rwanda</li>
+                        <li>Key achievements and initiatives in each location</li>
+                        <li>Testimonies from local communities</li>
+                        <li>Photo galleries from various mission locations</li>
+                    </ul>
+                    <a href="{% url 'missionary_work' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Visit Missionary Work Page</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Latest Mission Page -->
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="guide-card-title">Latest Mission Page</h3>
+                    <p class="text-mission-dark mb-4">Get details about our most recent mission trip:</p>
+                    <ul class="guide-list">
+                        <li>Comprehensive overview of activities and achievements</li>
+                        <li>Day-by-day timeline of the mission journey</li>
+                        <li>Statistics showing impact (souls saved, outreach events)</li>
+                        <li>Photo and video gallery from the mission</li>
+                        <li>Testimonies from participants and beneficiaries</li>
+                    </ul>
+                    <a href="{% url 'latest_mission' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Visit Latest Mission Page</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Media Page -->
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3 class="guide-card-title">Media Page</h3>
+                    <p class="text-mission-dark mb-4">Access our multimedia content:</p>
+                    <ul class="guide-list">
+                        <li>Video gallery with mission reports and testimonials</li>
+                        <li>Photo collections from various mission trips</li>
+                        <li>Social media integration with recent updates</li>
+                        <li>Downloadable resources related to our work</li>
+                        <li>Sermon excerpts and teaching materials</li>
+                    </ul>
+                    <a href="{% url 'media' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Visit Media Page</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Contact Page -->
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="guide-card-title">Contact Page</h3>
+                    <p class="text-mission-dark mb-4">Connect with our ministry:</p>
+                    <ul class="guide-list">
+                        <li>Interactive contact form for inquiries</li>
+                        <li>Physical address with map integration</li>
+                        <li>Phone and email contact information</li>
+                        <li>Social media links for all platforms</li>
+                        <li>FAQ section answering common questions</li>
+                        <li>Information about supporting our mission</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Visit Contact Page</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

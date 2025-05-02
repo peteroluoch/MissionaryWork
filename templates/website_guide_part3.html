@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block title %}Website Guide - Media & Involvement - Pastor Prince Obasi-Ike{% endblock %}
+
+{% block content %}
+<!-- Media Resources Section -->
+<section id="media-resources" class="guide-section">
+    <div class="container mx-auto px-4">
+        <h2 class="guide-section-title">Media Resources</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3 class="guide-card-title">Photo Galleries</h3>
+                    <p class="text-mission-dark mb-4">Our website features extensive photo galleries documenting:</p>
+                    <ul class="guide-list">
+                        <li>Mission trips to various countries</li>
+                        <li>Church planting activities</li>
+                        <li>Humanitarian aid distribution</li>
+                        <li>Community development projects</li>
+                        <li>Evangelistic outreach events</li>
+                    </ul>
+                    <a href="{% url 'media' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>View Photo Galleries</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="guide-card-title">Video Content</h3>
+                    <p class="text-mission-dark mb-4">Explore our video resources including:</p>
+                    <ul class="guide-list">
+                        <li>Mission trip documentaries</li>
+                        <li>Testimonial videos from beneficiaries</li>
+                        <li>Sermon excerpts from Pastor Prince</li>
+                        <li>Training resources for missionaries</li>
+                        <li>Event highlights and recaps</li>
+                    </ul>
+                    <a href="{% url 'media' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Watch Videos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3 class="guide-card-title">Social Media</h3>
+                    <p class="text-mission-dark mb-4">Follow our ministry on social media:</p>
+                    <div class="space-y-4 mt-6">
+                        <a href="https://www.facebook.com/PPOBASIIKE/" target="_blank" class="flex items-center text-mission-dark hover:text-mission-brown transition-colors duration-300">
+                            <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <span>facebook.com/PPOBASIIKE</span>
+                        </a>
+                        
+                        <a href="https://www.youtube.com/channel/UC63CJHrodxR5yhhfyf_Z9tw" target="_blank" class="flex items-center text-mission-dark hover:text-mission-brown transition-colors duration-300">
+                            <div class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <span>YouTube Channel</span>
+                        </a>
+                        
+                        <div class="flex items-center text-mission-dark">
+                            <div class="w-10 h-10 bg-gradient-to-br from-pink-600 to-purple-600 text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <span>Instagram (Coming Soon)</span>
+                        </div>
+                        
+                        <div class="flex items-center text-mission-dark">
+                            <div class="w-10 h-10 bg-blue-400 text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <span>Twitter (Coming Soon)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Getting Involved Section -->
+<section id="getting-involved" class="guide-section">
+    <div class="container mx-auto px-4">
+        <h2 class="guide-section-title">Getting Involved</h2>
+        
+        <div class="text-center mb-8">
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto">There are several ways to support Pastor Prince's missionary work. Your involvement makes a significant difference in transforming lives across Africa.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3 class="guide-card-title">Prayer Support</h3>
+                    <p class="text-mission-dark mb-4">Prayer is the foundation of our missionary work. You can support us through:</p>
+                    <ul class="guide-list">
+                        <li>Joining our prayer network</li>
+                        <li>Receiving specific prayer requests from the mission field</li>
+                        <li>Participating in prayer events and initiatives</li>
+                        <li>Committing to regular prayer for specific mission areas</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Join Our Prayer Network</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="guide-card-title">Financial Support</h3>
+                    <p class="text-mission-dark mb-4">Your financial contributions enable us to expand our missionary work:</p>
+                    <ul class="guide-list">
+                        <li>Contribute to mission trips</li>
+                        <li>Support church building projects</li>
+                        <li>Fund humanitarian aid initiatives</li>
+                        <li>Sponsor educational scholarships</li>
+                        <li>Provide resources for evangelistic outreach</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Learn About Donation Options</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="guide-card-title">Volunteer Opportunities</h3>
+                    <p class="text-mission-dark mb-4">There are many ways to volunteer your time and skills:</p>
+                    <ul class="guide-list">
+                        <li>Join a mission trip</li>
+                        <li>Offer professional skills (medical, construction, education)</li>
+                        <li>Assist with administrative tasks</li>
+                        <li>Help with media and communications</li>
+                        <li>Support local outreach initiatives</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Explore Volunteer Opportunities</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <div class="guide-card h-full">
+                    <div class="guide-card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="guide-card-title">Partnership Options</h3>
+                    <p class="text-mission-dark mb-4">Organizations and churches can partner with us in various ways:</p>
+                    <ul class="guide-list">
+                        <li>Church partnerships for mission support</li>
+                        <li>Organizational collaborations</li>
+                        <li>Resource sharing and distribution</li>
+                        <li>Joint mission initiatives</li>
+                        <li>Long-term strategic partnerships</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="inline-flex items-center text-mission-brown hover:text-mission-tan transition-colors duration-300 mt-4">
+                        <span>Discuss Partnership Opportunities</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

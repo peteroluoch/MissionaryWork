@@ -5,12 +5,12 @@
     <div class="absolute top-0 left-0 w-full h-20 bg-white" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);"></div>
     <div class="absolute -bottom-10 -right-10 w-80 h-80 bg-mission-tan/10 rounded-full"></div>
     <div class="absolute top-40 -left-20 w-60 h-60 bg-mission-tan/5 rounded-full"></div>
-    
+
     <!-- World Map Background -->
     <div class="absolute inset-0 opacity-5 pointer-events-none">
         <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Map Background" class="w-full h-full object-cover">
     </div>
-    
+
     <div class="container mx-auto px-4 relative z-10">
         <!-- Footer Top with Logo and Newsletter -->
         <div class="flex flex-col md:flex-row justify-between items-center mb-16 pb-16 border-b border-mission-cream/10">
@@ -27,7 +27,7 @@
                 </div>
                 <p class="text-mission-cream/80 max-w-md">Pioneer missionary transforming lives through the gospel of Jesus Christ across Africa and beyond.</p>
             </div>
-            
+
             <!-- Newsletter Form -->
             <div class="w-full md:w-auto">
                 <h3 class="text-xl font-bold mb-4 text-mission-cream text-center md:text-left">Subscribe to Our Newsletter</h3>
@@ -39,7 +39,7 @@
                 </form>
             </div>
         </div>
-        
+
         <!-- Footer Main Content -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-mission-cream mb-16">
             <!-- About Column -->
@@ -77,7 +77,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Missionary Work Column -->
             <div>
                 <h3 class="text-xl font-bold mb-6 flex items-center">
@@ -119,7 +119,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Quick Links Column -->
             <div>
                 <h3 class="text-xl font-bold mb-6 flex items-center">
@@ -142,6 +142,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{% url 'website_guide' %}" class="flex items-center group">
+                            <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
+                            <span class="group-hover:text-mission-tan transition-colors duration-300">Website Guide</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{% url 'media' %}" class="flex items-center group">
                             <span class="w-2 h-2 bg-mission-tan/50 rounded-full mr-3 transition-all duration-300 group-hover:w-3"></span>
                             <span class="group-hover:text-mission-tan transition-colors duration-300">Media Gallery</span>
@@ -161,7 +167,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Contact Column -->
             <div>
                 <h3 class="text-xl font-bold mb-6 flex items-center">
@@ -190,7 +196,7 @@
                         <span>info@pastorprince.org</span>
                     </li>
                 </ul>
-                
+
                 <!-- Social Media Icons -->
                 <div class="mt-6">
                     <h4 class="text-sm font-bold mb-4 text-mission-cream/70">FOLLOW US</h4>
@@ -211,7 +217,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Footer Bottom -->
         <div class="border-t border-mission-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div class="flex flex-col md:flex-row items-center gap-2 mb-4 md:mb-0">
@@ -219,9 +225,10 @@
                 <span class="hidden md:inline text-mission-cream/40">|</span>
                 <p class="text-mission-cream/70 text-sm">Developed by <a href="#" class="text-mission-tan hover:text-white transition-colors duration-300">Codegx Technology</a></p>
             </div>
-            
+
             <!-- Bottom Links -->
             <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                <a href="{% url 'website_guide' %}" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Website Guide</a>
                 <a href="#" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Privacy Policy</a>
                 <a href="#" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Terms of Service</a>
                 <a href="#" class="text-mission-cream/70 hover:text-mission-tan text-sm transition-colors duration-300">Cookie Policy</a>
@@ -229,17 +236,17 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Back to Top Button -->
     <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 z-50 opacity-0 pointer-events-none">
         <i class="fas fa-chevron-up"></i>
     </button>
-    
+
     <script>
         // Back to Top Button
         document.addEventListener('DOMContentLoaded', function() {
             const backToTopButton = document.getElementById('back-to-top');
-            
+
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 500) {
                     backToTopButton.classList.add('opacity-100');
@@ -251,7 +258,7 @@
                     backToTopButton.classList.add('pointer-events-none');
                 }
             });
-            
+
             backToTopButton.addEventListener('click', function() {
                 window.scrollTo({
                     top: 0,
