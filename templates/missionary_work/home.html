@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block title %}Pastor Prince Obasi-Ike | Home{% endblock %}
 
@@ -25,10 +26,10 @@
         z-index: 1;
     }
 
-    .hero-slide.active {
-        opacity: 1;
-        z-index: 2;
-    }
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
 
     .hero-overlay {
         position: absolute;
@@ -91,10 +92,10 @@
         animation: bounce 2s infinite;
     }
 
-    .hero-scroll-indicator i {
-        color: #d4a76a;
-        font-size: 1.5rem; /* Smaller icon for mobile */
-    }
+        .hero-scroll-indicator i {
+            color: #d4a76a;
+            font-size: 1.5rem; /* Smaller icon for mobile */
+        }
 
     .hero-slider-nav {
         position: absolute;
@@ -115,10 +116,10 @@
         transition: all 0.3s ease;
     }
 
-    .hero-slider-dot.active {
-        background-color: #d4a76a;
-        transform: scale(1.2);
-    }
+        .hero-slider-dot.active {
+            background-color: #d4a76a;
+            transform: scale(1.2);
+        }
 
     .hero-stats {
         position: relative; /* Changed from absolute for mobile */
@@ -166,6 +167,7 @@
             opacity: 0;
             transform: translateY(-30px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -177,6 +179,7 @@
             opacity: 0;
             transform: translateY(30px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -187,6 +190,7 @@
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }
@@ -196,9 +200,11 @@
         0%, 20%, 50%, 80%, 100% {
             transform: translateY(0) translateX(-50%);
         }
+
         40% {
             transform: translateY(-20px) translateX(-50%);
         }
+
         60% {
             transform: translateY(-10px) translateX(-50%);
         }
@@ -209,6 +215,7 @@
             opacity: 0;
             transform: translateY(-50%) translateX(50px);
         }
+
         to {
             opacity: 1;
             transform: translateY(-50%) translateX(0);
@@ -280,9 +287,9 @@
             bottom: 30px;
         }
 
-        .hero-scroll-indicator i {
-            font-size: 1.75rem;
-        }
+            .hero-scroll-indicator i {
+                font-size: 1.75rem;
+            }
 
         .hero-slider-nav {
             bottom: 30px;
@@ -304,9 +311,9 @@
             display: none;
         }
 
-        .floating-mission-card.active {
-            display: block;
-        }
+            .floating-mission-card.active {
+                display: block;
+            }
 
         .floating-mission-title {
             font-size: 1.25rem;
@@ -329,18 +336,18 @@
             transition: all 0.3s ease;
         }
 
-        .floating-mission-link:hover {
-            color: #3a2921;
-        }
+            .floating-mission-link:hover {
+                color: #3a2921;
+            }
 
-        .floating-mission-link i {
-            margin-left: 5px;
-            transition: transform 0.3s ease;
-        }
+            .floating-mission-link i {
+                margin-left: 5px;
+                transition: transform 0.3s ease;
+            }
 
-        .floating-mission-link:hover i {
-            transform: translateX(5px);
-        }
+            .floating-mission-link:hover i {
+                transform: translateX(5px);
+            }
     }
 
     @media (min-width: 1024px) {
@@ -376,18 +383,17 @@
 {% block content %}
 <!-- Hero Section with Slider - Mobile First -->
 <section class="hero-slider">
-    <!-- Slide 1 -->
-    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+    {% for photo in featured_photos %}
+    <div class="hero-slide {% if forloop.first %}active{% endif %}" style="background-image: url('{{ photo.image.url }}');">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Pastor Prince Obasi-Ike</h1>
-            <p class="hero-subtitle">Pioneer missionary transforming lives through the gospel of Jesus Christ across Africa since 1995.</p>
+            <h1 class="hero-title">{{ photo.title|default:"Pastor Prince Obasi-Ike" }}</h1>
+            <p class="hero-subtitle">{{ photo.description|default:"Pioneer missionary transforming lives through the gospel of Jesus Christ." }}</p>
             <div class="hero-buttons">
                 <a href="{% url 'latest_mission' %}" class="hero-button w-full text-center">Latest Mission</a>
                 <a href="{% url 'about' %}" class="hero-button outline w-full text-center">Learn More</a>
             </div>
 
-            <!-- Hero Statistics - Mobile Optimized -->
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-number">30+</div>
@@ -408,116 +414,31 @@
             </div>
         </div>
 
-        <!-- Floating Mission Card for Slide 1 - Hidden on Mobile, Visible on Tablet+ -->
-        <div class="floating-mission-card active">
-            <h3 class="floating-mission-title">South Sudan Mission</h3>
-            <p class="floating-mission-text">1,138 souls saved during our recent mission to Kapoeta, South Sudan in April 2025.</p>
-            <a href="{% url 'latest_mission' %}" class="floating-mission-link">
+        <div class="floating-mission-card {% if forloop.first %}active{% endif %}">
+            <h3 class="floating-mission-title">{{ photo.category|default:"Mission Highlight" }}</h3>
+            <p class="floating-mission-text">{{ photo.description|truncatechars:120 }}</p>
+            <a href="{% url 'missionary_work' %}#{{ photo.category|slugify }}" class="floating-mission-link">
                 View Mission Details <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
+    {% endfor %}
 
-    <!-- Slide 2 -->
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Transforming Lives in Kenya</h1>
-            <p class="hero-subtitle">Establishing churches, providing education, and mentoring communities in Kenya since 1995.</p>
-            <div class="hero-buttons">
-                <a href="{% url 'missionary_work' %}#kenya" class="hero-button w-full text-center">Kenya Missions</a>
-                <a href="{% url 'about' %}" class="hero-button outline w-full text-center">Learn More</a>
-            </div>
-
-            <!-- Hero Statistics - Mobile Optimized -->
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">30+</div>
-                    <div class="hero-stat-label">Years of Service</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">10+</div>
-                    <div class="hero-stat-label">Countries</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">10,000+</div>
-                    <div class="hero-stat-label">Souls Saved</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">50+</div>
-                    <div class="hero-stat-label">Churches Built</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Floating Mission Card for Slide 2 - Hidden on Mobile, Visible on Tablet+ -->
-        <div class="floating-mission-card">
-            <h3 class="floating-mission-title">Turkana Initiatives</h3>
-            <p class="floating-mission-text">Mentoring programs, water projects, and educational scholarships for the marginalized Turkana region.</p>
-            <a href="{% url 'missionary_work' %}#kenya" class="floating-mission-link">
-                Explore Kenya Work <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1504870712357-65ea720d6078?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Healing and Reconciliation</h1>
-            <p class="hero-subtitle">Ministering to genocide survivors in Rwanda through prayer, counseling, and community support.</p>
-            <div class="hero-buttons">
-                <a href="{% url 'missionary_work' %}#rwanda" class="hero-button w-full text-center">Rwanda Missions</a>
-                <a href="{% url 'about' %}" class="hero-button outline w-full text-center">Learn More</a>
-            </div>
-
-            <!-- Hero Statistics - Mobile Optimized -->
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">30+</div>
-                    <div class="hero-stat-label">Years of Service</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">10+</div>
-                    <div class="hero-stat-label">Countries</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">10,000+</div>
-                    <div class="hero-stat-label">Souls Saved</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">50+</div>
-                    <div class="hero-stat-label">Churches Built</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Floating Mission Card for Slide 3 - Hidden on Mobile, Visible on Tablet+ -->
-        <div class="floating-mission-card">
-            <h3 class="floating-mission-title">Rwanda Ministry</h3>
-            <p class="floating-mission-text">Providing spiritual and emotional support to widowed survivors of the genocide through prayer and counseling.</p>
-            <a href="{% url 'missionary_work' %}#rwanda" class="floating-mission-link">
-                Discover Rwanda Work <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Slider Navigation Dots - Touch Friendly -->
     <div class="hero-slider-nav">
-        <div class="hero-slider-dot active" data-slide="0"></div>
-        <div class="hero-slider-dot" data-slide="1"></div>
-        <div class="hero-slider-dot" data-slide="2"></div>
+        {% for photo in featured_photos %}
+        <div class="hero-slider-dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.counter0 }}"></div>
+        {% endfor %}
     </div>
 
-    <!-- Scroll Indicator - Mobile Optimized -->
     <div class="hero-scroll-indicator">
         <i class="fas fa-chevron-down"></i>
     </div>
 </section>
 
+
 <!-- JavaScript for Hero Slider -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-slider-dot');
         const floatingCards = document.querySelectorAll('.floating-mission-card');
@@ -638,17 +559,20 @@
 
         <!-- Mission Cards - Mobile First Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-            <!-- Card 1 -->
+            <!-- Card 1: Gospel Outreach -->
+            {% if photo1 %}
             <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
                 <div class="mission-image overflow-hidden rounded-t-lg">
-                    <img src="https://images.unsplash.com/photo-1541802645635-11f2286a7482?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Gospel Outreach" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
+                    <img src="{{ photo1.image.url }}" alt="{{ photo1.title|default:'Missionary Work' }}" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
                 </div>
                 <div class="mission-content p-4 sm:p-6 bg-white rounded-b-lg">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-8 sm:-mt-10 mb-3 sm:mb-4 shadow-lg border-4 border-white">
                         <i class="fas fa-bullhorn text-base sm:text-xl"></i>
                     </div>
                     <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-mission-brown">Gospel Outreach</h3>
-                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">Not even the heavy rain could stop the preaching of the gospel in Kapoeta. Many souls were saved through our outreach activities in multiple communities.</p>
+                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                        Not even the heavy rain could stop the preaching of the gospel in Kapoeta. Many souls were saved through our outreach activities in multiple communities.
+                    </p>
                     <a href="{% url 'latest_mission' %}" class="mission-link group inline-flex items-center">
                         <span class="relative">
                             Read More
@@ -658,18 +582,22 @@
                     </a>
                 </div>
             </div>
+            {% endif %}
 
-            <!-- Card 2 -->
+            <!-- Card 2: Church Building -->
+            {% if photo2 %}
             <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
                 <div class="mission-image overflow-hidden rounded-t-lg">
-                    <img src="https://images.unsplash.com/photo-1438804339143-a0d6a81276d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Church Building" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
+                    <img src="{{ photo2.image.url }}" alt="{{ photo2.title|default:'Missionary Work' }}" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
                 </div>
                 <div class="mission-content p-4 sm:p-6 bg-white rounded-b-lg">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-8 sm:-mt-10 mb-3 sm:mb-4 shadow-lg border-4 border-white">
                         <i class="fas fa-church text-base sm:text-xl"></i>
                     </div>
                     <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-mission-brown">Church Building</h3>
-                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">We started the church building construction in Nanimtoit, Kapoeta North, to provide a permanent place of worship for the local community.</p>
+                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                        We started the church building construction in Nanimtoit, Kapoeta North, to provide a permanent place of worship for the local community.
+                    </p>
                     <a href="{% url 'latest_mission' %}" class="mission-link group inline-flex items-center">
                         <span class="relative">
                             Read More
@@ -679,18 +607,22 @@
                     </a>
                 </div>
             </div>
+            {% endif %}
 
-            <!-- Card 3 -->
+            <!-- Card 3: Community Support -->
+            {% if photo3 %}
             <div class="mission-card transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl sm:col-span-2 lg:col-span-1">
                 <div class="mission-image overflow-hidden rounded-t-lg">
-                    <img src="https://images.unsplash.com/photo-1469571486292-b53601010376?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="South Sudan Community Support" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
+                    <img src="{{ photo3.image.url }}" alt="{{ photo3.title|default:'Missionary Work' }}" class="w-full h-48 sm:h-52 md:h-60 object-cover transition-transform duration-700 hover:scale-110">
                 </div>
                 <div class="mission-content p-4 sm:p-6 bg-white rounded-b-lg">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 bg-mission-tan text-mission-brown rounded-full flex items-center justify-center -mt-8 sm:-mt-10 mb-3 sm:mb-4 shadow-lg border-4 border-white">
                         <i class="fas fa-hands-helping text-base sm:text-xl"></i>
                     </div>
                     <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-mission-brown">Community Support</h3>
-                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">Our mission team provided essential resources, clean water, and medical assistance to the people of Kapoeta, showing God's love in practical ways.</p>
+                    <p class="text-mission-dark mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                        Our mission team provided essential resources, clean water, and medical assistance to the people of Kapoeta, showing God's love in practical ways.
+                    </p>
                     <a href="{% url 'latest_mission' %}" class="mission-link group inline-flex items-center">
                         <span class="relative">
                             Read More
@@ -700,6 +632,7 @@
                     </a>
                 </div>
             </div>
+            {% endif %}
         </div>
 
         <div class="text-center mt-8 sm:mt-12 md:mt-16">
@@ -715,22 +648,35 @@
 <section class="py-24 bg-white relative">
     <!-- Background Map -->
     <div class="absolute inset-0 opacity-5 pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Map Background" class="w-full h-full object-cover">
+        {% if global_mission_photo %}
+        <img src="{{ global_mission_photo.image.url }}" alt="{{ global_mission_photo.title }}" class="w-full h-full object-cover">
+        {% else %}
+        <img src="#" alt="Fallback Image" class="w-full h-full object-cover">
+        {% endif %}
     </div>
 
+
     <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center mb-16 max-w-4xl mx-auto">
-            <div class="inline-block mb-4">
-                <span class="bg-mission-brown/10 text-mission-brown px-4 py-1 rounded-full text-sm font-bold tracking-wider">SINCE 1995</span>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-mission-brown">Global Missionary Work</h2>
-            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">Pastor Prince Obasi-Ike has been a pioneer missionary for the Redeemed Christian Church of God (RCCG), spreading the gospel and transforming lives across multiple countries in Africa.</p>
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            {% if global_mission_photo %}
+            <img src="{{ global_mission_photo.image.url }}" alt="{{ global_mission_photo.title }}" class="w-full h-full object-cover">
+            {% else %}
+            <img src="{% static 'images/fallback.jpg' %}" alt="Fallback Image" class="w-full h-full object-cover">
+            {% endif %}
         </div>
+
 
         <!-- World Map with Mission Locations -->
         <div class="relative mb-20 hidden md:block">
             <div class="bg-mission-cream/20 rounded-xl p-8 shadow-lg border border-mission-tan/10">
-                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Map" class="w-full h-auto rounded-lg opacity-50">
+                <div class="absolute inset-0 opacity-5 pointer-events-none">
+                    {% if global_mission_photo %}
+                    <img src="{{ global_mission_photo.image.url }}" alt="{{ global_mission_photo.title }}" class="w-full h-full object-cover">
+                    {% else %}
+                    <img src="{% static 'images/fallback.jpg' %}" alt="Fallback Image" class="w-full h-full object-cover">
+                    {% endif %}
+                </div>
+
 
                 <!-- Kenya Marker -->
                 <div class="absolute top-[40%] left-[55%] group">
@@ -1091,7 +1037,7 @@
 
     <!-- Testimonial Slider JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const slides = document.querySelectorAll('.testimonial-slide');
             const dots = document.querySelectorAll('.testimonial-dot');
             const prevBtn = document.querySelector('.testimonial-prev');

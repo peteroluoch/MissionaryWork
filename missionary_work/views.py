@@ -3,9 +3,34 @@ import os
 from django.conf import settings
 from .models import MissionaryPhoto
 
+
+
 def home(request):
-    """View for the home page"""
-    return render(request, 'missionary_work/home.html')
+    featured_photos = MissionaryPhoto.objects.filter(featured=True).order_by('-date_taken')[:5]
+    south_sudan_photo = MissionaryPhoto.objects.filter(category__iexact='South Sudan').first()
+    kenya_photo = MissionaryPhoto.objects.filter(category__iexact='Kenya').first()
+    rwanda_photo = MissionaryPhoto.objects.filter(category__iexact='Rwanda').first()
+
+    non_recent_photos = MissionaryPhoto.objects.filter(featured=False).order_by('-date_taken')[:3]
+
+    global_mission_photo = MissionaryPhoto.objects.filter(category='Global Missionary Work').first()
+
+    # Assign individual photos for unique cards
+    photo1 = non_recent_photos[0] if len(non_recent_photos) > 0 else None
+    photo2 = non_recent_photos[1] if len(non_recent_photos) > 1 else None
+    photo3 = non_recent_photos[2] if len(non_recent_photos) > 2 else None
+
+    context = {
+        'global_mission_photo': global_mission_photo,
+        'featured_photos': featured_photos,
+        'south_sudan_photo': south_sudan_photo,
+        'kenya_photo': kenya_photo,
+        'rwanda_photo': rwanda_photo,
+        'photo1': photo1,
+        'photo2': photo2,
+        'photo3': photo3,
+    }
+    return render(request, 'missionary_work/home.html', context)
 
 def about(request):
     """View for the about page"""
