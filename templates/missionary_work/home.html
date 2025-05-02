@@ -657,26 +657,18 @@
 
 
     <div class="container mx-auto px-4 relative z-10">
-        <div class="absolute inset-0 opacity-5 pointer-events-none">
-            {% if global_mission_photo %}
-            <img src="{{ global_mission_photo.image.url }}" alt="{{ global_mission_photo.title }}" class="w-full h-full object-cover">
-            {% else %}
-            <img src="{% static 'images/fallback.jpg' %}" alt="Fallback Image" class="w-full h-full object-cover">
-            {% endif %}
+        <div class="text-center mb-16 max-w-4xl mx-auto">
+            <div class="inline-block mb-4">
+                <span class="bg-mission-brown/10 text-mission-brown px-4 py-1 rounded-full text-sm font-bold tracking-wider">SINCE 1995</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-mission-brown">Global Missionary Work</h2>
+            <p class="text-xl text-mission-dark max-w-3xl mx-auto leading-relaxed">Pastor Prince Obasi-Ike has been a pioneer missionary for the Redeemed Christian Church of God (RCCG), spreading the gospel and transforming lives across multiple countries in Africa.</p>
         </div>
-
 
         <!-- World Map with Mission Locations -->
         <div class="relative mb-20 hidden md:block">
             <div class="bg-mission-cream/20 rounded-xl p-8 shadow-lg border border-mission-tan/10">
-                <div class="absolute inset-0 opacity-5 pointer-events-none">
-                    {% if global_mission_photo %}
-                    <img src="{{ global_mission_photo.image.url }}" alt="{{ global_mission_photo.title }}" class="w-full h-full object-cover">
-                    {% else %}
-                    <img src="{% static 'images/fallback.jpg' %}" alt="Fallback Image" class="w-full h-full object-cover">
-                    {% endif %}
-                </div>
-
+                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Africa Map" class="w-full h-auto rounded-lg opacity-50">
 
                 <!-- Kenya Marker -->
                 <div class="absolute top-[40%] left-[55%] group">

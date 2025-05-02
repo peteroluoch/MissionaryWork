@@ -13,7 +13,7 @@ def home(request):
 
     non_recent_photos = MissionaryPhoto.objects.filter(featured=False).order_by('-date_taken')[:3]
 
-    global_mission_photo = MissionaryPhoto.objects.filter(category='Global Missionary Work').first()
+    global_mission_photos = MissionaryPhoto.objects.filter(category='Global Missionary Work', featured=True).order_by('-date_taken')
 
     # Assign individual photos for unique cards
     photo1 = non_recent_photos[0] if len(non_recent_photos) > 0 else None
@@ -21,7 +21,7 @@ def home(request):
     photo3 = non_recent_photos[2] if len(non_recent_photos) > 2 else None
 
     context = {
-        'global_mission_photo': global_mission_photo,
+        'global_mission_photos': global_mission_photos,
         'featured_photos': featured_photos,
         'south_sudan_photo': south_sudan_photo,
         'kenya_photo': kenya_photo,
