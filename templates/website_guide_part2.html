@@ -7,7 +7,7 @@
 <section id="website-features" class="guide-section">
     <div class="container mx-auto px-4">
         <h2 class="guide-section-title">Website Features</h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <div>
                 <div class="guide-card">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card">
                     <div class="guide-card-icon">
@@ -39,7 +39,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card">
                     <div class="guide-card-icon">
@@ -55,7 +55,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card">
                     <div class="guide-card-icon">
@@ -79,7 +79,7 @@
 <section id="page-guide" class="guide-section">
     <div class="container mx-auto px-4">
         <h2 class="guide-section-title">Page Guide</h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <!-- Home Page -->
             <div class="md:col-span-2">
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- About Page -->
             <div>
                 <div class="guide-card h-full">
@@ -133,7 +133,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Missionary Work Page -->
             <div>
                 <div class="guide-card h-full">
@@ -155,7 +155,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Latest Mission Page -->
             <div>
                 <div class="guide-card h-full">
@@ -177,7 +177,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Media Page -->
             <div>
                 <div class="guide-card h-full">
@@ -199,7 +199,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Contact Page -->
             <div>
                 <div class="guide-card h-full">
@@ -221,6 +221,33 @@
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation Links -->
+<section class="py-10 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <a href="{% url 'website_guide_part1' %}" class="text-mission-brown hover:text-mission-tan transition-colors duration-300 flex items-center mr-6">
+                    <i class="fas fa-chevron-left mr-2"></i>
+                    <span>Previous: Introduction</span>
+                </a>
+
+                <a href="{% url 'website_guide' %}" class="text-mission-brown hover:text-mission-tan transition-colors duration-300 flex items-center">
+                    <i class="fas fa-th-large mr-2"></i>
+                    <span>Guide Overview</span>
+                </a>
+            </div>
+
+            <div class="flex items-center">
+                <span class="text-mission-dark mr-4">Continue to:</span>
+                <a href="{% url 'website_guide_part3' %}" class="bg-mission-brown text-white hover:bg-mission-tan px-6 py-2 rounded-full inline-flex items-center transition-colors duration-300">
+                    <span>Media Resources & Involvement</span>
+                    <i class="fas fa-chevron-right ml-2"></i>
+                </a>
             </div>
         </div>
     </div>

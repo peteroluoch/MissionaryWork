@@ -7,7 +7,7 @@
 <section id="media-resources" class="guide-section">
     <div class="container mx-auto px-4">
         <h2 class="guide-section-title">Media Resources</h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             <div>
                 <div class="guide-card h-full">
@@ -29,7 +29,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card h-full">
                     <div class="guide-card-icon">
@@ -50,7 +50,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card h-full">
                     <div class="guide-card-icon">
@@ -65,21 +65,21 @@
                             </div>
                             <span>facebook.com/PPOBASIIKE</span>
                         </a>
-                        
+
                         <a href="https://www.youtube.com/channel/UC63CJHrodxR5yhhfyf_Z9tw" target="_blank" class="flex items-center text-mission-dark hover:text-mission-brown transition-colors duration-300">
                             <div class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center mr-3">
                                 <i class="fab fa-youtube"></i>
                             </div>
                             <span>YouTube Channel</span>
                         </a>
-                        
+
                         <div class="flex items-center text-mission-dark">
                             <div class="w-10 h-10 bg-gradient-to-br from-pink-600 to-purple-600 text-white rounded-full flex items-center justify-center mr-3">
                                 <i class="fab fa-instagram"></i>
                             </div>
                             <span>Instagram (Coming Soon)</span>
                         </div>
-                        
+
                         <div class="flex items-center text-mission-dark">
                             <div class="w-10 h-10 bg-blue-400 text-white rounded-full flex items-center justify-center mr-3">
                                 <i class="fab fa-twitter"></i>
@@ -97,11 +97,11 @@
 <section id="getting-involved" class="guide-section">
     <div class="container mx-auto px-4">
         <h2 class="guide-section-title">Getting Involved</h2>
-        
+
         <div class="text-center mb-8">
             <p class="text-xl text-mission-dark max-w-3xl mx-auto">There are several ways to support Pastor Prince's missionary work. Your involvement makes a significant difference in transforming lives across Africa.</p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <div>
                 <div class="guide-card h-full">
@@ -122,7 +122,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card h-full">
                     <div class="guide-card-icon">
@@ -143,7 +143,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card h-full">
                     <div class="guide-card-icon">
@@ -164,7 +164,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div>
                 <div class="guide-card h-full">
                     <div class="guide-card-icon">
@@ -184,6 +184,33 @@
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation Links -->
+<section class="py-10 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <a href="{% url 'website_guide_part2' %}" class="text-mission-brown hover:text-mission-tan transition-colors duration-300 flex items-center mr-6">
+                    <i class="fas fa-chevron-left mr-2"></i>
+                    <span>Previous: Website Features</span>
+                </a>
+
+                <a href="{% url 'website_guide' %}" class="text-mission-brown hover:text-mission-tan transition-colors duration-300 flex items-center">
+                    <i class="fas fa-th-large mr-2"></i>
+                    <span>Guide Overview</span>
+                </a>
+            </div>
+
+            <div class="flex items-center">
+                <span class="text-mission-dark mr-4">Continue to:</span>
+                <a href="{% url 'website_guide_part4' %}" class="bg-mission-brown text-white hover:bg-mission-tan px-6 py-2 rounded-full inline-flex items-center transition-colors duration-300">
+                    <span>Contact Information</span>
+                    <i class="fas fa-chevron-right ml-2"></i>
+                </a>
             </div>
         </div>
     </div>
