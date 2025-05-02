@@ -1,4 +1,7 @@
 from django.shortcuts import render
+import os
+from django.conf import settings
+from .models import MissionaryPhoto
 
 def home(request):
     """View for the home page"""
@@ -18,7 +21,29 @@ def latest_mission(request):
 
 def media(request):
     """View for the media page"""
-    return render(request, 'missionary_work/media.html')
+    # Get South Sudan photos
+    south_sudan_photos = []
+    photo_dir = os.path.join(settings.MEDIA_ROOT, 'missionary_photos', 'south_sudan_day1')
+
+    if os.path.exists(photo_dir):
+        for filename in os.listdir(photo_dir):
+            if filename.endswith(('.jpg', '.jpeg', '.png')):
+                photo_path = os.path.join('missionary_photos', 'south_sudan_day1', filename)
+                title = filename.replace('_', ' ').replace('.jpg', '').replace('.jpeg', '').replace('.png', '').title()
+
+                # Create a dictionary with photo information
+                photo = {
+                    'path': photo_path,
+                    'title': title,
+                    'description': 'South Sudan missionary work by Pastor Prince Obasi-Ike',
+                }
+                south_sudan_photos.append(photo)
+
+    context = {
+        'south_sudan_photos': south_sudan_photos,
+    }
+
+    return render(request, 'missionary_work/media.html', context)
 
 def contact(request):
     """View for the contact page"""

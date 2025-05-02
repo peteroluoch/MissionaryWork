@@ -420,185 +420,103 @@
 
         <!-- Gallery Grid with Masonry Effect -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-auto">
-            <!-- Image 1 - Large -->
-            <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gospel Outreach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-6 text-white">
-                        <h3 class="font-bold text-xl">Gospel Outreach</h3>
-                        <p class="text-sm text-mission-cream">Kapoeta Central Market, South Sudan</p>
+            {% if south_sudan_photos %}
+                <!-- South Sudan Day 1 Photos -->
+                {% for photo in south_sudan_photos %}
+                    {% if forloop.first %}
+                    <!-- First image - Large -->
+                    <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <img src="{{ MEDIA_URL }}{{ photo.path }}" alt="{{ photo.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <h3 class="font-bold text-xl">{{ photo.title }}</h3>
+                                <p class="text-sm text-mission-cream">{{ photo.description }}</p>
+                            </div>
+                        </div>
+                        <!-- Location Badge -->
+                        <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                            South Sudan
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- Regular image -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                        <img src="{{ MEDIA_URL }}{{ photo.path }}" alt="{{ photo.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-4 text-white">
+                                <h3 class="font-bold">{{ photo.title }}</h3>
+                                <p class="text-xs text-mission-cream">{{ photo.description }}</p>
+                            </div>
+                        </div>
+                        <!-- Location Badge -->
+                        <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                            South Sudan
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <!-- Fallback images if no photos are found -->
+                <!-- Image 1 - Large -->
+                <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gospel Outreach" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="font-bold text-xl">Gospel Outreach</h3>
+                            <p class="text-sm text-mission-cream">Kapoeta Central Market, South Sudan</p>
+                        </div>
+                    </div>
+                    <!-- Location Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        South Sudan
                     </div>
                 </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    South Sudan
-                </div>
-            </div>
 
-            <!-- Image 2 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Prayer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Team Prayer</h3>
-                        <p class="text-xs text-mission-cream">Morning Devotion</p>
+                <!-- Image 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Prayer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <h3 class="font-bold">Team Prayer</h3>
+                            <p class="text-xs text-mission-cream">Morning Devotion</p>
+                        </div>
+                    </div>
+                    <!-- Location Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Kenya
                     </div>
                 </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    Kenya
-                </div>
-            </div>
 
-            <!-- Image 3 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Church Site</h3>
-                        <p class="text-xs text-mission-cream">Nanimtoit</p>
+                <!-- Image 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <h3 class="font-bold">Church Site</h3>
+                            <p class="text-xs text-mission-cream">Nanimtoit</p>
+                        </div>
+                    </div>
+                    <!-- Location Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        South Sudan
                     </div>
                 </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    South Sudan
-                </div>
-            </div>
 
-            <!-- Image 4 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Arrival" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Team Arrival</h3>
-                        <p class="text-xs text-mission-cream">Kapoeta Airport</p>
+                <!-- Image 4 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Arrival" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <h3 class="font-bold">Team Arrival</h3>
+                            <p class="text-xs text-mission-cream">Kapoeta Airport</p>
+                        </div>
+                    </div>
+                    <!-- Location Badge -->
+                    <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
+                        South Sudan
                     </div>
                 </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    South Sudan
-                </div>
-            </div>
-
-            <!-- Image 5 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water Distribution" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Water Distribution</h3>
-                        <p class="text-xs text-mission-cream">Nanimtoit Village</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    South Sudan
-                </div>
-            </div>
-
-            <!-- Image 6 - Large -->
-            <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1489657780376-e0d8630c4bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Gathering" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-6 text-white">
-                        <h3 class="font-bold text-xl">Community Gathering</h3>
-                        <p class="text-sm text-mission-cream">Kapoeta North</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    South Sudan
-                </div>
-            </div>
-
-            <!-- Image 7 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Children's Ministry" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Children's Ministry</h3>
-                        <p class="text-xs text-mission-cream">Kapoeta Village</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    South Sudan
-                </div>
-            </div>
-
-            <!-- Image 8 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1504025468847-0e438279542c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bible Study" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Bible Study</h3>
-                        <p class="text-xs text-mission-cream">RCCG Solution Centre</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    Kenya
-                </div>
-            </div>
-
-            <!-- Image 9 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1453342664588-b702c83fc822?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Service" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Church Service</h3>
-                        <p class="text-xs text-mission-cream">Sunday Worship</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    Rwanda
-                </div>
-            </div>
-
-            <!-- Image 10 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1517732306149-e8f829eb588a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pastoral Visit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Pastoral Visit</h3>
-                        <p class="text-xs text-mission-cream">Home Visitation</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    Burundi
-                </div>
-            </div>
-
-            <!-- Image 11 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1509099652299-30938b0aeb63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Youth Program" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Youth Program</h3>
-                        <p class="text-xs text-mission-cream">Leadership Training</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    Kenya
-                </div>
-            </div>
-
-            <!-- Image 12 -->
-            <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                <img src="https://images.unsplash.com/photo-1526139334526-f591a54b477c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Baptism Service" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-mission-brown/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div class="p-4 text-white">
-                        <h3 class="font-bold">Baptism Service</h3>
-                        <p class="text-xs text-mission-cream">New Believers</p>
-                    </div>
-                </div>
-                <!-- Location Badge -->
-                <div class="absolute top-4 left-4 bg-mission-brown text-white px-3 py-1 rounded-full text-xs font-bold">
-                    Rwanda
-                </div>
-            </div>
+            {% endif %}
         </div>
 
         <!-- Load More Button -->
