@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+  {% load static %}
 
 {% block title %}Pastor Prince Obasi-Ike | About{% endblock %}
 
@@ -74,10 +75,10 @@
         transition: all 0.3s ease;
     }
 
-    .about-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
 
     .timeline-item {
         position: relative;
@@ -87,20 +88,20 @@
         transition: all 0.3s ease;
     }
 
-    .timeline-item:hover {
-        transform: translateX(5px);
-    }
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
 
-    .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 0;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: #d4a76a;
-    }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #d4a76a;
+        }
 
     .timeline-year {
         position: absolute;
@@ -120,16 +121,16 @@
         overflow: hidden;
     }
 
-    .quote-card::before {
-        content: '"';
-        position: absolute;
-        top: -2rem;
-        left: 1rem;
-        font-size: 8rem;
-        font-family: serif;
-        color: rgba(255, 255, 255, 0.1);
-        line-height: 1;
-    }
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            left: 1rem;
+            font-size: 8rem;
+            font-family: serif;
+            color: rgba(255, 255, 255, 0.1);
+            line-height: 1;
+        }
 
     .stat-card {
         position: relative;
@@ -142,21 +143,21 @@
         z-index: 1;
     }
 
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
 
-    .stat-card::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background-color: #d4a76a;
-        z-index: -1;
-    }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #d4a76a;
+            z-index: -1;
+        }
 
     .stat-number {
         font-size: 3rem;
@@ -183,21 +184,21 @@
         z-index: 1;
     }
 
-    .value-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
 
-    .value-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background-color: #d4a76a;
-        z-index: -1;
-    }
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #d4a76a;
+            z-index: -1;
+        }
 
     .value-icon {
         width: 60px;
@@ -232,6 +233,7 @@
             opacity: 0;
             transform: translateY(-30px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -243,6 +245,7 @@
             opacity: 0;
             transform: translateY(30px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -324,7 +327,9 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="about-hero">
-    <div class="about-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+
+    <div class="about-hero-bg" style="background-image: url('{% static 'images/sliders/about_hero.jpg' %}');"></div>
+
     <div class="about-hero-overlay"></div>
     <div class="container mx-auto px-4 relative z-10">
         <div class="about-hero-content text-center text-white">
@@ -354,7 +359,7 @@
     <div class="absolute inset-0 bg-gradient-radial from-mission-tan/5 to-transparent"></div>
 
     <!-- Background Pattern -->
-    <div class="about-section-bg" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="about-section-bg" style="background-image: url('{% static 'images/sliders/bg1.jpg' %}');"></div>
 
     <!-- Decorative Elements -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-mission-tan/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
@@ -418,13 +423,13 @@
                         <div class="relative aspect-[3/4] overflow-hidden rounded-lg">
                             <!-- This is a placeholder image that can be replaced later -->
                             <div class="absolute inset-0 bg-gradient-to-b from-mission-brown/20 to-mission-brown/40 z-10"></div>
-                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pastor Prince Obasi-Ike" class="w-full h-full object-cover transition-all duration-500 hover:scale-105">
+                            <img src="{% static 'images/sliders/hero.jpg' %}" alt="Pastor Prince Obasi-Ike" class="w-full h-full object-cover transition-all duration-500 hover:scale-105">
 
                             <!-- Placeholder Overlay Text -->
                             <div class="absolute inset-0 flex items-center justify-center z-20">
                                 <div class="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg text-center">
                                     <p class="text-mission-brown text-sm font-bold">Portrait Photo</p>
-                                    <p class="text-mission-dark/70 text-xs">To be replaced with actual image</p>
+                                    <!--<p class="text-mission-dark/70 text-xs">To be replaced with actual image</p>-->
                                 </div>
                             </div>
                         </div>
@@ -467,7 +472,7 @@
 
                 <!-- Family Photo - Repositioned for Better Balance -->
                 <div class="absolute -bottom-20 right-0 md:right-4 w-36 h-36 md:w-48 md:h-48 rounded-lg shadow-lg overflow-hidden border-4 border-white animate-fade-in animate-delay-500 transform transition-all duration-500 hover:scale-105">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Pastor Prince with Family" class="w-full h-full object-cover">
+                    <img src="{% static 'images/sliders/daddy_mommy3.jpg' %}" alt="Pastor Prince with Family" class="w-full h-full object-cover">
 
                     <!-- Photo Caption -->
                     <div class="absolute bottom-0 left-0 right-0 bg-mission-brown/80 text-white py-1 text-xs text-center">
@@ -795,9 +800,17 @@
     <!-- Animation Script -->
     <style>
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .animate-float {
@@ -827,7 +840,7 @@
 <!-- Ministry Timeline -->
 <section class="py-24 bg-white about-section">
     <!-- Background Pattern -->
-    <div class="about-section-bg" style="background-image: url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); opacity: 0.03;"></div>
+    <div class="about-section-bg" style="background-image: url('{% static 'images/sliders/begun.jpg' %}'); opacity: 0.03;"></div>
 
     <div class="container mx-auto px-4 relative z-10">
         <div class="text-center mb-16">
@@ -852,7 +865,7 @@
                         <div class="bg-white p-6 rounded-xl shadow-lg border border-mission-tan/10 relative">
                             <!-- Image -->
                             <div class="mb-4 rounded-lg overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pioneer Missionary Work" class="w-full h-48 object-cover">
+                                <img src="{% static 'images/sliders/begun1.jpg' %}" alt="Pioneer Missionary Work" class="w-full h-48 object-cover">
                             </div>
 
                             <p class="text-mission-dark leading-relaxed">Pastor Prince began his journey as a pioneer missionary for the Redeemed Christian Church of God (RCCG) in Eastern Africa, establishing the foundation for what would become a transformative ministry across multiple countries.</p>
@@ -1308,9 +1321,9 @@
 
 <!-- Animation Script -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Animate elements when they come into view
-        const animateOnScroll = function() {
+        const animateOnScroll = function () {
             const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-slide-in-right, .animate-slide-in-left');
 
             elements.forEach(element => {

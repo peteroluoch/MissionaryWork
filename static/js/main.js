@@ -4,18 +4,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize animations for elements with animation classes
     initAnimations();
-    
+
     // Initialize mobile menu toggle
     initMobileMenu();
-    
+
     // Initialize smooth scrolling for anchor links
     initSmoothScroll();
-    
+
     // Initialize gallery filtering (if on media page)
     if (document.querySelector('.gallery-filter')) {
         initGalleryFilter();
     }
-    
+
     // Initialize testimonial slider (if present)
     if (document.querySelector('.testimonial-slider')) {
         initTestimonialSlider();
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initAnimations() {
     // Add animation classes to elements as they come into view
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
+
     if (animatedElements.length > 0) {
         // Create an Intersection Observer
         const observer = new IntersectionObserver((entries) => {
@@ -38,7 +38,7 @@ function initAnimations() {
                 }
             });
         }, { threshold: 0.1 });
-        
+
         // Observe each animated element
         animatedElements.forEach(element => {
             observer.observe(element);
@@ -46,29 +46,68 @@ function initAnimations() {
     }
 }
 
-// Function to initialize mobile menu
+// Function to initialize mobile menu with improved functionality
 function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
+    const menuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
+
+    if (mobileMenuButton && mobileMenu && menuIcon) {
+        // Toggle menu on button click
+        mobileMenuButton.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event from bubbling to document
             mobileMenu.classList.toggle('hidden');
+
+            // Toggle icon between bars and times
+            if (menuIcon.classList.contains('fa-bars')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
         });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking a menu item (for better mobile experience)
+        const menuItems = mobileMenu.querySelectorAll('a');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Handle touch events for better mobile experience
+        mobileMenu.addEventListener('touchstart', function(e) {
+            // Allow default behavior for links and scrolling
+            if (e.target.tagName.toLowerCase() !== 'a' && !e.target.closest('a')) {
+                e.stopPropagation();
+            }
+        }, { passive: true });
     }
 }
 
 // Function to initialize smooth scrolling for anchor links
 function initSmoothScroll() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
-    
+
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
                 window.scrollTo({
                     top: targetElement.offsetTop - 100,
@@ -83,7 +122,7 @@ function initSmoothScroll() {
 function initGalleryFilter() {
     const filterButtons = document.querySelectorAll('.gallery-filter button');
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Remove active class from all buttons
@@ -91,13 +130,13 @@ function initGalleryFilter() {
                 btn.classList.remove('bg-blue-600', 'text-white');
                 btn.classList.add('bg-gray-200', 'hover:bg-blue-600', 'hover:text-white');
             });
-            
+
             // Add active class to clicked button
             this.classList.remove('bg-gray-200', 'hover:bg-blue-600', 'hover:text-white');
             this.classList.add('bg-blue-600', 'text-white');
-            
+
             const filter = this.getAttribute('data-filter');
-            
+
             // Show/hide gallery items based on filter
             galleryItems.forEach(item => {
                 if (filter === 'all' || item.classList.contains(filter)) {
@@ -116,7 +155,7 @@ function initTestimonialSlider() {
     const prevButton = document.querySelector('.testimonial-prev');
     const nextButton = document.querySelector('.testimonial-next');
     let currentIndex = 0;
-    
+
     // Function to show current testimonial
     function showTestimonial(index) {
         testimonials.forEach((testimonial, i) => {
@@ -129,23 +168,23 @@ function initTestimonialSlider() {
             }
         });
     }
-    
+
     // Initialize with first testimonial
     showTestimonial(currentIndex);
-    
+
     // Add event listeners to navigation buttons
     if (prevButton && nextButton) {
         prevButton.addEventListener('click', function() {
             currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
             showTestimonial(currentIndex);
         });
-        
+
         nextButton.addEventListener('click', function() {
             currentIndex = (currentIndex + 1) % testimonials.length;
             showTestimonial(currentIndex);
         });
     }
-    
+
     // Auto-rotate testimonials every 5 seconds
     setInterval(function() {
         currentIndex = (currentIndex + 1) % testimonials.length;
@@ -156,30 +195,30 @@ function initTestimonialSlider() {
 // Function to validate contact form
 function validateContactForm() {
     const form = document.getElementById('contact-form');
-    
+
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Get form fields
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const subject = document.getElementById('subject').value.trim();
             const message = document.getElementById('message').value.trim();
-            
+
             // Simple validation
             if (name === '' || email === '' || subject === '' || message === '') {
                 alert('Please fill in all fields');
                 return;
             }
-            
+
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert('Please enter a valid email address');
                 return;
             }
-            
+
             // If validation passes, you would typically submit the form
             // For now, just show a success message
             alert('Thank you for your message! We will get back to you soon.');
